@@ -1,46 +1,41 @@
 package com.github.charbgr.cliffhanger
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
-import android.view.Menu
-import android.view.MenuItem
+import android.view.ViewGroup
+import com.bluelinelabs.conductor.Conductor
+import com.bluelinelabs.conductor.Router
+import com.bluelinelabs.conductor.RouterTransaction
+import com.github.charbgr.cliffhanger.home.HomeController
 
 class MainActivity : AppCompatActivity() {
+
+  private var router: Router? = null
+
+  private val container: ViewGroup by lazy {
+    findViewById(R.id.controller_container) as ViewGroup
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    val toolbar = findViewById(R.id.toolbar) as Toolbar
-    setSupportActionBar(toolbar)
 
-    val fab = findViewById(R.id.fab) as FloatingActionButton
-    fab.setOnClickListener { view ->
-      Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-          .setAction("Action", null)
-          .show()
+    initRouter(savedInstanceState)
+  }
+
+  private fun initRouter(savedInstanceState: Bundle?) {
+    router = Conductor.attachRouter(this, container, savedInstanceState)
+
+    router?.let {
+      if (!it.hasRootController()) {
+        it.setRoot(RouterTransaction.with(HomeController()))
+      }
     }
   }
 
-  override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    menuInflater.inflate(R.menu.menu_main, menu)
-    return true
-  }
-
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    val id = item.itemId
-
-
-    if (id == R.id.action_settings) {
-      return true
+  override fun onBackPressed() {
+    if (router?.handleBack() ?: false) {
+      super.onBackPressed()
     }
-
-    return super.onOptionsItemSelected(item)
   }
 }
