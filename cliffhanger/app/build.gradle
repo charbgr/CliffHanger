@@ -23,7 +23,7 @@ android {
     exclude 'META-INF/LICENSE'
     exclude 'META-INF/rxjava.properties'
   }
-  
+
   buildTypes {
     release {
       minifyEnabled false
@@ -47,6 +47,8 @@ dependencies {
   compile applicationDependencies.rxJava
   compile applicationDependencies.rxAndroid
   compile applicationDependencies.rxBinding
+  compile applicationDependencies.rxBindingDesign
+  compile applicationDependencies.rxInterop
 
   // Misc
   compile applicationDependencies.kotlin

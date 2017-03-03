@@ -39,7 +39,8 @@ buildscript {
         rxJava          : "io.reactivex.rxjava2:rxjava:$rxJava2_version",
         rxAndroid       : "io.reactivex.rxjava2:rxandroid:$rxAndroid2_version",
         rxBinding       : "com.jakewharton.rxbinding:rxbinding-kotlin:$rxBinding_version",
-        interop       : "com.github.akarnokd:rxjava2-interop:$rxInterop_version",
+        rxBindingDesign : "com.jakewharton.rxbinding:rxbinding-design-kotlin:$rxBinding_version",
+        rxInterop       : "com.github.akarnokd:rxjava2-interop:$rxInterop_version",
 
         // Misc
         kotlin          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
