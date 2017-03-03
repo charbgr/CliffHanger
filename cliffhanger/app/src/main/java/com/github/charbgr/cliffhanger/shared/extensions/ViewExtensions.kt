@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.shared
+package com.github.charbgr.cliffhanger.shared.extensions
 
 import android.view.LayoutInflater
 import android.view.View

@@ -7,6 +7,7 @@ import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.github.charbgr.cliffhanger.home.HomeController
 import kotlinx.android.synthetic.main.activity_main.controller_container
+import kotlinx.android.synthetic.main.controller_home.bottom_navigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         it.setRoot(RouterTransaction.with(HomeController()).tag("home"))
       }
     }
+
+    bottom_navigation
 
   }
 

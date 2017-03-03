@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.shared.render
+import com.github.charbgr.cliffhanger.shared.extensions.render
 
 class SearchController : Controller() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
