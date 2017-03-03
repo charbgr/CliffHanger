@@ -1,4 +1,8 @@
 <resources>
   <string name="app_name">CliffHanger</string>
-  <string name="action_settings">Settings</string>
+  <string name="movie_category_top_rated">Top Rated</string>
+  <string name="movie_category_now_playing">Now Playing</string>
+  <string name="movie_category_watchlist">Watchlist</string>
+  <string name="movie_category_popular">Popular</string>
+  <string name="movie_category_upcoming">Upcoming</string>
 </resources>
