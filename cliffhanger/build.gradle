@@ -16,8 +16,7 @@ buildscript {
     constraint_layout_version = '1.0.1'
     rxJava2_version = '2.0.6'
     rxAndroid2_version = '2.0.1'
-    retrofit_version = '2.1.0'
-    retrofit_adapter_version = '1.0.0'
+    retrofit_version = '2.2.0'
     rxBinding_version = '1.0.1'
     rxInterop_version = '0.9.2'
     timber_version = '4.5.1'
@@ -31,23 +30,24 @@ buildscript {
     mainApplication = [
 
         // Android Stuff
-        appCompat       : "com.android.support:appcompat-v7:$support_version",
-        design          : "com.android.support:design:$support_version",
-        constraintLayout: "com.android.support.constraint:constraint-layout:$constraint_layout_version",
+        appCompat        : "com.android.support:appcompat-v7:$support_version",
+        design           : "com.android.support:design:$support_version",
+        constraintLayout : "com.android.support.constraint:constraint-layout:$constraint_layout_version",
 
         // Reactive
-        rxJava          : "io.reactivex.rxjava2:rxjava:$rxJava2_version",
-        rxAndroid       : "io.reactivex.rxjava2:rxandroid:$rxAndroid2_version",
-        rxBinding       : "com.jakewharton.rxbinding:rxbinding-kotlin:$rxBinding_version",
-        rxBindingDesign : "com.jakewharton.rxbinding:rxbinding-design-kotlin:$rxBinding_version",
-        rxInterop       : "com.github.akarnokd:rxjava2-interop:$rxInterop_version",
+        rxJava           : "io.reactivex.rxjava2:rxjava:$rxJava2_version",
+        rxAndroid        : "io.reactivex.rxjava2:rxandroid:$rxAndroid2_version",
+        rxBinding        : "com.jakewharton.rxbinding:rxbinding-kotlin:$rxBinding_version",
+        rxBindingDesign  : "com.jakewharton.rxbinding:rxbinding-design-kotlin:$rxBinding_version",
+        rxInterop        : "com.github.akarnokd:rxjava2-interop:$rxInterop_version",
 
         // Misc
-        kotlin          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-        conductor       : "com.bluelinelabs:conductor:$conductor_version",
-        retrofit        : "com.squareup.retrofit2:converter-gson:$retrofit_version",
-        retrofitAdapter : "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofit_adapter_version",
-        timber          : "com.jakewharton.timber:timber:$timber_version"]
+        kotlin           : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+        conductor        : "com.bluelinelabs:conductor:$conductor_version",
+        retrofit         : "com.squareup.retrofit2:retrofit:$retrofit_version",
+        retrofitAdapter  : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
+        retrofitConverter: "com.squareup.retrofit2:converter-moshi:$retrofit_version",
+        timber           : "com.jakewharton.timber:timber:$timber_version"]
 
     unitTesting = [
 
@@ -72,6 +72,16 @@ buildscript {
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
   }
+}
+
+
+def getSecrets(){
+  def rootDir = project.rootDir
+  def secretProperties = new File(rootDir, "secrets.properties")
+
+  def Properties props = new Properties()
+  props.load(new FileInputStream(secretProperties))
+  return props
 }
 
 allprojects {

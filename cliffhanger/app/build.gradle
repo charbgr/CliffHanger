@@ -30,10 +30,20 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+
+  buildTypes {
+    applicationVariants.all { variant ->
+      def secrets = rootProject.getSecrets()
+      variant.buildConfigField "String", "TMDB_API_KEY", secrets['TMDB_API_KEY']
+    }
+  }
+
   sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
   }
 }
+
+
 dependencies {
   def applicationDependencies = rootProject.ext.mainApplication
   def unitTestDependencies = rootProject.ext.unitTesting
@@ -55,6 +65,7 @@ dependencies {
   compile applicationDependencies.conductor
   compile applicationDependencies.retrofit
   compile applicationDependencies.retrofitAdapter
+  compile applicationDependencies.retrofitConverter
   compile applicationDependencies.timber
 
   // Unit/Integration tests dependencies
