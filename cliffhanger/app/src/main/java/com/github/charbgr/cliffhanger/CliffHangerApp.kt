@@ -6,16 +6,11 @@ import timber.log.Timber
 import timber.log.Timber.DebugTree
 
 
-
 class CliffHangerApp : Application() {
   override fun onCreate() {
     super.onCreate()
 
     this.initializeLogger()
-
-    Timber.v("wp")
-    Timber.d("hehe")
-    Timber.e("hehe")
   }
 
 
