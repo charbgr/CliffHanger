@@ -30,14 +30,20 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
+  // Android Stuff
   compile "com.android.support:appcompat-v7:$support_version"
   compile "com.android.support:design:$support_version"
+  compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+
+  // Reactive
+  compile "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+  compile "io.reactivex.rxjava2:rxandroid:$rxandroid2_version"
+
+  // Misc
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   compile "com.bluelinelabs:conductor:$conductor_version"
 
-
   testCompile "junit:junit:$junit_version"
-  compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
 }
 repositories {
   mavenCentral()
