@@ -2,19 +2,15 @@ package com.github.charbgr.cliffhanger
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.ViewGroup
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.github.charbgr.cliffhanger.home.HomeController
+import kotlinx.android.synthetic.main.activity_main.controller_container
 
 class MainActivity : AppCompatActivity() {
 
   private var router: Router? = null
-
-  private val container: ViewGroup by lazy {
-    findViewById(R.id.controller_container) as ViewGroup
-  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -24,17 +20,18 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun initRouter(savedInstanceState: Bundle?) {
-    router = Conductor.attachRouter(this, container, savedInstanceState)
+    router = Conductor.attachRouter(this, controller_container, savedInstanceState)
 
     router?.let {
       if (!it.hasRootController()) {
-        it.setRoot(RouterTransaction.with(HomeController()))
+        it.setRoot(RouterTransaction.with(HomeController()).tag("home"))
       }
     }
+
   }
 
   override fun onBackPressed() {
-    if (router?.handleBack() ?: false) {
+    if (!(router?.handleBack() ?: true)) {
       super.onBackPressed()
     }
   }

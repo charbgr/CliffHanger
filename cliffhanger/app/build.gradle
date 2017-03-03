@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
   compileSdkVersion 25
@@ -36,6 +37,7 @@ dependencies {
 
 
   testCompile "junit:junit:$junit_version"
+  compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
 }
 repositories {
   mavenCentral()
