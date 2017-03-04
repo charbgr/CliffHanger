@@ -1,39 +1,45 @@
 package com.github.charbgr.cliffhanger.tmdb.dto
 
+import com.github.charbgr.cliffhanger.shared.transformers.movie.MovieTransformable
 import com.squareup.moshi.Json
 
 data class MiniMovieDto(
 
     @Json(name = "poster_path")
-    private val posterPath: String,
+    val posterPath: String?,
 
     @Json(name = "adult")
-    private val adult: Boolean,
+    val adult: Boolean?,
 
     @Json(name = "overview")
-    private val overview: String,
+    val overview: String?,
 
     @Json(name = "release_date")
-    private val releaseDate: String,
+    val releaseDate: String?,
 
     @Json(name = "genre_ids")
-    private val genreIds: List<Int>,
+    val genreIds: List<Int>?,
 
     @Json(name = "id")
-    private val id: Int,
+    val id: Int?,
 
     @Json(name = "original_title")
-    private val originalTitle: String,
+    val originalTitle: String?,
 
     @Json(name = "title")
-    private val title: String,
+    val title: String?,
 
     @Json(name = "backdrop_path")
-    private val backdropPath: String,
+    val backdropPath: String?,
 
     @Json(name = "vote_count")
-    private val voteCount: Int,
+    val voteCount: Int?,
 
     @Json(name = "vote_average")
-    private val voteAverage: Double
-)
+    val voteAverage: Double?
+
+) : MovieTransformable {
+  override fun tmdbId(): Int? = this.id
+  override fun title(): String? = this.title
+}
+
