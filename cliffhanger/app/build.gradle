@@ -72,10 +72,14 @@ dependencies {
   testCompile unitTestDependencies.kotlinTest
   testCompile unitTestDependencies.mockitoKotlin
   testCompile unitTestDependencies.kluent
-  testCompile unitTestDependencies.junit
+  testCompile unitTestDependencies.spek
+//  testCompile unitTestDependencies.junit
   testCompile unitTestDependencies.robolectric
 }
 
 repositories {
   mavenCentral()
+  maven {
+    url "http://repository.jetbrains.com/all"
+  }
 }

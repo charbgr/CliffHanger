@@ -25,6 +25,7 @@ buildscript {
     junit_version = '4.12'
     mockitoKotlin_version = '1.1.0'
     kluent_version = '1.14'
+    spek_version = '1.0.9'
     robolectric_version = '3.2.2'
 
     mainApplication = [
@@ -55,6 +56,7 @@ buildscript {
         kotlinTest   : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
         mockitoKotlin: "org.mockito:mockito-core:$mockitoKotlin_version",
         kluent       : "org.amshove.kluent:kluent:$kluent_version",
+        spek         : "org.jetbrains.spek:spek:$spek_version",
 
         junit        : "junit:junit:$junit_version",
 
@@ -64,6 +66,10 @@ buildscript {
 
   repositories {
     jcenter()
+    mavenCentral()
+    maven {
+      url "http://repository.jetbrains.com/all"
+    }
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:2.3.0'
@@ -74,8 +80,7 @@ buildscript {
   }
 }
 
-
-def getSecrets(){
+def getSecrets() {
   def rootDir = project.rootDir
   def secretProperties = new File(rootDir, "secrets.properties")
 
