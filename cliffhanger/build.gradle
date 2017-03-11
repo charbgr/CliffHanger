@@ -18,7 +18,7 @@ buildscript {
     rxKotlin2_version = '2.0.0-RC1'
     rxAndroid2_version = '2.0.1'
     retrofit_version = '2.2.0'
-    rxBinding_version = '1.0.1'
+    rxBinding_version = '2.0.0'
     rxInterop_version = '0.9.2'
     timber_version = '4.5.1'
     mosbyMviConductor = '3.0.0-alpha2'
@@ -41,9 +41,8 @@ buildscript {
         rxJava           : "io.reactivex.rxjava2:rxjava:$rxJava2_version",
         rxKotlin         : "io.reactivex:rxkotlin:$rxKotlin2_version",
         rxAndroid        : "io.reactivex.rxjava2:rxandroid:$rxAndroid2_version",
-        rxBinding        : "com.jakewharton.rxbinding:rxbinding-kotlin:$rxBinding_version",
-        rxBindingDesign  : "com.jakewharton.rxbinding:rxbinding-design-kotlin:$rxBinding_version",
-        rxInterop        : "com.github.akarnokd:rxjava2-interop:$rxInterop_version",
+        rxBinding        : "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBinding_version",
+        rxBindingDesign  : "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxBinding_version",
 
         // Misc
         kotlin           : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",

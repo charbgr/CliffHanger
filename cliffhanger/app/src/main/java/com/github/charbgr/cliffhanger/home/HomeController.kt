@@ -10,9 +10,8 @@ import com.github.charbgr.cliffhanger.home.mvi.HomeView
 import com.github.charbgr.cliffhanger.home.mvi.HomeViewModel
 import com.github.charbgr.cliffhanger.search.SearchController
 import com.github.charbgr.cliffhanger.shared.extensions.render
-import com.github.charbgr.cliffhanger.shared.extensions.toV2Observable
 import com.hannesdorfmann.mosby3.MviController
-import com.jakewharton.rxbinding.support.design.widget.itemSelections
+import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.controller_home.view.bottom_navigation
 import kotlinx.android.synthetic.main.controller_home.view.search
@@ -33,8 +32,10 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
 
   override fun createPresenter(): HomePresenter = HomePresenter()
 
-  override fun bottomNavigationIntent(): Observable<Int> = view!!.bottom_navigation
-      .itemSelections().toV2Observable().map { it.itemId }
+  override fun bottomNavigationIntent(): Observable<Int> {
+    val selectObservable = view!!.bottom_navigation.itemSelections().map { it.itemId }
+    return selectObservable
+  }
 
   override fun render(viewModel: HomeViewModel) {
     Timber.d("viewmodel receiver " + viewModel)

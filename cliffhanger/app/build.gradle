@@ -59,7 +59,6 @@ dependencies {
   compile applicationDependencies.rxAndroid
   compile applicationDependencies.rxBinding
   compile applicationDependencies.rxBindingDesign
-  compile applicationDependencies.rxInterop
 
   // Misc
   compile applicationDependencies.kotlin
