@@ -8,13 +8,14 @@ buildscript {
     compile_sdk_version = 25
     target_sdk_version = 25
     min_sdk_version = 24
+    support_version = '25.2.0'
 
     // Third party libraries
-    support_version = '25.1.1'
     kotlin_version = '1.1.0'
     conductor_version = '2.1.1'
     constraint_layout_version = '1.0.1'
     rxJava2_version = '2.0.6'
+    rxKotlin2_version = '2.0.0-RC1'
     rxAndroid2_version = '2.0.1'
     retrofit_version = '2.2.0'
     rxBinding_version = '1.0.1'
@@ -38,6 +39,7 @@ buildscript {
 
         // Reactive
         rxJava           : "io.reactivex.rxjava2:rxjava:$rxJava2_version",
+        rxKotlin         : "io.reactivex:rxkotlin:$rxKotlin2_version",
         rxAndroid        : "io.reactivex.rxjava2:rxandroid:$rxAndroid2_version",
         rxBinding        : "com.jakewharton.rxbinding:rxbinding-kotlin:$rxBinding_version",
         rxBindingDesign  : "com.jakewharton.rxbinding:rxbinding-design-kotlin:$rxBinding_version",

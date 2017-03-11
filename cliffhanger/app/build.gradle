@@ -55,6 +55,7 @@ dependencies {
 
   // Reactive
   compile applicationDependencies.rxJava
+  compile applicationDependencies.rxKotlin
   compile applicationDependencies.rxAndroid
   compile applicationDependencies.rxBinding
   compile applicationDependencies.rxBindingDesign
