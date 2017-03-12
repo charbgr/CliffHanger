@@ -24,7 +24,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val movie = movieList[holder.adapterPosition]
-    
+
     holder.bind(movie)
   }
 
@@ -52,7 +52,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private fun bindImage(movie: Movie) {
       Glide.with(itemView.context)
-          .load(TmdbHelper.findBestQualityPoster(movie))
+          .load(TmdbHelper.findBestQualityBackdrop(movie))
           .into(itemView.item_movie_poster)
     }
 
