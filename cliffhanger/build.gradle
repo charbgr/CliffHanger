@@ -9,11 +9,11 @@ buildscript {
     target_sdk_version = 25
     min_sdk_version = 24
     support_version = '25.2.0'
+    constraint_layout_version = '1.0.2'
 
     // Third party libraries
     kotlin_version = '1.1.0'
     conductor_version = '2.1.1'
-    constraint_layout_version = '1.0.1'
     rxJava2_version = '2.0.6'
     rxKotlin2_version = '2.0.0-RC1'
     rxAndroid2_version = '2.0.1'
