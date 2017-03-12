@@ -68,6 +68,8 @@ dependencies {
   compile applicationDependencies.retrofitAdapter
   compile applicationDependencies.retrofitConverter
   compile applicationDependencies.timber
+  compile applicationDependencies.glide
+
 
   // Unit/Integration tests dependencies
   testCompile unitTestDependencies.kotlinTest
