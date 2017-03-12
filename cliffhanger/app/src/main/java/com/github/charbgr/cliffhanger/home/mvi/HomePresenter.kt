@@ -19,19 +19,19 @@ class HomePresenter(
         .startWith(showLoaderViewModel)
 
     val nowPlayingClickIntent = intent { it.nowPlayingClickIntent() }
-        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .switchMap { interactor.loadNowPlayingMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
     val watchlistClickIntent = intent { it.watchlistClickIntent() }
-        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .switchMap { interactor.loadWatchlistMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
     val popularClickIntent = intent { it.popularClickIntent() }
-        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .switchMap { interactor.loadPopularMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
     val upcomingClickIntent = intent { it.upcomingClickIntent() }
-        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .switchMap { interactor.loadUpcomingMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
     val allIntents = Observable.merge(

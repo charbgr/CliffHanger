@@ -23,8 +23,9 @@ import timber.log.Timber
 
 class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
 
-  private lateinit var bottomNavigationSelection: Observable<MenuItem>
-
+  private val bottomNavigationSelection: Observable<MenuItem> by lazy {
+    view!!.bottom_navigation.itemSelections().share()
+  }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
     val rootView: View = container.render(R.layout.controller_home)
@@ -37,8 +38,6 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
       layoutManager = LinearLayoutManager(context)
       adapter = MovieAdapter()
     }
-
-    bottomNavigationSelection = rootView.bottom_navigation.itemSelections().share()
 
     return rootView
   }
