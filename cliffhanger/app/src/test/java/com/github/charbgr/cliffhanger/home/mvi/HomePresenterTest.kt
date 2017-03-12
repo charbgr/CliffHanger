@@ -81,7 +81,7 @@ class HomePresenterTest {
   fun test_showing_loader_after_fetched_data() {
     mockInteractor()
     robot.fireTopRatedIntent()
-    
+
     mockInteractor(dummyMovieResults2())
     robot.fireUpcomingIntent()
 

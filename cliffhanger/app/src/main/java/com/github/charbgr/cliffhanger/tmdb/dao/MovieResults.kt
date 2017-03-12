@@ -5,14 +5,14 @@ import com.squareup.moshi.Json
 
 data class MovieResults(
   @Json(name = "page")
-  private val page: Int,
+  val page: Int,
 
   @Json(name = "results")
-  private val results: List<MiniMovieDto>,
+  val results: List<MiniMovieDto>,
 
   @Json(name = "total_results")
-  private val totalResults: Int,
+  val totalResults: Int,
 
   @Json(name = "total_pages")
-  private val totalPages: Int
+  val totalPages: Int
 )

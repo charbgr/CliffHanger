@@ -13,6 +13,7 @@ import com.github.charbgr.cliffhanger.home.mvi.HomeView
 import com.github.charbgr.cliffhanger.home.mvi.HomeViewModel
 import com.github.charbgr.cliffhanger.search.SearchController
 import com.github.charbgr.cliffhanger.shared.extensions.render
+import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
 import com.hannesdorfmann.mosby3.MviController
 import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import io.reactivex.Observable
@@ -27,6 +28,10 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
     view!!.bottom_navigation.itemSelections().share()
   }
 
+  private val movieAdapter: MovieAdapter by lazy {
+    MovieAdapter()
+  }
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
     val rootView: View = container.render(R.layout.controller_home)
 
@@ -36,7 +41,7 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
 
     with(rootView.movie_list) {
       layoutManager = LinearLayoutManager(context)
-      adapter = MovieAdapter()
+      adapter = movieAdapter
     }
 
     return rootView
@@ -66,5 +71,10 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
 
   override fun render(viewModel: HomeViewModel) {
     Timber.d("viewmodel receiver " + viewModel)
+
+    viewModel.movieResults?.results?.transformToMovies()?.let {
+      movieAdapter.setMovies(it)
+    }
+
   }
 }

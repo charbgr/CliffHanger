@@ -39,6 +39,8 @@ data class MiniMovieDto(
     val voteAverage: Double?
 
 ) : MovieTransformable {
+  override fun posterPath(): String? = posterPath
+  override fun backdropPath(): String? = backdropPath
   override fun tmdbId(): Int? = this.id
   override fun title(): String? = this.title
 }

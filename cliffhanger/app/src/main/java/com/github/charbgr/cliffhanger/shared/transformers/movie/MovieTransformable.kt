@@ -6,4 +6,6 @@ package com.github.charbgr.cliffhanger.shared.transformers.movie
 interface MovieTransformable {
   fun tmdbId(): Int?
   fun title(): String?
+  fun posterPath(): String?
+  fun backdropPath(): String?
 }
