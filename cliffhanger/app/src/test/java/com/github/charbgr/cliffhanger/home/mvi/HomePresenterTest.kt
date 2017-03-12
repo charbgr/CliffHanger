@@ -81,6 +81,8 @@ class HomePresenterTest {
   fun test_showing_loader_after_fetched_data() {
     mockInteractor()
     robot.fireTopRatedIntent()
+    
+    mockInteractor(dummyMovieResults2())
     robot.fireUpcomingIntent()
 
     val showLoader = HomeViewModel(true, null)
@@ -90,14 +92,18 @@ class HomePresenterTest {
   }
 
   private fun dummyMovieResults(): MovieResults {
-    return MovieResults(1, listOf(MiniMovieDtoFactory.EMPTY), 2, 2)
+    return MovieResults(1, listOf(MiniMovieDtoFactory.EMPTY), 1, 1)
   }
 
-  private fun mockInteractor() {
-    `when`(interactor.loadTopRatedMovies()).thenReturn(Observable.just(dummyMovieResults()))
-    `when`(interactor.loadNowPlayingMovies()).thenReturn(Observable.just(dummyMovieResults()))
-    `when`(interactor.loadWatchlistMovies()).thenReturn(Observable.just(dummyMovieResults()))
-    `when`(interactor.loadPopularMovies()).thenReturn(Observable.just(dummyMovieResults()))
-    `when`(interactor.loadUpcomingMovies()).thenReturn(Observable.just(dummyMovieResults()))
+  private fun dummyMovieResults2(): MovieResults {
+    return MovieResults(1, listOf(MiniMovieDtoFactory.EMPTY, MiniMovieDtoFactory.EMPTY), 2, 1)
+  }
+
+  private fun mockInteractor(movieResults: MovieResults = dummyMovieResults()) {
+    `when`(interactor.loadTopRatedMovies()).thenReturn(Observable.just(movieResults))
+    `when`(interactor.loadNowPlayingMovies()).thenReturn(Observable.just(movieResults))
+    `when`(interactor.loadWatchlistMovies()).thenReturn(Observable.just(movieResults))
+    `when`(interactor.loadPopularMovies()).thenReturn(Observable.just(movieResults))
+    `when`(interactor.loadUpcomingMovies()).thenReturn(Observable.just(movieResults))
   }
 }
