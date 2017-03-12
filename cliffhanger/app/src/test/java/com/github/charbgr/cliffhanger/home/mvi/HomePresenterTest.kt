@@ -36,7 +36,7 @@ class HomePresenterTest {
   @Test
   fun test_loading_now_playing_movies() {
     mockInteractor()
-    robot.fireTopRatedIntent()
+    robot.fireNowPlayingIntent()
 
     val showLoader = HomeViewModel(true, null)
     val fetched = HomeViewModel(false, dummyMovieResults())
@@ -47,7 +47,7 @@ class HomePresenterTest {
   @Test
   fun test_loading_watchlist_movies() {
     mockInteractor()
-    robot.fireTopRatedIntent()
+    robot.fireWatchListIntent()
 
     val showLoader = HomeViewModel(true, null)
     val fetched = HomeViewModel(false, dummyMovieResults())
@@ -58,7 +58,7 @@ class HomePresenterTest {
   @Test
   fun test_loading_popular_movies() {
     mockInteractor()
-    robot.fireTopRatedIntent()
+    robot.firePopularIntent()
 
     val showLoader = HomeViewModel(true, null)
     val fetched = HomeViewModel(false, dummyMovieResults())
@@ -69,12 +69,24 @@ class HomePresenterTest {
   @Test
   fun test_loading_upcoming_movies() {
     mockInteractor()
-    robot.fireTopRatedIntent()
+    robot.fireUpcomingIntent()
 
     val showLoader = HomeViewModel(true, null)
     val fetched = HomeViewModel(false, dummyMovieResults())
 
     robot.assertViewStateRendered(showLoader, fetched)
+  }
+
+  @Test
+  fun test_showing_loader_after_fetched_data() {
+    mockInteractor()
+    robot.fireTopRatedIntent()
+    robot.fireUpcomingIntent()
+
+    val showLoader = HomeViewModel(true, null)
+    val fetched = HomeViewModel(false, dummyMovieResults())
+
+    robot.assertViewStateRendered(showLoader, fetched, showLoader, fetched)
   }
 
   private fun dummyMovieResults(): MovieResults {
