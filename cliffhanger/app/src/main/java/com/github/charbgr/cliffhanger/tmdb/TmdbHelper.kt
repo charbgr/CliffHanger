@@ -8,6 +8,6 @@ object TmdbHelper {
   }
 
   fun findBestQualityBackdrop(movie: Movie): String {
-    return Routes.IMAGE_BASE_URL + "w185" + movie.backdropPath
+    return Routes.IMAGE_BASE_URL + "w500" + movie.backdropPath
   }
 }
