@@ -73,6 +73,7 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
     Timber.d("viewmodel receiver " + viewModel)
 
     viewModel.movieResults?.results?.transformToMovies()?.let {
+      view?.movie_list?.scrollToPosition(0)
       movieAdapter.setMovies(it)
     }
 
