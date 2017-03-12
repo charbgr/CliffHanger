@@ -2,6 +2,7 @@ package com.github.charbgr.cliffhanger.home
 
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.RouterTransaction
@@ -22,6 +23,9 @@ import timber.log.Timber
 
 class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
 
+  private lateinit var bottomNavigationSelection: Observable<MenuItem>
+
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
     val rootView: View = container.render(R.layout.controller_home)
 
@@ -34,16 +38,32 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
       adapter = MovieAdapter()
     }
 
+    bottomNavigationSelection = rootView.bottom_navigation.itemSelections().share()
+
     return rootView
   }
 
   override fun createPresenter(): HomePresenter = HomePresenter()
 
-  override fun bottomNavigationIntent(): Observable<NavigationItem> {
-    val selectObservable = view!!.bottom_navigation.itemSelections()
-        .map { NavigationItem.valueOf(it.itemId) }
-    return selectObservable
-  }
+  override fun topRatedClickIntent(): Observable<Boolean> = bottomNavigationSelection
+      .filter { it.itemId == R.id.bottom_navigation_category_top_rated }
+      .map { true }
+
+  override fun nowPlayingClickIntent(): Observable<Boolean> = bottomNavigationSelection
+      .filter { it.itemId == R.id.bottom_navigation_category_now_playing }
+      .map { true }
+
+  override fun watchlistClickIntent(): Observable<Boolean> = bottomNavigationSelection
+      .filter { it.itemId == R.id.bottom_navigation_watchlist }
+      .map { true }
+
+  override fun popularClickIntent(): Observable<Boolean> = bottomNavigationSelection
+      .filter { it.itemId == R.id.bottom_navigation_category_popular }
+      .map { true }
+
+  override fun upcomingClickIntent(): Observable<Boolean> = bottomNavigationSelection
+      .filter { it.itemId == R.id.bottom_navigation_category_upcoming }
+      .map { true }
 
   override fun render(viewModel: HomeViewModel) {
     Timber.d("viewmodel receiver " + viewModel)

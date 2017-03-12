@@ -1,8 +1,12 @@
 package com.github.charbgr.cliffhanger.home.mvi
 
-import com.github.charbgr.cliffhanger.Movie
+import com.github.charbgr.cliffhanger.tmdb.dao.MovieResults
 import io.reactivex.Observable
 
 interface HomeInteractor {
-  fun loadData(): Observable<Movie>
+  fun loadTopRatedMovies(): Observable<MovieResults>
+  fun loadNowPlayingMovies(): Observable<MovieResults>
+  fun loadWatchlistMovies(): Observable<MovieResults>
+  fun loadPopularMovies(): Observable<MovieResults>
+  fun loadUpcomingMovies(): Observable<MovieResults>
 }

@@ -1,25 +1,27 @@
 package com.github.charbgr.cliffhanger.home.mvi
 
-import com.github.charbgr.cliffhanger.home.NavigationItem
-import com.github.charbgr.cliffhanger.home.NavigationItem.NOW_PLAYING
-import com.github.charbgr.cliffhanger.home.NavigationItem.POPULAR
-import com.github.charbgr.cliffhanger.home.NavigationItem.TOP_RATED
-import com.github.charbgr.cliffhanger.home.NavigationItem.UPCOMING
-import com.github.charbgr.cliffhanger.home.NavigationItem.WATCHLIST
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.ReplaySubject
+import org.junit.Assert
 
 
+class HomeViewRobot(private val presenter: HomePresenter) {
 
-class HomeViewRobot(val presenter: HomePresenter) {
-
-  private val navigationIntent: PublishSubject<NavigationItem> = PublishSubject.create()
+  private val topRatedClickIntent: PublishSubject<Boolean> = PublishSubject.create()
+  private val nowPlayingClickIntent: PublishSubject<Boolean> = PublishSubject.create()
+  private val watchlistClickIntent: PublishSubject<Boolean> = PublishSubject.create()
+  private val popularClickIntent: PublishSubject<Boolean> = PublishSubject.create()
+  private val upcomingClickIntent: PublishSubject<Boolean> = PublishSubject.create()
   private val renderEventSubject: ReplaySubject<HomeViewModel> = ReplaySubject.create()
   private val renderEvents: MutableList<HomeViewModel> = mutableListOf()
 
   private val homeView: HomeView = object : HomeView {
-    override fun bottomNavigationIntent(): Observable<NavigationItem> = navigationIntent
+    override fun topRatedClickIntent(): Observable<Boolean> = topRatedClickIntent
+    override fun nowPlayingClickIntent(): Observable<Boolean> = nowPlayingClickIntent
+    override fun watchlistClickIntent(): Observable<Boolean> = watchlistClickIntent
+    override fun popularClickIntent(): Observable<Boolean> = popularClickIntent
+    override fun upcomingClickIntent(): Observable<Boolean> = upcomingClickIntent
 
     override fun render(viewModel: HomeViewModel) {
       renderEvents.add(viewModel)
@@ -32,27 +34,49 @@ class HomeViewRobot(val presenter: HomePresenter) {
   }
 
   fun fireTopRatedIntent() {
-    fireNavigationIntent(TOP_RATED)
+    topRatedClickIntent.onNext(true)
   }
 
   fun fireNowPlayingIntent() {
-    fireNavigationIntent(NOW_PLAYING)
+    nowPlayingClickIntent.onNext(true)
   }
 
   fun fireWatchListIntent() {
-    fireNavigationIntent(WATCHLIST)
+    watchlistClickIntent.onNext(true)
   }
 
   fun firePopularIntent() {
-    fireNavigationIntent(POPULAR)
+    popularClickIntent.onNext(true)
   }
 
   fun fireUpcomingIntent() {
-    fireNavigationIntent(UPCOMING)
+    upcomingClickIntent.onNext(true)
   }
 
-  fun fireNavigationIntent(navigationItem: NavigationItem) {
-    navigationIntent.onNext(navigationItem)
+  fun assertViewStateRendered(vararg viewModels: HomeViewModel) {
+    val eventsCount = viewModels.size
+//    renderEventSubject.take(eventsCount).blockingSubscribe()
+//
+//    /*
+//    // Wait for few milli seconds to ensure that no more render events have occurred
+//    // before finishing the test and checking expectations (asserts)
+//    try {
+//      Thread.sleep(5000);
+//    } catch (InterruptedException e) {
+//      e.printStackTrace();
+//    }
+//    */
+//
+//    if (renderEventSubject.values.length > eventsCount) {
+//      Assert.fail("Expected to wait for "
+//          + eventsCount
+//          + ", but there were "
+//          + renderEventSubject.values.length
+//          + " Events in total, which is more than expected: "
+//          + arrayToString(renderEventSubject.values))
+//    }
+
+    Assert.assertEquals(viewModels.asList(), renderEvents)
   }
 
 }

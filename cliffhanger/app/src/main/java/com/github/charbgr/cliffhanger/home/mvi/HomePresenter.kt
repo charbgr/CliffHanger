@@ -1,21 +1,45 @@
 package com.github.charbgr.cliffhanger.home.mvi
 
 import com.hannesdorfmann.mosby3.mvi.MviBasePresenter
+import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class HomePresenter(
-    private val interactor: HomeInteractor = DefaultHomeInteractor())
+    private val interactor: HomeInteractor = DefaultHomeInteractor(),
+    private val scheduler: Scheduler = AndroidSchedulers.mainThread())
   : MviBasePresenter<HomeView, HomeViewModel>() {
 
   override fun bindIntents() {
 
-    val bottonNavigationIntent = intent { it.bottomNavigationIntent() }
-        .flatMap { interactor.loadData().map { HomeViewModel(false, true, it) } }
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
+    val showLoaderViewModel = HomeViewModel(true, null)
 
-    subscribeViewState(bottonNavigationIntent, HomeView::render)
+    val topRatedClickIntent = intent { it.topRatedClickIntent() }
+        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .startWith(showLoaderViewModel)
+
+    val nowPlayingClickIntent = intent { it.nowPlayingClickIntent() }
+        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .startWith(showLoaderViewModel)
+
+    val watchlistClickIntent = intent { it.watchlistClickIntent() }
+        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .startWith(showLoaderViewModel)
+
+    val popularClickIntent = intent { it.popularClickIntent() }
+        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .startWith(showLoaderViewModel)
+
+    val upcomingClickIntent = intent { it.upcomingClickIntent() }
+        .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
+        .startWith(showLoaderViewModel)
+
+    val allIntents = Observable.merge(
+        listOf(topRatedClickIntent, nowPlayingClickIntent, watchlistClickIntent, popularClickIntent,
+            upcomingClickIntent)
+    ).observeOn(scheduler)
+
+    subscribeViewState(allIntents.distinctUntilChanged(), HomeView::render)
   }
 
 }
