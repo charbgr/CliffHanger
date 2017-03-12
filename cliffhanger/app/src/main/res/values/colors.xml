@@ -12,4 +12,6 @@
 
   <color name="bottom_navigation_enabled">@color/gray_10</color>
   <color name="bottom_navigation_disabled">@color/gray_46</color>
+
+  <color name="common_gradient">#4D323232</color>
 </resources>
