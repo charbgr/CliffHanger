@@ -1,6 +1,6 @@
 package com.github.charbgr.cliffhanger.home.mvi
 
-import com.hannesdorfmann.mosby3.mvi.MviBasePresenter
+import com.github.charbgr.cliffhanger.shared.arch.RxJava2Presenter
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -8,29 +8,29 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 class HomePresenter(
     private val interactor: HomeInteractor = DefaultHomeInteractor(),
     private val scheduler: Scheduler = AndroidSchedulers.mainThread())
-  : MviBasePresenter<HomeView, HomeViewModel>() {
+  : RxJava2Presenter<HomeView>() {
 
-  override fun bindIntents() {
+  fun bindIntents() {
 
     val showLoaderViewModel = HomeViewModel(true, null)
 
-    val topRatedClickIntent = intent { it.topRatedClickIntent() }
+    val topRatedClickIntent = intent(viewWRef?.get()?.topRatedClickIntent())
         .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val nowPlayingClickIntent = intent { it.nowPlayingClickIntent() }
+    val nowPlayingClickIntent = intent(viewWRef?.get()?.nowPlayingClickIntent())
         .switchMap { interactor.loadNowPlayingMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val watchlistClickIntent = intent { it.watchlistClickIntent() }
+    val watchlistClickIntent = intent(viewWRef?.get()?.watchlistClickIntent())
         .switchMap { interactor.loadWatchlistMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val popularClickIntent = intent { it.popularClickIntent() }
+    val popularClickIntent = intent(viewWRef?.get()?.popularClickIntent())
         .switchMap { interactor.loadPopularMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val upcomingClickIntent = intent { it.upcomingClickIntent() }
+    val upcomingClickIntent = intent(viewWRef?.get()?.upcomingClickIntent())
         .switchMap { interactor.loadUpcomingMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
@@ -38,8 +38,6 @@ class HomePresenter(
         listOf(topRatedClickIntent, nowPlayingClickIntent, watchlistClickIntent, popularClickIntent,
             upcomingClickIntent)
     ).observeOn(scheduler)
-
-    subscribeViewState(allIntents.distinctUntilChanged(), HomeView::render)
   }
 
 }

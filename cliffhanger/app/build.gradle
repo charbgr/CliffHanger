@@ -63,7 +63,6 @@ dependencies {
   // Misc
   compile applicationDependencies.kotlin
   compile applicationDependencies.conductor
-  compile applicationDependencies.mosbyMviConductor
   compile applicationDependencies.retrofit
   compile applicationDependencies.retrofitAdapter
   compile applicationDependencies.retrofitConverter
