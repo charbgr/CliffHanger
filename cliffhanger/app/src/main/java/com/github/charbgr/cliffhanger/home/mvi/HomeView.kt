@@ -1,10 +1,9 @@
 package com.github.charbgr.cliffhanger.home.mvi
 
-import com.hannesdorfmann.mosby3.mvp.MvpView
+import com.github.charbgr.cliffhanger.shared.arch.View
 import io.reactivex.Observable
 
-
-interface HomeView : MvpView {
+interface HomeView : View {
   fun topRatedClickIntent(): Observable<Boolean>
   fun nowPlayingClickIntent(): Observable<Boolean>
   fun watchlistClickIntent(): Observable<Boolean>

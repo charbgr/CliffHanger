@@ -5,16 +5,15 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.RouterTransaction
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.home.movies.MovieAdapter
-import com.github.charbgr.cliffhanger.home.mvi.HomePresenter
 import com.github.charbgr.cliffhanger.home.mvi.HomeView
 import com.github.charbgr.cliffhanger.home.mvi.HomeViewModel
 import com.github.charbgr.cliffhanger.search.SearchController
 import com.github.charbgr.cliffhanger.shared.extensions.render
 import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
-import com.hannesdorfmann.mosby3.MviController
 import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.controller_home.view.bottom_navigation
@@ -22,7 +21,7 @@ import kotlinx.android.synthetic.main.controller_home.view.movie_list
 import kotlinx.android.synthetic.main.controller_home.view.search
 import timber.log.Timber
 
-class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
+class HomeController : Controller(), HomeView {
 
   private val bottomNavigationSelection: Observable<MenuItem> by lazy {
     view!!.bottom_navigation.itemSelections().share()
@@ -46,8 +45,6 @@ class HomeController : MviController<HomeView, HomePresenter>(), HomeView {
 
     return rootView
   }
-
-  override fun createPresenter(): HomePresenter = HomePresenter()
 
   override fun topRatedClickIntent(): Observable<Boolean> = bottomNavigationSelection
       .filter { it.itemId == R.id.bottom_navigation_category_top_rated }
