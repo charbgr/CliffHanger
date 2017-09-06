@@ -49,34 +49,34 @@ dependencies {
   def unitTestDependencies = rootProject.ext.unitTesting
 
   // Android Stuff
-  compile applicationDependencies.appCompat
-  compile applicationDependencies.design
-  compile applicationDependencies.constraintLayout
+  implementation applicationDependencies.appCompat
+  implementation applicationDependencies.design
+  implementation applicationDependencies.constraintLayout
 
   // Reactive
-  compile applicationDependencies.rxJava
-  compile applicationDependencies.rxKotlin
-  compile applicationDependencies.rxAndroid
-  compile applicationDependencies.rxBinding
-  compile applicationDependencies.rxBindingDesign
+  implementation applicationDependencies.rxJava
+  implementation applicationDependencies.rxKotlin
+  implementation applicationDependencies.rxAndroid
+  implementation applicationDependencies.rxBinding
+  implementation applicationDependencies.rxBindingDesign
 
   // Misc
-  compile applicationDependencies.kotlin
-  compile applicationDependencies.conductor
-  compile applicationDependencies.retrofit
-  compile applicationDependencies.retrofitAdapter
-  compile applicationDependencies.retrofitConverter
-  compile applicationDependencies.timber
-  compile applicationDependencies.glide
+  implementation applicationDependencies.kotlin
+  implementation applicationDependencies.conductor
+  implementation applicationDependencies.retrofit
+  implementation applicationDependencies.retrofitAdapter
+  implementation applicationDependencies.retrofitConverter
+  implementation applicationDependencies.timber
+  implementation applicationDependencies.glide
 
 
   // Unit/Integration tests dependencies
-  testCompile unitTestDependencies.kotlinTest
-  testCompile unitTestDependencies.mockitoKotlin
-  testCompile unitTestDependencies.kluent
-  testCompile unitTestDependencies.spek
+  testImplementation unitTestDependencies.kotlinTest
+  testImplementation unitTestDependencies.mockitoKotlin
+  testImplementation unitTestDependencies.kluent
+  testImplementation unitTestDependencies.spek
 //  testCompile unitTestDependencies.junit
-  testCompile unitTestDependencies.robolectric
+  testImplementation unitTestDependencies.robolectric
 }
 
 repositories {
