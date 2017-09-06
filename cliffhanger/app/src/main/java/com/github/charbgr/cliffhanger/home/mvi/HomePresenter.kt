@@ -4,6 +4,7 @@ import com.github.charbgr.cliffhanger.shared.arch.RxJava2Presenter
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableObserver
 
 class HomePresenter(
     private val interactor: HomeInteractor = DefaultHomeInteractor(),
@@ -38,6 +39,21 @@ class HomePresenter(
         listOf(topRatedClickIntent, nowPlayingClickIntent, watchlistClickIntent, popularClickIntent,
             upcomingClickIntent)
     ).observeOn(scheduler)
+
+    allIntents.subscribe(object : DisposableObserver<HomeViewModel>() {
+      override fun onError(e: Throwable?) {
+      }
+
+      override fun onComplete() {
+      }
+
+      override fun onNext(viewModel: HomeViewModel?) {
+        viewModel?.let {
+          viewWRef.get()?.render(it)
+        }
+      }
+
+    })
   }
 
 }
