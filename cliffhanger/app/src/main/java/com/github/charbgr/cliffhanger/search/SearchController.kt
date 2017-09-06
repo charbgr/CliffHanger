@@ -1,15 +1,30 @@
 package com.github.charbgr.cliffhanger.search
 
+import android.content.Context
+import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.bluelinelabs.conductor.Controller
+import android.widget.FrameLayout
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.shared.extensions.render
 
-class SearchController : Controller() {
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-    val view: View = container.render(R.layout.controller_search)
-    return view
+class SearchController : FrameLayout {
+
+  companion object {
+    fun inflateWith(inflater: LayoutInflater, parent: ViewGroup,
+        attachToRoot: Boolean): SearchController {
+      return inflater.inflate(R.layout.controller_search, null, false) as SearchController
+    }
+  }
+
+  constructor(context: Context?) : super(context)
+  constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+  constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
+      defStyleAttr)
+
+  constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
+      context, attrs, defStyleAttr, defStyleRes)
+
+  override fun onFinishInflate() {
+    super.onFinishInflate()
   }
 }
