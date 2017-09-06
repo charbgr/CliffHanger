@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.home
+package com.github.charbgr.cliffhanger.features.home
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.ViewGroup
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.home.movies.MovieAdapter
-import com.github.charbgr.cliffhanger.home.mvi.HomePresenter
-import com.github.charbgr.cliffhanger.home.mvi.HomeView
-import com.github.charbgr.cliffhanger.home.mvi.HomeViewModel
+import com.github.charbgr.cliffhanger.features.home.movies.MovieAdapter
+import com.github.charbgr.cliffhanger.features.home.arch.HomePresenter
+import com.github.charbgr.cliffhanger.features.home.arch.HomeView
+import com.github.charbgr.cliffhanger.features.home.arch.HomeViewModel
 import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
 import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import io.reactivex.Observable

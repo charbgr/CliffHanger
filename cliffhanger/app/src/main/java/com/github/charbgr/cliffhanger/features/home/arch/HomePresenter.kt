@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.home.mvi
+package com.github.charbgr.cliffhanger.features.home.arch
 
 import com.github.charbgr.cliffhanger.shared.arch.RxJava2Presenter
 import io.reactivex.Observable

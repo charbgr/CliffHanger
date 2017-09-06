@@ -1,13 +1,13 @@
-package com.github.charbgr.cliffhanger.home.movies
+package com.github.charbgr.cliffhanger.features.home.movies
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.github.charbgr.cliffhanger.Movie
+import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.shared.extensions.render
-import com.github.charbgr.cliffhanger.tmdb.TmdbHelper
+import com.github.charbgr.cliffhanger.network.tmdb.TmdbHelper
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_name
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_poster
 

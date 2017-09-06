@@ -1,6 +1,6 @@
-package com.github.charbgr.cliffhanger.tmdb
+package com.github.charbgr.cliffhanger.network.tmdb
 
-import com.github.charbgr.cliffhanger.Movie
+import com.github.charbgr.cliffhanger.domain.Movie
 
 object TmdbHelper {
   fun findBestQualityPoster(movie: Movie): String {

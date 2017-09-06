@@ -1,6 +1,6 @@
 package com.github.charbgr.cliffhanger.test_factories
 
-import com.github.charbgr.cliffhanger.Movie
+import com.github.charbgr.cliffhanger.domain.Movie
 
 object MovieFactory {
 

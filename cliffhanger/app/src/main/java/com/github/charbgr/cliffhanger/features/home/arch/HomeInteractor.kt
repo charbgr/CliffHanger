@@ -1,6 +1,6 @@
-package com.github.charbgr.cliffhanger.home.mvi
+package com.github.charbgr.cliffhanger.features.home.arch
 
-import com.github.charbgr.cliffhanger.tmdb.dao.MovieResults
+import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults
 import io.reactivex.Observable
 
 interface HomeInteractor {

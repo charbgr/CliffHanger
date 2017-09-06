@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.search
+package com.github.charbgr.cliffhanger.features.search
 
 import android.content.Context
 import android.util.AttributeSet

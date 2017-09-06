@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger
+package com.github.charbgr.cliffhanger.domain
 
 data class Movie(
     val tmdbId: Int,

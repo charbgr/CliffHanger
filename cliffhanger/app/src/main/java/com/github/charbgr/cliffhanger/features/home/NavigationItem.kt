@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.home
+package com.github.charbgr.cliffhanger.features.home
 
 import com.github.charbgr.cliffhanger.R
 

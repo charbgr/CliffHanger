@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.tmdb.dto
+package com.github.charbgr.cliffhanger.network.tmdb.dto
 
 import com.github.charbgr.cliffhanger.shared.transformers.movie.MovieTransformable
 import com.squareup.moshi.Json

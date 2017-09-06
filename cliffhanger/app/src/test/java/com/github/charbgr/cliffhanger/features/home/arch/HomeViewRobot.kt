@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.home.mvi
+package com.github.charbgr.cliffhanger.features.home.arch
 
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject

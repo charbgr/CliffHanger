@@ -1,10 +1,10 @@
 package com.github.charbgr.cliffhanger.shared.transformers
 
-import com.github.charbgr.cliffhanger.Movie
+import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.shared.transformers.movie.MovieTransformer
 import com.github.charbgr.cliffhanger.test_factories.MiniMovieDtoFactory
 import com.github.charbgr.cliffhanger.test_factories.MovieFactory
-import com.github.charbgr.cliffhanger.tmdb.dto.MiniMovieDto
+import com.github.charbgr.cliffhanger.network.tmdb.dto.MiniMovieDto
 import org.junit.Assert
 import org.junit.Test
 

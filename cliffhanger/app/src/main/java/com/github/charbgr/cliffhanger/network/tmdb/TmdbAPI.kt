@@ -1,8 +1,8 @@
-package com.github.charbgr.cliffhanger.tmdb
+package com.github.charbgr.cliffhanger.network.tmdb
 
 import com.github.charbgr.cliffhanger.BuildConfig
-import com.github.charbgr.cliffhanger.tmdb.dao.MovieDAO
-import com.github.charbgr.cliffhanger.tmdb.dao.SearchDAO
+import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieDAO
+import com.github.charbgr.cliffhanger.network.tmdb.dao.SearchDAO
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Interceptor

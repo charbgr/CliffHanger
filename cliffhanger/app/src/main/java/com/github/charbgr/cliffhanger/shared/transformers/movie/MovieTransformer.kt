@@ -1,10 +1,10 @@
 package com.github.charbgr.cliffhanger.shared.transformers.movie
 
-import com.github.charbgr.cliffhanger.Movie
+import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.shared.extensions.hasAnyNullValues
 import com.github.charbgr.cliffhanger.shared.transformers.TransformationException
 import com.github.charbgr.cliffhanger.shared.transformers.Transformer
-import com.github.charbgr.cliffhanger.tmdb.dto.MiniMovieDto
+import com.github.charbgr.cliffhanger.network.tmdb.dto.MiniMovieDto
 
 class MovieTransformer(private val transformable: MovieTransformable) : Transformer<Movie> {
 

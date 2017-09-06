@@ -1,7 +1,7 @@
-package com.github.charbgr.cliffhanger.tmdb.dao
+package com.github.charbgr.cliffhanger.network.tmdb.dao
 
 import android.graphics.Movie
-import com.github.charbgr.cliffhanger.tmdb.Routes
+import com.github.charbgr.cliffhanger.network.tmdb.Routes
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
