@@ -15,23 +15,23 @@ class HomePresenter(
 
     val showLoaderViewModel = HomeViewModel(true, null)
 
-    val topRatedClickIntent = intent(viewWRef?.get()?.topRatedClickIntent())
+    val topRatedClickIntent = intent(viewWRef.get()?.topRatedClickIntent())
         .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val nowPlayingClickIntent = intent(viewWRef?.get()?.nowPlayingClickIntent())
+    val nowPlayingClickIntent = intent(viewWRef.get()?.nowPlayingClickIntent())
         .switchMap { interactor.loadNowPlayingMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val watchlistClickIntent = intent(viewWRef?.get()?.watchlistClickIntent())
+    val watchlistClickIntent = intent(viewWRef.get()?.watchlistClickIntent())
         .switchMap { interactor.loadWatchlistMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val popularClickIntent = intent(viewWRef?.get()?.popularClickIntent())
+    val popularClickIntent = intent(viewWRef.get()?.popularClickIntent())
         .switchMap { interactor.loadPopularMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val upcomingClickIntent = intent(viewWRef?.get()?.upcomingClickIntent())
+    val upcomingClickIntent = intent(viewWRef.get()?.upcomingClickIntent())
         .switchMap { interactor.loadUpcomingMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
