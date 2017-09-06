@@ -62,7 +62,6 @@ dependencies {
 
   // Misc
   implementation applicationDependencies.kotlin
-  implementation applicationDependencies.conductor
   implementation applicationDependencies.retrofit
   implementation applicationDependencies.retrofitAdapter
   implementation applicationDependencies.retrofitConverter
