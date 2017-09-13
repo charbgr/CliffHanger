@@ -1,9 +1,12 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
 import android.view.MenuItem
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.features.home.HomeController
 import com.github.charbgr.cliffhanger.features.home.movies.MovieAdapter
+import com.github.charbgr.cliffhanger.features.home.movies.MovieItem
 import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
 import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import io.reactivex.Observable
@@ -23,7 +26,15 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
 
   fun onFinishInflate() {
     with(controller.movie_list) {
-      layoutManager = android.support.v7.widget.LinearLayoutManager(context)
+      val gridColumns = context.resources.getInteger(R.integer.home_grid_columns)
+      val lm = GridLayoutManager(context, gridColumns)
+      lm.spanSizeLookup = object : SpanSizeLookup() {
+        override fun getSpanSize(position: Int): Int {
+          return movieAdapter.getItemAt(position)?.getSpanSize(position) ?: gridColumns
+        }
+      }
+
+      layoutManager = lm
       adapter = movieAdapter
     }
   }
@@ -53,7 +64,7 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
 
     viewModel.movieResults?.results?.transformToMovies()?.let {
       controller.movie_list?.scrollToPosition(0)
-      movieAdapter.setMovies(it)
+      movieAdapter.setItems(it.map { MovieItem(it) })
     }
   }
 
