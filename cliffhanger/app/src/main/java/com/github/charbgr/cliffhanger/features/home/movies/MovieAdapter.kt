@@ -4,46 +4,66 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.shared.extensions.render
+import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.network.tmdb.TmdbHelper
+import com.github.charbgr.cliffhanger.shared.extensions.render
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_name
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_poster
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter : RecyclerView.Adapter<MovieAdapter.BaseViewHolder>() {
 
-  private val movieList: MutableList<Movie> = mutableListOf()
+  private val itemList: MutableList<MovieAdapterItem> = mutableListOf()
 
-  override fun getItemCount(): Int = movieList.size
+  override fun getItemCount(): Int = itemList.size
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-    val itemView = parent.render(R.layout.item_movie)
-    return ViewHolder(itemView)
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+    return when (viewType) {
+      R.layout.item_movie -> {
+        val itemView = parent.render(R.layout.item_movie)
+        MovieViewHolder(itemView)
+      }
+      else -> {
+        throw IllegalStateException("Unsupported viewtype on MovieAdapter $viewType")
+      }
+    }
   }
 
-  override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    val movie = movieList[holder.adapterPosition]
-
-    holder.bind(movie)
+  override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+    val item = getItemAt(position)
+    if (item != null) {
+      holder.bind(item)
+    } else {
+      holder.clear()
+    }
   }
 
-  fun setMovies(movieList: List<Movie>) {
-    this.movieList.clear()
-    this.movieList.addAll(movieList)
+  override fun getItemViewType(position: Int): Int {
+    return getItemAt(position)?.getItemViewType() ?: 0
+  }
+
+  fun setItems(items: List<MovieAdapterItem>) {
+    this.itemList.clear()
+    this.itemList.addAll(items)
     notifyDataSetChanged()
   }
 
-  fun addMovies(movieList: List<Movie>) {
-    val previousSize = this.movieList.size
-    this.movieList.addAll(movieList)
-    notifyItemRangeInserted(previousSize, movieList.size)
+  fun getItemAt(position: Int): MovieAdapterItem? = itemList.getOrNull(position)
+
+
+  inner abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    abstract fun bind(item: MovieAdapterItem)
+    abstract fun clear()
   }
 
-  inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(movie: Movie) {
-      bindText(movie)
-      bindImage(movie)
+  inner class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
+    override fun bind(item: MovieAdapterItem) {
+      item as MovieItem
+      bindText(item.movie)
+      bindImage(item.movie)
+    }
+
+    override fun clear() {
     }
 
     private fun bindText(movie: Movie) {
@@ -55,6 +75,5 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
           .load(TmdbHelper.findBestQualityBackdrop(movie))
           .into(itemView.item_movie_poster)
     }
-
   }
 }
