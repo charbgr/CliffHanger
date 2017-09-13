@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="260dp">
 
-  <ImageView
+  <com.github.charbgr.cliffhanger.shared.views.MovieImageView
       android:id="@+id/item_movie_poster"
       android:layout_width="0dp"
       android:layout_height="0dp"
@@ -37,8 +37,8 @@
       android:layout_width="0dp"
       android:layout_height="32dp"
       android:layout_marginBottom="8dp"
-      android:layout_marginStart="16dp"
       android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
       android:background="@null"
       android:ems="10"
       android:fontFamily="sans-serif-medium"
@@ -50,8 +50,8 @@
       android:visibility="visible"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
-      tools:text="MOONLIGHT"
-      app:layout_constraintRight_toRightOf="@+id/view"/>
+      app:layout_constraintRight_toRightOf="@+id/view"
+      tools:text="MOONLIGHT"/>
 
   <View
       android:layout_width="0dp"
