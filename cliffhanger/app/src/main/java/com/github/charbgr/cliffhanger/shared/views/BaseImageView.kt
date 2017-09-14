@@ -2,11 +2,10 @@ package com.github.charbgr.cliffhanger.shared.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.github.charbgr.cliffhanger.domain.Movie
-import com.github.charbgr.cliffhanger.network.tmdb.TmdbHelper
 
-class MovieImageView : BaseImageView {
+open class BaseImageView : ImageView {
   constructor(context: Context?) : super(context)
   constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
@@ -16,12 +15,13 @@ class MovieImageView : BaseImageView {
       context, attrs, defStyleAttr, defStyleRes)
 
 
-  fun bindImage(movie: Movie) {
-    loadImage(TmdbHelper.findBestQualityBackdrop(movie))
+  protected fun loadImage(url: String) {
+    Glide.with(context)
+        .load(url)
+        .into(this)
   }
 
   fun clear() {
     Glide.clear(this)
   }
-
 }
