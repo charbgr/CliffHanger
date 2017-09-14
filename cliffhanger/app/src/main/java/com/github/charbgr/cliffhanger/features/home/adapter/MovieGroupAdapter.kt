@@ -10,6 +10,7 @@ import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewT
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapter
 import com.github.charbgr.cliffhanger.shared.extensions.render
+import com.github.charbgr.cliffhanger.shared.views.recyclerview.addSpacing
 import kotlinx.android.synthetic.main.item_movies_carousel.view.item_movie_carousel_list
 import kotlinx.android.synthetic.main.item_section.view.item_section_title
 
@@ -51,9 +52,8 @@ class MovieGroupAdapter(
             return movieAdapter.getItemAt(movieItemPosition)?.getSpanSize(movieItemPosition) ?: gridColumns
           }
         }
-        lm.isAutoMeasureEnabled = true
-
         layoutManager = lm
+        addSpacing(1f)
         adapter = movieAdapter
         movieAdapter.setItems(item.movieAdapterItems)
       }
