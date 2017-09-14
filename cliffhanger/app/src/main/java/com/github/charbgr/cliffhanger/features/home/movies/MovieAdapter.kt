@@ -1,11 +1,13 @@
 package com.github.charbgr.cliffhanger.features.home.movies
 
+import android.support.constraint.ConstraintLayout
+import android.support.constraint.ConstraintSet
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.shared.extensions.render
+import kotlinx.android.synthetic.main.item_movie.view.item_movie_layout
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_name
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_poster
 
@@ -30,7 +32,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.BaseViewHolder>() {
   override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
     val item = getItemAt(position)
     if (item != null) {
-      holder.bind(item)
+      holder.bind(item, position)
     } else {
       holder.clear()
     }
@@ -55,27 +57,29 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.BaseViewHolder>() {
 
 
   inner abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    abstract fun bind(item: MovieAdapterItem)
+    abstract fun bind(item: MovieAdapterItem, position: Int)
     abstract fun clear()
   }
 
   inner class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
-    override fun bind(item: MovieAdapterItem) {
+    override fun bind(item: MovieAdapterItem, position: Int) {
       item as MovieItem
-      bindText(item.movie)
-      bindImage(item.movie)
+      applyConstraints(item, position)
+      itemView.item_movie_name.text = item.movie.title
+      itemView.item_movie_poster.bindImage(item.movie)
     }
 
     override fun clear() {
       itemView.item_movie_poster.clear()
     }
 
-    private fun bindText(movie: Movie) {
-      itemView.item_movie_name.text = movie.title
-    }
-
-    private fun bindImage(movie: Movie) {
-     itemView.item_movie_poster.bindImage(movie)
+    private fun applyConstraints(movie: MovieItem, position: Int) {
+      val constraintLayout: ConstraintLayout = itemView.item_movie_layout
+      ConstraintSet().apply {
+        clone(constraintLayout)
+        setDimensionRatio(itemView.item_movie_poster.id, movie.getAspectRatio(position))
+        applyTo(constraintLayout)
+      }
     }
   }
 }
