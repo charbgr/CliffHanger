@@ -5,13 +5,13 @@ import com.github.charbgr.cliffhanger.features.home.movies.MovieAdapterItem.View
 
 class MovieItem(val movie: Movie) : MovieAdapterItem {
   override fun getItemViewType(): Int = ViewTypes.MOVIE
-  override fun getSpanSize(position: Int): Int = if (position % 5 == 0) 2 else 1
+  override fun getSpanSize(position: Int): Int = if (position % 5 == 0) 4 else 2
 
   fun getAspectRatio(position: Int): String {
-    if (getSpanSize(position) == 2) {
-      return "16:10"
+    if (getSpanSize(position) == 4) {
+      return "10:10"
     } else {
-      return "9:14"
+      return "11:16"
     }
   }
 }
