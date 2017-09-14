@@ -10,6 +10,7 @@ import com.github.charbgr.cliffhanger.shared.extensions.render
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_layout
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_name
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_poster
+import kotlinx.android.synthetic.main.item_section.view.item_section_title
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.BaseViewHolder>() {
 
@@ -19,7 +20,11 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.BaseViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
     return when (viewType) {
-      R.layout.item_movie -> {
+      MovieAdapterItem.ViewTypes.SECTION -> {
+        val itemView = parent.render(R.layout.item_section)
+        SectionViewHolder(itemView)
+      }
+      MovieAdapterItem.ViewTypes.MOVIE -> {
         val itemView = parent.render(R.layout.item_movie)
         MovieViewHolder(itemView)
       }
@@ -59,6 +64,16 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.BaseViewHolder>() {
   inner abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(item: MovieAdapterItem, position: Int)
     abstract fun clear()
+  }
+
+  inner class SectionViewHolder(itemView: View) : BaseViewHolder(itemView) {
+    override fun bind(item: MovieAdapterItem, position: Int) {
+      item as SectionHeaderItem
+      itemView.item_section_title.text = item.title
+    }
+
+    override fun clear() {
+    }
   }
 
   inner class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
