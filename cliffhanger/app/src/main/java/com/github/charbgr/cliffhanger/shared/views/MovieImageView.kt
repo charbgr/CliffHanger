@@ -2,7 +2,6 @@ package com.github.charbgr.cliffhanger.shared.views
 
 import android.content.Context
 import android.util.AttributeSet
-import com.bumptech.glide.Glide
 import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.network.tmdb.TmdbHelper
 
@@ -18,10 +17,6 @@ class MovieImageView : BaseImageView {
 
   fun bindImage(movie: Movie) {
     loadImage(TmdbHelper.findBestQualityBackdrop(movie))
-  }
-
-  fun clear() {
-    Glide.clear(this)
   }
 
 }
