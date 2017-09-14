@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home.group
+package com.github.charbgr.cliffhanger.features.home.adapter
 
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvItem

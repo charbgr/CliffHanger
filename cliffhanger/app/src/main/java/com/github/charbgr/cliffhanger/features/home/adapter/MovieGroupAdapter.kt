@@ -1,11 +1,12 @@
-package com.github.charbgr.cliffhanger.features.home.group
+package com.github.charbgr.cliffhanger.features.home.adapter
 
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.features.home.group.MovieGroupItem.ViewTypes
+import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapter
 import com.github.charbgr.cliffhanger.shared.extensions.render
@@ -41,12 +42,22 @@ class MovieGroupAdapter(
 
     override fun bind(item: MovieGroupItem, position: Int) {
       item as MovieCarouselItem
-      movieAdapter.setItems(item.movieAdapterItems)
       itemView.item_movie_carousel_list.apply {
         recycledViewPool = sharedRvPool
-        layoutManager = LinearLayoutManager(itemView.context)
+        val gridColumns = context.resources.getInteger(R.integer.home_grid_columns)
+        val lm = GridLayoutManager(context, gridColumns, GridLayoutManager.HORIZONTAL, false)
+        lm.spanSizeLookup = object : SpanSizeLookup() {
+          override fun getSpanSize(movieItemPosition: Int): Int {
+            return movieAdapter.getItemAt(movieItemPosition)?.getSpanSize(movieItemPosition) ?: gridColumns
+          }
+        }
+        lm.isAutoMeasureEnabled = true
+
+        layoutManager = lm
         adapter = movieAdapter
+        movieAdapter.setItems(item.movieAdapterItems)
       }
+
     }
 
     override fun clear() {

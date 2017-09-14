@@ -1,33 +1,26 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
+import android.support.v7.widget.LinearLayoutManager
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.features.home.HomeController
-import com.github.charbgr.cliffhanger.features.home.movies.MovieAdapter
-import com.github.charbgr.cliffhanger.features.home.movies.MovieAdapterItem
-import com.github.charbgr.cliffhanger.features.home.movies.MovieItem
+import com.github.charbgr.cliffhanger.features.home.adapter.MovieCarouselItem
+import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupAdapter
+import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem
+import com.github.charbgr.cliffhanger.features.home.adapter.SectionHeaderItem
+import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieListViewModel
 import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
 import kotlinx.android.synthetic.main.controller_home.view.movie_list
 import timber.log.Timber
 
 open class HomeUiBinder(internal val controller: HomeController) : HomeView {
 
-  val movieAdapter: MovieAdapter by lazy {
-    MovieAdapter()
+  val movieAdapter: MovieGroupAdapter by lazy {
+    MovieGroupAdapter(controller.movie_list.recycledViewPool)
   }
 
   fun onFinishInflate() {
     with(controller.movie_list) {
-      val gridColumns = context.resources.getInteger(R.integer.home_grid_columns)
-      val lm = GridLayoutManager(context, gridColumns, GridLayoutManager.HORIZONTAL, false)
-      lm.spanSizeLookup = object : SpanSizeLookup() {
-        override fun getSpanSize(position: Int): Int {
-          return movieAdapter.getItemAt(position)?.getSpanSize(position) ?: gridColumns
-        }
-      }
-
-      layoutManager = lm
+      layoutManager = LinearLayoutManager(context)
       adapter = movieAdapter
     }
   }
@@ -35,12 +28,26 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
   override fun render(viewModel: HomeViewModel) {
     Timber.d("viewmodel receiver " + viewModel)
 
-    viewModel.movieResults?.results?.transformToMovies()?.let {
-      controller.movie_list?.scrollToPosition(0)
-      val itemsToAdd: MutableList<MovieAdapterItem> = mutableListOf()
-      itemsToAdd.addAll(it.map { MovieItem(it) })
-      movieAdapter.setItems(itemsToAdd)
+    val itemsToAdd: MutableList<MovieGroupItem> = mutableListOf()
+    itemsToAdd.add(
+        SectionHeaderItem.create(controller.context, R.string.movie_category_top_rated)
+    )
+    val movies = viewModel.movieResults?.results?.transformToMovies()?.map { MovieListViewModel(it) }
+    movies?.let {
+      itemsToAdd.add(MovieCarouselItem(it))
     }
+
+
+    //TODO BIND REAL NOW PLAYING DATA
+    itemsToAdd.add(
+        SectionHeaderItem.create(controller.context, R.string.movie_category_now_playing)
+    )
+
+    movies?.let {
+      itemsToAdd.add(MovieCarouselItem(it))
+    }
+
+    movieAdapter.setItems(itemsToAdd)
   }
 
 }
