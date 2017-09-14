@@ -15,29 +15,13 @@ class HomePresenter(
 
     val showLoaderViewModel = HomeViewModel(true, null)
 
-    val topRatedClickIntent = intent(viewWRef.get()?.topRatedClickIntent())
+    val topRatedClickIntent = intent(Observable.just(true))
         .switchMap { interactor.loadTopRatedMovies().map { HomeViewModel(false, it) } }
         .startWith(showLoaderViewModel)
 
-    val nowPlayingClickIntent = intent(viewWRef.get()?.nowPlayingClickIntent())
-        .switchMap { interactor.loadNowPlayingMovies().map { HomeViewModel(false, it) } }
-        .startWith(showLoaderViewModel)
-
-    val watchlistClickIntent = intent(viewWRef.get()?.watchlistClickIntent())
-        .switchMap { interactor.loadWatchlistMovies().map { HomeViewModel(false, it) } }
-        .startWith(showLoaderViewModel)
-
-    val popularClickIntent = intent(viewWRef.get()?.popularClickIntent())
-        .switchMap { interactor.loadPopularMovies().map { HomeViewModel(false, it) } }
-        .startWith(showLoaderViewModel)
-
-    val upcomingClickIntent = intent(viewWRef.get()?.upcomingClickIntent())
-        .switchMap { interactor.loadUpcomingMovies().map { HomeViewModel(false, it) } }
-        .startWith(showLoaderViewModel)
 
     val allIntents = Observable.merge(
-        listOf(topRatedClickIntent, nowPlayingClickIntent, watchlistClickIntent, popularClickIntent,
-            upcomingClickIntent)
+        listOf(topRatedClickIntent, Observable.empty<HomeViewModel>())
     ).observeOn(scheduler)
 
     allIntents.subscribe(object : DisposableObserver<HomeViewModel>() {
