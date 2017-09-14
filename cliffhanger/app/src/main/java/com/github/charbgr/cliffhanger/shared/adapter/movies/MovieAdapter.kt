@@ -1,12 +1,12 @@
-package com.github.charbgr.cliffhanger.features.home.movies
+package com.github.charbgr.cliffhanger.shared.adapter.movies
 
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.view.View
 import android.view.ViewGroup
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.features.home.movies.MovieAdapterItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
+import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapterItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.extensions.render
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_layout
 import kotlinx.android.synthetic.main.item_movie.view.item_movie_name

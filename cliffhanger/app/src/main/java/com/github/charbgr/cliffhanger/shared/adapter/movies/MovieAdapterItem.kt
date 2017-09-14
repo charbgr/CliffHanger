@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home.movies
+package com.github.charbgr.cliffhanger.shared.adapter.movies
 
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvItem

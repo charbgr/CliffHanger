@@ -1,7 +1,7 @@
-package com.github.charbgr.cliffhanger.features.home.movies
+package com.github.charbgr.cliffhanger.shared.adapter.movies
 
 import com.github.charbgr.cliffhanger.domain.Movie
-import com.github.charbgr.cliffhanger.features.home.movies.MovieAdapterItem.ViewTypes
+import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapterItem.ViewTypes
 
 class MovieListViewModel(val movie: Movie) : MovieAdapterItem {
   override fun getItemViewType(): Int = ViewTypes.MOVIE
@@ -9,7 +9,7 @@ class MovieListViewModel(val movie: Movie) : MovieAdapterItem {
 
   fun getAspectRatio(position: Int): String {
     if (getSpanSize(position) == 4) {
-      return "10:10"
+      return "6:10"
     } else {
       return "11:16"
     }
