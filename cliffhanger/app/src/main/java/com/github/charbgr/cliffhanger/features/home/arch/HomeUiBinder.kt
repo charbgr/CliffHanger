@@ -1,15 +1,19 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
 import android.support.v7.widget.LinearLayoutManager
-import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.features.home.HomeController
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieCarouselItem
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupAdapter
+import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem
 import com.github.charbgr.cliffhanger.features.home.adapter.SectionHeaderItem
+import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory
+import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.NowPlaying
+import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.Popular
+import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.TopRated
+import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.Upcoming
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieListViewModel
 import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
 import kotlinx.android.synthetic.main.controller_home.view.movie_list
-import timber.log.Timber
 
 open class HomeUiBinder(internal val controller: HomeController) : HomeView {
 
@@ -24,44 +28,51 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
     }
   }
 
-  override fun render(viewModel: HomeViewModel) {
-    Timber.d("viewmodel receiver " + viewModel)
+  private fun convertToItems(movieCategory: MovieCategory,
+      movieCategoryViewModel: CategoryViewModel): List<MovieGroupItem> {
 
-    if (viewModel.topRated != null) {
-      val movies = viewModel.topRated.results.transformToMovies().map { MovieListViewModel(it) }
-      val section = SectionHeaderItem.create(controller.context, R.string.movie_category_top_rated,
-          movies)
-      val carouselItem = MovieCarouselItem(movies)
+    val items: MutableList<MovieGroupItem> = mutableListOf()
 
-      movieAdapter.addItems(listOf(section, carouselItem))
+    if (movieCategoryViewModel.isLoading) {
+      //TODO
     }
 
-    if (viewModel.nowPlaying != null) {
-      val movies = viewModel.nowPlaying.results.transformToMovies().map { MovieListViewModel(it) }
-      val section = SectionHeaderItem.create(controller.context,
-          R.string.movie_category_now_playing, movies)
-      val carouselItem = MovieCarouselItem(movies)
-
-      movieAdapter.addItems(listOf(section, carouselItem))
+    if (movieCategoryViewModel.hasData()) {
+      items.add(SectionHeaderItem.create(controller.context, movieCategory))
+      items.add(MovieCarouselItem(
+          movieCategoryViewModel.movieResults!!.results.transformToMovies().map {
+            MovieListViewModel(it)
+          }))
     }
 
-    if (viewModel.popular != null) {
-      val movies = viewModel.popular.results.transformToMovies().map { MovieListViewModel(it) }
-      val section = SectionHeaderItem.create(controller.context, R.string.movie_category_popular,
-          movies)
-      val carouselItem = MovieCarouselItem(movies)
-
-      movieAdapter.addItems(listOf(section, carouselItem))
+    if (movieCategoryViewModel.hasError()) {
+      //TODO
     }
 
-    if (viewModel.upcoming != null) {
-      val movies = viewModel.upcoming.results.transformToMovies().map { MovieListViewModel(it) }
-      val section = SectionHeaderItem.create(controller.context, R.string.movie_category_upcoming,
-          movies)
-      val carouselItem = MovieCarouselItem(movies)
-
-      movieAdapter.addItems(listOf(section, carouselItem))
-    }
+    return items
   }
 
+  override fun render(viewModel: HomeViewModel) {
+    val movieCategory = viewModel.currentPartialChange.movieCategory
+
+    when (movieCategory) {
+      is TopRated -> {
+        movieAdapter.addItems(convertToItems(movieCategory, viewModel.topRated))
+      }
+      is NowPlaying -> {
+        movieAdapter.addItems(convertToItems(movieCategory, viewModel.nowPlaying))
+      }
+      is Popular -> {
+        movieAdapter.addItems(convertToItems(movieCategory, viewModel.popular))
+      }
+      is Upcoming -> {
+        movieAdapter.addItems(convertToItems(movieCategory, viewModel.upcoming))
+      }
+      else -> {
+
+      }
+    }
+
+    movieAdapter.notifyDataSetChanged()
+  }
 }

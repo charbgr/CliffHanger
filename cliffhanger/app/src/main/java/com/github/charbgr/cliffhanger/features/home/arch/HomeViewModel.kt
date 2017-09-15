@@ -1,11 +1,24 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
-import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults
+import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange
 
 data class HomeViewModel(
-    val loading: Boolean = false,
-    val topRated: MovieResults? = null,
-    val nowPlaying: MovieResults? = null,
-    val popular: MovieResults? = null,
-    val upcoming: MovieResults? = null
-)
+    val topRated: CategoryViewModel,
+    val nowPlaying: CategoryViewModel,
+    val popular: CategoryViewModel,
+    val upcoming: CategoryViewModel,
+    val currentPartialChange: PartialChange
+) {
+
+  companion object {
+    fun initial(): HomeViewModel {
+      return HomeViewModel(
+          topRated = CategoryViewModel.initial(),
+          nowPlaying = CategoryViewModel.initial(),
+          popular = CategoryViewModel.initial(),
+          upcoming = CategoryViewModel.initial(),
+          currentPartialChange = PartialChange.NoOp
+      )
+    }
+  }
+}
