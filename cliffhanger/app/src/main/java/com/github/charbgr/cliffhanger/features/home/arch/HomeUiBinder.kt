@@ -5,7 +5,6 @@ import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.features.home.HomeController
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieCarouselItem
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupAdapter
-import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem
 import com.github.charbgr.cliffhanger.features.home.adapter.SectionHeaderItem
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieListViewModel
 import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
@@ -28,26 +27,41 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
   override fun render(viewModel: HomeViewModel) {
     Timber.d("viewmodel receiver " + viewModel)
 
-    val itemsToAdd: MutableList<MovieGroupItem> = mutableListOf()
-    itemsToAdd.add(
-        SectionHeaderItem.create(controller.context, R.string.movie_category_top_rated)
-    )
-    val movies = viewModel.movieResults?.results?.transformToMovies()?.map { MovieListViewModel(it) }
-    movies?.let {
-      itemsToAdd.add(MovieCarouselItem(it))
+    if (viewModel.topRated != null) {
+      val movies = viewModel.topRated.results.transformToMovies().map { MovieListViewModel(it) }
+      val section = SectionHeaderItem.create(controller.context, R.string.movie_category_top_rated,
+          movies)
+      val carouselItem = MovieCarouselItem(movies)
+
+      movieAdapter.addItems(listOf(section, carouselItem))
     }
 
+    if (viewModel.nowPlaying != null) {
+      val movies = viewModel.nowPlaying.results.transformToMovies().map { MovieListViewModel(it) }
+      val section = SectionHeaderItem.create(controller.context,
+          R.string.movie_category_now_playing, movies)
+      val carouselItem = MovieCarouselItem(movies)
 
-    //TODO BIND REAL NOW PLAYING DATA
-    itemsToAdd.add(
-        SectionHeaderItem.create(controller.context, R.string.movie_category_now_playing)
-    )
-
-    movies?.let {
-      itemsToAdd.add(MovieCarouselItem(it))
+      movieAdapter.addItems(listOf(section, carouselItem))
     }
 
-    movieAdapter.setItems(itemsToAdd)
+    if (viewModel.popular != null) {
+      val movies = viewModel.popular.results.transformToMovies().map { MovieListViewModel(it) }
+      val section = SectionHeaderItem.create(controller.context, R.string.movie_category_popular,
+          movies)
+      val carouselItem = MovieCarouselItem(movies)
+
+      movieAdapter.addItems(listOf(section, carouselItem))
+    }
+
+    if (viewModel.upcoming != null) {
+      val movies = viewModel.upcoming.results.transformToMovies().map { MovieListViewModel(it) }
+      val section = SectionHeaderItem.create(controller.context, R.string.movie_category_upcoming,
+          movies)
+      val carouselItem = MovieCarouselItem(movies)
+
+      movieAdapter.addItems(listOf(section, carouselItem))
+    }
   }
 
 }
