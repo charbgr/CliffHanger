@@ -3,6 +3,7 @@ package com.github.charbgr.cliffhanger.features.home.adapter
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.ItemDecoration
 import android.view.View
 import android.view.ViewGroup
 import com.github.charbgr.cliffhanger.R
@@ -37,9 +38,11 @@ class MovieGroupAdapter(
 
   inner class MoviesCarouselViewHolder(itemView: View) : BaseViewHolder(itemView) {
 
-    val movieAdapter: MovieAdapter by lazy {
+    private val movieAdapter: MovieAdapter by lazy {
       MovieAdapter()
     }
+
+    private var spaceItemDecorator: ItemDecoration? = null
 
     override fun bind(item: MovieGroupItem, position: Int) {
       item as MovieCarouselItem
@@ -53,7 +56,7 @@ class MovieGroupAdapter(
           }
         }
         layoutManager = lm
-        addSpacing(1f)
+        spaceItemDecorator = addSpacing(1f)
         adapter = movieAdapter
         movieAdapter.setItems(item.movieAdapterItems)
       }
@@ -61,6 +64,7 @@ class MovieGroupAdapter(
     }
 
     override fun clear() {
+      itemView.item_movie_carousel_list.removeItemDecoration(spaceItemDecorator)
     }
   }
 
