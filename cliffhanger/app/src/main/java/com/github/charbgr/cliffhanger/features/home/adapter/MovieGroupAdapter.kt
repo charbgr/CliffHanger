@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.domain.MovieCategory
+import com.github.charbgr.cliffhanger.features.browser.NavigateToBrowser
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
-import com.github.charbgr.cliffhanger.features.movie_browser.NavigateToMovieBrowser
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapter
 import com.github.charbgr.cliffhanger.shared.extensions.render
@@ -79,7 +78,7 @@ class MovieGroupAdapter(
       item as SectionHeaderItem
       sectionTitle.text = item.title
       itemView.setOnClickListener {
-        NavigateToMovieBrowser(itemView.context, MovieCategory.NowPlaying).execute()
+        NavigateToBrowser(itemView.context, item.movieCategory).execute()
       }
     }
 
