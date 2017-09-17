@@ -1,6 +1,6 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory
+import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange
 import com.github.charbgr.cliffhanger.network.tmdb.TmdbAPI
 import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults

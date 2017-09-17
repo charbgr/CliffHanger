@@ -1,5 +1,6 @@
 package com.github.charbgr.cliffhanger.features.home.arch.state
 
+import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults
 
 sealed class PartialChange(val movieCategory: MovieCategory) {

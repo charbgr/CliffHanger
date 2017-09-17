@@ -1,10 +1,10 @@
 package com.github.charbgr.cliffhanger.features.home.arch.state
 
 import com.github.charbgr.cliffhanger.features.home.arch.HomeViewModel
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.NowPlaying
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.Popular
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.TopRated
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.Upcoming
+import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
+import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
+import com.github.charbgr.cliffhanger.domain.MovieCategory.TopRated
+import com.github.charbgr.cliffhanger.domain.MovieCategory.Upcoming
 
 class HomeStateReducer {
 
