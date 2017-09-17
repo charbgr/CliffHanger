@@ -37,7 +37,7 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
     }
 
     if (movieCategoryViewModel.hasData()) {
-      items.add(SectionHeaderItem.create(controller.context, movieCategory))
+      items.add(SectionHeaderItem(controller.context, movieCategory))
       items.add(MovieCarouselItem(
           movieCategoryViewModel.movieResults!!.results.transformToMovies().map {
             MovieListViewModel(it)

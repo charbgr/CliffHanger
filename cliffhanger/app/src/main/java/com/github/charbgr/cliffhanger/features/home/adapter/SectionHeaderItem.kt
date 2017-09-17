@@ -1,33 +1,25 @@
 package com.github.charbgr.cliffhanger.features.home.adapter
 
 import android.content.Context
-import android.support.annotation.StringRes
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
 import com.github.charbgr.cliffhanger.domain.MovieCategory.TopRated
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Upcoming
+import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
 
-class SectionHeaderItem(val title: String) : MovieGroupItem {
+class SectionHeaderItem(val context: Context, val movieCategory: MovieCategory) : MovieGroupItem {
 
-  companion object {
+  val title: String
 
-    fun create(context: Context, movieCategory: MovieCategory): SectionHeaderItem {
-      return when(movieCategory) {
-        TopRated -> create(context, R.string.movie_category_top_rated)
-        NowPlaying -> create(context, R.string.movie_category_now_playing)
-        Popular -> create(context, R.string.movie_category_popular)
-        Upcoming -> create(context, R.string.movie_category_upcoming)
-        else -> {
-          SectionHeaderItem("")
-        }
-      }
-    }
-
-    fun create(context: Context, @StringRes stringRes: Int): SectionHeaderItem {
-      return SectionHeaderItem(context.getString(stringRes))
+  init {
+    title = when (movieCategory) {
+      is TopRated -> context.getString(R.string.movie_category_top_rated)
+      is NowPlaying -> context.getString(R.string.movie_category_now_playing)
+      is Popular -> context.getString(R.string.movie_category_popular)
+      is Upcoming -> context.getString(R.string.movie_category_upcoming)
+      else -> ""
     }
   }
 
