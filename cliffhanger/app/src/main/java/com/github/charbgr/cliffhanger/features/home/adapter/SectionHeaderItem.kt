@@ -4,11 +4,11 @@ import android.content.Context
 import android.support.annotation.StringRes
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.NowPlaying
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.Popular
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.TopRated
-import com.github.charbgr.cliffhanger.features.home.arch.state.MovieCategory.Upcoming
+import com.github.charbgr.cliffhanger.domain.MovieCategory
+import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
+import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
+import com.github.charbgr.cliffhanger.domain.MovieCategory.TopRated
+import com.github.charbgr.cliffhanger.domain.MovieCategory.Upcoming
 
 class SectionHeaderItem(val title: String) : MovieGroupItem {
 

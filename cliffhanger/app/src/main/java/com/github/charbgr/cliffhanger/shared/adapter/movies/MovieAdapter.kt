@@ -4,13 +4,12 @@ import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapterItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.extensions.render
-import kotlinx.android.synthetic.main.item_movie.view.item_movie_layout
-import kotlinx.android.synthetic.main.item_movie.view.item_movie_name
-import kotlinx.android.synthetic.main.item_movie.view.item_movie_poster
+import com.github.charbgr.cliffhanger.shared.views.MovieImageView
 
 class MovieAdapter : BaseRvAdapter<MovieAdapterItem>() {
 
@@ -27,23 +26,28 @@ class MovieAdapter : BaseRvAdapter<MovieAdapterItem>() {
   }
 
   inner class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
+
+    private var layout: ConstraintLayout = itemView.findViewById(R.id.item_movie_layout)
+    private var movieNameTv: TextView = itemView.findViewById(R.id.item_movie_name)
+    private var moviePosterIv: MovieImageView = itemView.findViewById(R.id.item_movie_poster)
+
+
     override fun bind(item: MovieAdapterItem, position: Int) {
       item as MovieListViewModel
       applyConstraints(item, position)
-      itemView.item_movie_name.text = item.movie.title
-      itemView.item_movie_poster.bindImage(item.movie)
+      movieNameTv.text = item.movie.title
+      moviePosterIv.bindImage(item.movie)
     }
 
     override fun clear() {
-      itemView.item_movie_poster.clear()
+      moviePosterIv.clear()
     }
 
     private fun applyConstraints(movie: MovieListViewModel, position: Int) {
-      val constraintLayout: ConstraintLayout = itemView.item_movie_layout
       ConstraintSet().apply {
-        clone(constraintLayout)
-        setDimensionRatio(itemView.item_movie_poster.id, movie.getAspectRatio(position))
-        applyTo(constraintLayout)
+        clone(layout)
+        setDimensionRatio(moviePosterIv.id, movie.getAspectRatio(position))
+        applyTo(layout)
       }
     }
   }

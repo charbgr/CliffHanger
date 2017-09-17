@@ -6,14 +6,15 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ItemDecoration
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.github.charbgr.cliffhanger.R
+import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
+import com.github.charbgr.cliffhanger.features.movie_browser.NavigateToMovieBrowser
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapter
 import com.github.charbgr.cliffhanger.shared.extensions.render
 import com.github.charbgr.cliffhanger.shared.views.recyclerview.addSpacing
-import kotlinx.android.synthetic.main.item_movies_carousel.view.item_movie_carousel_list
-import kotlinx.android.synthetic.main.item_section.view.item_section_title
 
 class MovieGroupAdapter(
     private val sharedRvPool: RecyclerView.RecycledViewPool) : BaseRvAdapter<MovieGroupItem>() {
@@ -38,6 +39,8 @@ class MovieGroupAdapter(
 
   inner class MoviesCarouselViewHolder(itemView: View) : BaseViewHolder(itemView) {
 
+    private var carouselList: RecyclerView = itemView.findViewById(R.id.item_movie_carousel_list)
+
     private val movieAdapter: MovieAdapter by lazy {
       MovieAdapter()
     }
@@ -46,7 +49,7 @@ class MovieGroupAdapter(
 
     override fun bind(item: MovieGroupItem, position: Int) {
       item as MovieCarouselItem
-      itemView.item_movie_carousel_list.apply {
+      carouselList.apply {
         recycledViewPool = sharedRvPool
         val gridColumns = context.resources.getInteger(R.integer.home_grid_columns)
         val lm = GridLayoutManager(context, gridColumns, GridLayoutManager.HORIZONTAL, false)
@@ -64,14 +67,20 @@ class MovieGroupAdapter(
     }
 
     override fun clear() {
-      itemView.item_movie_carousel_list.removeItemDecoration(spaceItemDecorator)
+      carouselList.removeItemDecoration(spaceItemDecorator)
     }
   }
 
   inner class SectionViewHolder(itemView: View) : BaseViewHolder(itemView) {
+
+    private var sectionTitle: TextView = itemView.findViewById(R.id.item_section_title)
+
     override fun bind(item: MovieGroupItem, position: Int) {
       item as SectionHeaderItem
-      itemView.item_section_title.text = item.title
+      sectionTitle.text = item.title
+      itemView.setOnClickListener {
+        NavigateToMovieBrowser(itemView.context, MovieCategory.NowPlaying).execute()
+      }
     }
 
     override fun clear() {
