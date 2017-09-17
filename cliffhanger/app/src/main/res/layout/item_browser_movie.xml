@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_movie_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_browser_movie_height">
+
+  <com.github.charbgr.cliffhanger.shared.views.MovieImageView
+      android:id="@+id/item_movie_poster"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:adjustViewBounds="true"
+      android:scaleType="centerCrop"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.053"
+      tools:src="@drawable/moonlight"/>
+
+  <View
+      android:id="@+id/view"
+      android:layout_width="0dp"
+      android:layout_height="60dp"
+      android:background="@drawable/gradient_overlay_darkest_90"
+      app:layout_constraintBottom_toBottomOf="@+id/item_movie_poster"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"/>
+
+  <TextView
+      android:id="@+id/item_movie_name"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginStart="8dp"
+      android:background="@null"
+      android:ems="10"
+      android:fontFamily="sans-serif-medium"
+      android:gravity="center_vertical"
+      android:textAllCaps="true"
+      android:textColor="@color/white"
+      android:textSize="18sp"
+      android:textStyle="bold"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="@+id/item_movie_poster"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="@+id/view"
+      tools:text="MOONLIGHT"/>
+
+  <View
+      android:layout_width="0dp"
+      android:layout_height="60dp"
+      android:layout_marginLeft="0dp"
+      android:layout_marginRight="0dp"
+      android:layout_marginTop="0dp"
+      android:background="@drawable/gradient_overlay_darkest_180"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/item_movie_poster"/>
+
+</android.support.constraint.ConstraintLayout>
