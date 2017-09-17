@@ -16,7 +16,7 @@ class MovieAdapter : BaseRvAdapter<MovieAdapterItem>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
     return when (viewType) {
       ViewTypes.MOVIE -> {
-        val itemView = parent.render(R.layout.item_movie)
+        val itemView = parent.render(R.layout.item_home_movie)
         MovieViewHolder(itemView)
       }
       else -> {

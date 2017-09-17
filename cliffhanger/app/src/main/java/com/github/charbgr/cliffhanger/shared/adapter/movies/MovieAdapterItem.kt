@@ -6,7 +6,7 @@ import com.github.charbgr.cliffhanger.shared.adapter.BaseRvItem
 interface MovieAdapterItem : BaseRvItem {
 
   object ViewTypes {
-    val MOVIE = R.layout.item_movie
+    val MOVIE = R.layout.item_home_movie
   }
 
   fun getSpanSize(position: Int): Int
