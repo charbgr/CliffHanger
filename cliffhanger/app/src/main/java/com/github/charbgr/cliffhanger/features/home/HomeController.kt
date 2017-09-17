@@ -44,8 +44,17 @@ class HomeController : ConstraintLayout, HomeView {
     findViews()
 
     uiBinder.onFinishInflate()
+  }
+
+  override fun onAttachedToWindow() {
+    super.onAttachedToWindow()
     presenter.init(this)
     presenter.bindIntents()
+  }
+
+  override fun onDetachedFromWindow() {
+    super.onDetachedFromWindow()
+    presenter.destroy()
   }
 
   private fun findViews() {
