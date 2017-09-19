@@ -9,8 +9,11 @@ import com.github.charbgr.cliffhanger.features.browser.adapter.MovieAdapterItem
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Failed
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loaded
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loading
+import com.github.charbgr.cliffhanger.shared.views.recyclerview.infiniteScrollIntent
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
+import kotlin.properties.Delegates
+
 
 open class UiBinder(internal val controller: BrowserController) : BrowserView {
 
@@ -19,14 +22,17 @@ open class UiBinder(internal val controller: BrowserController) : BrowserView {
     BrowserAdapter()
   }
 
+  private var layoutManager: LinearLayoutManager by Delegates.notNull()
+
   fun onFinishInflate() {
+    layoutManager = LinearLayoutManager(controller.context)
     with(controller.movieList) {
-      layoutManager = LinearLayoutManager(context)
+      layoutManager = this@UiBinder.layoutManager
       adapter = this@UiBinder.adapter
     }
   }
 
-  fun onAttachedToWindow() {  
+  fun onAttachedToWindow() {
     loadData.onNext(Any())
   }
 
@@ -44,7 +50,9 @@ open class UiBinder(internal val controller: BrowserController) : BrowserView {
 
   override fun loadDataIntent(): Observable<Any> = loadData.share()
 
-  override fun infiniteScrollIntent(): Observable<Any> = Observable.empty()
+  override fun infiniteScrollIntent(): Observable<Any> = controller.movieList
+      .infiniteScrollIntent(layoutManager)
+      .map { Any() }
 
   override fun render(movieBrowserViewModel: BrowserViewModel) {
     val partialChange = movieBrowserViewModel.lastPartialChange
@@ -53,7 +61,6 @@ open class UiBinder(internal val controller: BrowserController) : BrowserView {
         adapter.addItems(toAdapterItems(partialChange.movieResults.toMovieList()))
       }
       is Loading -> {
-        adapter.clearItems()
         controller.setScreenTitle(movieBrowserViewModel.screenTitle(controller.context))
         showLoader()
       }
