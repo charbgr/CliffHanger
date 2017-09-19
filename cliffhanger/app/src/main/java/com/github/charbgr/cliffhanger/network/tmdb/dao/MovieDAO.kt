@@ -5,6 +5,7 @@ import com.github.charbgr.cliffhanger.network.tmdb.Routes
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface MovieDAO {
@@ -16,14 +17,14 @@ interface MovieDAO {
   fun latestMovies(): Observable<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "popular")
-  fun popularMovies(): Observable<MovieResults>
+  fun popularMovies(@Query("page") page: Int): Observable<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "top_rated")
-  fun topRatedMovies(): Observable<MovieResults>
+  fun topRatedMovies(@Query("page") page: Int): Observable<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "upcoming")
-  fun upcomingMovies(): Observable<MovieResults>
+  fun upcomingMovies(@Query("page") page: Int): Observable<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "now_playing")
-  fun nowPlayingMovie(): Observable<MovieResults>
+  fun nowPlayingMovie(@Query("page") page: Int): Observable<MovieResults>
 }
