@@ -9,16 +9,12 @@ class UpcomingInteractor : MovieBrowserInteractor {
 
   private val tmdbAPI: TmdbAPI = TmdbAPI.create(Schedulers.io())
 
-  override fun fetch(): Observable<PartialChange> {
-    return tmdbAPI.movieDAO.upcomingMovies()
+  override fun fetch(page: Int): Observable<PartialChange> {
+    return tmdbAPI.movieDAO.upcomingMovies(page)
         .map { PartialChange.Loaded(it) as PartialChange }
-        .startWith(PartialChange.Loading())
+        .startWith(PartialChange.Loading(page != 1))
         .onErrorReturn { PartialChange.Failed(it) }
         .share()
-  }
-
-  override fun fetchMoreFrom(): Observable<PartialChange> {
-    return Observable.empty()
   }
 
 }

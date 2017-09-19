@@ -12,7 +12,7 @@ class DefaultHomeInteractor : HomeInteractor {
   private val tmdbAPI: TmdbAPI = TmdbAPI.create(Schedulers.io())
 
   override fun loadTopRatedMovies(): Observable<PartialChange> {
-    return tmdbAPI.movieDAO.topRatedMovies()
+    return tmdbAPI.movieDAO.topRatedMovies(1)
         .map { PartialChange.Loaded(MovieCategory.TopRated, it) as PartialChange }
         .startWith(PartialChange.Loading(MovieCategory.TopRated))
         .onErrorReturn { PartialChange.Failed(MovieCategory.TopRated, it) }
@@ -20,7 +20,7 @@ class DefaultHomeInteractor : HomeInteractor {
   }
 
   override fun loadNowPlayingMovies(): Observable<PartialChange> {
-    return tmdbAPI.movieDAO.nowPlayingMovie()
+    return tmdbAPI.movieDAO.nowPlayingMovie(1)
         .map { PartialChange.Loaded(MovieCategory.NowPlaying, it) as PartialChange }
         .startWith(PartialChange.Loading(MovieCategory.NowPlaying))
         .onErrorReturn { PartialChange.Failed(MovieCategory.NowPlaying, it) }
@@ -32,7 +32,7 @@ class DefaultHomeInteractor : HomeInteractor {
   }
 
   override fun loadPopularMovies(): Observable<PartialChange> {
-    return tmdbAPI.movieDAO.popularMovies()
+    return tmdbAPI.movieDAO.popularMovies(1)
         .map { PartialChange.Loaded(MovieCategory.Popular, it) as PartialChange }
         .startWith(PartialChange.Loading(MovieCategory.Popular))
         .onErrorReturn { PartialChange.Failed(MovieCategory.Popular, it) }
@@ -40,7 +40,7 @@ class DefaultHomeInteractor : HomeInteractor {
   }
 
   override fun loadUpcomingMovies(): Observable<PartialChange> {
-    return tmdbAPI.movieDAO.upcomingMovies()
+    return tmdbAPI.movieDAO.upcomingMovies(1)
         .map { PartialChange.Loaded(MovieCategory.Upcoming, it) as PartialChange }
         .startWith(PartialChange.Loading(MovieCategory.Upcoming))
         .onErrorReturn { PartialChange.Failed(MovieCategory.Upcoming, it) }

@@ -8,16 +8,13 @@ import io.reactivex.schedulers.Schedulers
 class TopRatedInteractor : MovieBrowserInteractor {
   private val tmdbAPI: TmdbAPI = TmdbAPI.create(Schedulers.io())
 
-  override fun fetch(): Observable<PartialChange> {
-    return tmdbAPI.movieDAO.topRatedMovies()
-        .map { PartialChange.Loaded(it) as PartialChange }
-        .startWith(PartialChange.Loading())
+  override fun fetch(page: Int): Observable<PartialChange> {
+    return tmdbAPI.movieDAO.topRatedMovies(page)
+        .map {
+          PartialChange.Loaded(it) as PartialChange
+        }
+        .startWith(PartialChange.Loading(page != 1))
         .onErrorReturn { PartialChange.Failed(it) }
         .share()
   }
-
-  override fun fetchMoreFrom(): Observable<PartialChange> {
-    return Observable.empty()
-  }
-
 }
