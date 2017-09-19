@@ -42,6 +42,7 @@ buildscript {
         rxAndroid        : "io.reactivex.rxjava2:rxandroid:$rxAndroid2_version",
         rxBinding        : "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBinding_version",
         rxBindingDesign  : "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxBinding_version",
+        rxBindingRecycler: "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBinding_version",
 
         // Misc
         kotlin           : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
