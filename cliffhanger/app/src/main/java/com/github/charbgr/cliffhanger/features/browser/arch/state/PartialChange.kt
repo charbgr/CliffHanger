@@ -4,7 +4,7 @@ import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults
 
 sealed class PartialChange {
   object Init : PartialChange()
-  class Loading : PartialChange()
+  class Loading(val isInfiteScroll: Boolean) : PartialChange()
   class Loaded(val movieResults: MovieResults) : PartialChange()
   class Failed(val throwable: Throwable) : PartialChange()
 }

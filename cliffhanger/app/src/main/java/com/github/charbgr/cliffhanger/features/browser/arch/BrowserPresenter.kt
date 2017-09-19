@@ -3,6 +3,8 @@ package com.github.charbgr.cliffhanger.features.browser.arch
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.features.browser.arch.interactor.MovieBrowserInteractor
 import com.github.charbgr.cliffhanger.features.browser.arch.interactor.MovieBrowserInteractorFactory
+import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Init
+import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loading
 import com.github.charbgr.cliffhanger.features.browser.arch.state.StateReducer
 import com.github.charbgr.cliffhanger.shared.arch.RxJava2Presenter
 import io.reactivex.Observable
@@ -25,17 +27,18 @@ class BrowserPresenter(
 
   fun bindIntents() {
     val loadDataIntent = intent(viewWRef.get()?.loadDataIntent())
-        .switchMap {
-
-          interactor.fetch()
-        }
+        .switchMap { interactor.fetch(page = 1) }
 
     val loadMoreIntent = intent(viewWRef.get()?.infiniteScrollIntent())
-        .switchMap { interactor.fetchMoreFrom() }
+        .filter { viewModel.lastPartialChange !is Loading || viewModel.lastPartialChange !is Init }
+        .map { (viewModel.movieResults?.page ?: 0) + 1 }
+        .distinctUntilChanged()
+        .switchMap {
+          interactor.fetch(it)
+        }
 
     val allIntentsObservable = Observable.merge(loadDataIntent, loadMoreIntent)
         .observeOn(scheduler)
-
 
     allIntentsObservable
         .scan(viewModel, stateReducer.reduce)
@@ -55,6 +58,7 @@ class BrowserPresenter(
   }
 
   private fun dispatchViewRender(viewModel: BrowserViewModel) {
+    this.viewModel = viewModel
     viewWRef.get()?.render(viewModel)
   }
 
