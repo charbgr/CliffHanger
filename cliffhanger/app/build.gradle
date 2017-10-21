@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion rootProject.ext.compile_sdk_version
@@ -70,7 +71,9 @@ dependencies {
 
   // Dagger
   implementation deps.dagger.runtime
+  implementation deps.dagger.android.runtime
   kapt deps.dagger.compiler
+  kapt deps.dagger.android.compiler
 
 
   // Unit/Integration tests dependencies
