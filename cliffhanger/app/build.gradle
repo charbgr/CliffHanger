@@ -44,29 +44,33 @@ android {
 
 
 dependencies {
-  def applicationDependencies = rootProject.ext.mainApplication
+  def deps = rootProject.ext.mainApplication
   def unitTestDependencies = rootProject.ext.unitTesting
 
   // Android Stuff
-  implementation applicationDependencies.appCompat
-  implementation applicationDependencies.design
-  implementation applicationDependencies.constraintLayout
+  implementation deps.appCompat
+  implementation deps.design
+  implementation deps.constraintLayout
 
   // Reactive
-  implementation applicationDependencies.rxJava
-  implementation applicationDependencies.rxKotlin
-  implementation applicationDependencies.rxAndroid
-  implementation applicationDependencies.rxBinding
-  implementation applicationDependencies.rxBindingDesign
-  implementation applicationDependencies.rxBindingRecycler
+  implementation deps.rxJava
+  implementation deps.rxKotlin
+  implementation deps.rxAndroid
+  implementation deps.rxBinding
+  implementation deps.rxBindingDesign
+  implementation deps.rxBindingRecycler
 
   // Misc
-  implementation applicationDependencies.kotlin
-  implementation applicationDependencies.retrofit
-  implementation applicationDependencies.retrofitAdapter
-  implementation applicationDependencies.retrofitConverter
-  implementation applicationDependencies.timber
-  implementation applicationDependencies.glide
+  implementation deps.kotlin
+  implementation deps.retrofit
+  implementation deps.retrofitAdapter
+  implementation deps.retrofitConverter
+  implementation deps.timber
+  implementation deps.glide
+
+  // Dagger
+  implementation deps.dagger.runtime
+  kapt deps.dagger.compiler
 
 
   // Unit/Integration tests dependencies
