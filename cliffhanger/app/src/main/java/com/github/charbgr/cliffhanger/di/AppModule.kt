@@ -5,7 +5,7 @@ import com.github.charbgr.cliffhanger.CliffHangerApp
 import dagger.Module
 import dagger.Provides
 
-@Module
+@Module()
 class AppModule {
 
   @Provides

@@ -3,8 +3,12 @@ package com.github.charbgr.cliffhanger.di
 import com.github.charbgr.cliffhanger.CliffHangerApp
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
 
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = arrayOf(
+    AppModule::class,
+    AndroidInjectionModule::class
+))
 interface AppComponent {
 
   @Component.Builder

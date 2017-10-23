@@ -1,24 +1,26 @@
 package com.github.charbgr.cliffhanger
 
+import android.app.Activity
 import android.app.Application
 import com.github.charbgr.cliffhanger.di.DaggerAppComponent
-import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.shared.logger.CrashReportingTree
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 import javax.inject.Inject
 
 
-class CliffHangerApp : Application() {
+class CliffHangerApp : Application(), HasActivityInjector {
 
-  @Inject
-  internal lateinit var movie: Movie
+  @Inject internal lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
 
   override fun onCreate() {
     super.onCreate()
 
     initializeDependencies()
-    initializeLogger()
+      initializeLogger()
   }
 
   private fun initializeDependencies() {
@@ -32,4 +34,6 @@ class CliffHangerApp : Application() {
       Timber.plant(CrashReportingTree())
     }
   }
+
+  override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
 }
