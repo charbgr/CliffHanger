@@ -11,6 +11,8 @@ import com.github.charbgr.cliffhanger.features.home.arch.HomePresenter
 import com.github.charbgr.cliffhanger.features.home.arch.HomeUiBinder
 import com.github.charbgr.cliffhanger.features.home.arch.HomeView
 import com.github.charbgr.cliffhanger.features.home.arch.HomeViewModel
+import com.github.charbgr.cliffhanger.features.home.di.DaggerHomeComponent
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
 class HomeController : ConstraintLayout, HomeView {
@@ -30,18 +32,16 @@ class HomeController : ConstraintLayout, HomeView {
   var movieList: RecyclerView by Delegates.notNull()
     private set
 
-  private val presenter: HomePresenter by lazy {
-    HomePresenter()
-  }
 
-  private val uiBinder: HomeUiBinder by lazy {
-    HomeUiBinder(this)
-  }
+  @Inject lateinit var uiBinder: HomeUiBinder
+  @Inject lateinit var presenter: HomePresenter
 
   override fun onFinishInflate() {
     super.onFinishInflate()
     if (isInEditMode) return
     findViews()
+
+    DaggerHomeComponent.builder().homeController(this).build().inject(this)
 
     uiBinder.onFinishInflate()
   }
