@@ -6,7 +6,7 @@ import com.github.charbgr.cliffhanger.features.browser.arch.interactor.MovieBrow
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Init
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loading
 import com.github.charbgr.cliffhanger.features.browser.arch.state.StateReducer
-import com.github.charbgr.cliffhanger.shared.arch.RxJava2Presenter
+import com.github.charbgr.cliffhanger.shared.arch.MviPresenter
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -15,7 +15,8 @@ import timber.log.Timber
 
 class BrowserPresenter(
     private val movieCategory: MovieCategory,
-    private val scheduler: Scheduler = AndroidSchedulers.mainThread()) : RxJava2Presenter<BrowserView>() {
+    private val scheduler: Scheduler = AndroidSchedulers.mainThread()
+) : MviPresenter<BrowserView, BrowserViewModel>() {
 
   private val interactor: MovieBrowserInteractor by lazy {
     MovieBrowserInteractorFactory.createInteractor(movieCategory)
@@ -25,7 +26,7 @@ class BrowserPresenter(
   var viewModel: BrowserViewModel = BrowserViewModel.initial(movieCategory)
     private set
 
-  fun bindIntents() {
+  override fun bindIntents() {
     val loadDataIntent = intent(viewWRef.get()?.loadDataIntent())
         .switchMap { interactor.fetch(page = 1) }
 
@@ -56,6 +57,8 @@ class BrowserPresenter(
 
         })
   }
+
+  override fun renders(): Observable<BrowserViewModel> = Observable.just(viewModel)
 
   private fun dispatchViewRender(viewModel: BrowserViewModel) {
     this.viewModel = viewModel

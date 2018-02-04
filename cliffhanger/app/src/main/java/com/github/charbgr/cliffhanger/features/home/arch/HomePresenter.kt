@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
 import com.github.charbgr.cliffhanger.features.home.arch.state.HomeStateReducer
-import com.github.charbgr.cliffhanger.shared.arch.RxJava2Presenter
+import com.github.charbgr.cliffhanger.shared.arch.MviPresenter
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -11,12 +11,12 @@ import timber.log.Timber
 class HomePresenter(
     private val interactor: HomeInteractor = DefaultHomeInteractor(),
     private val scheduler: Scheduler = AndroidSchedulers.mainThread())
-  : RxJava2Presenter<HomeView>() {
+  : MviPresenter<HomeView, HomeViewModel>() {
 
   private val stateReducer = HomeStateReducer()
   private var viewModel: HomeViewModel = HomeViewModel.initial()
 
-  fun bindIntents() {
+  override fun bindIntents() {
 
     val topRatedClickIntent = intent(Observable.just(true))
         .switchMap { interactor.loadTopRatedMovies() }
@@ -50,8 +50,9 @@ class HomePresenter(
           }
 
         })
-
   }
+
+  override fun renders(): Observable<HomeViewModel> = Observable.just(viewModel)
 
   private fun dispatchViewRender(viewModel: HomeViewModel) {
     viewWRef.get()?.render(viewModel)
