@@ -6,5 +6,7 @@ object MovieFactory {
 
   val FightClub: Movie = Movie(
       tmdbId = 1,
-      title = "Fight Club")
+      title = "Fight Club",
+      posterPath = "http://foo.bar",
+      backdropPath = "http://foo.bar/baz/qux.jpg")
 }
