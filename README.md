@@ -1,5 +1,5 @@
 # CliffHanger
-[![Build Status](https://travis-ci.org/charbgr/CliffHanger.svg?branch=master)](https://travis-ci.org/charbgr/CliffHanger)
+[![CircleCI](https://circleci.com/gh/charbgr/CliffHanger.svg?style=svg)](https://circleci.com/gh/charbgr/CliffHanger)
 
 CliffHanger is a movie app that helps you keep track of your favorite movies.
 
