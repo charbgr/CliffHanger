@@ -1,8 +1,9 @@
 package com.github.charbgr.cliffhanger.network.tmdb.dao
 
-import android.graphics.Movie
+import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.network.tmdb.Routes
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -11,7 +12,7 @@ import retrofit2.http.Query
 interface MovieDAO {
 
   @GET(Routes.MOVIE_ROUTE + "{movieId}")
-  fun getMovie(@Path("movieId") movieId: Int): Observable<Movie>
+  fun getMovie(@Path("movieId") movieId: Int): Single<Movie>
 
   @GET(Routes.MOVIE_ROUTE + "latest")
   fun latestMovies(): Observable<MovieResults>
