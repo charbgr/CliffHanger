@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.shared.views
+package com.github.charbgr.cliffhanger.shared.views.imageview
 
 import android.content.Context
 import android.util.AttributeSet

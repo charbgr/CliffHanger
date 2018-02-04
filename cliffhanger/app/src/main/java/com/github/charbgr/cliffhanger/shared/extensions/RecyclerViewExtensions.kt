@@ -1,14 +1,16 @@
-package com.github.charbgr.cliffhanger.shared.views.recyclerview
+package com.github.charbgr.cliffhanger.shared.extensions
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ItemDecoration
+import com.github.charbgr.cliffhanger.shared.views.recyclerview.SpacingItemDecorator
 import com.jakewharton.rxbinding2.support.v7.widget.RecyclerViewScrollEvent
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import io.reactivex.Observable
 
 fun RecyclerView.addSpacing(dps: Float): ItemDecoration {
-  val decorator = SpacingItemDecorator.create(this.context, dps)
+  val decorator = SpacingItemDecorator.create(
+      this.context, dps)
   addItemDecoration(decorator)
   return decorator
 }

@@ -9,7 +9,7 @@ import com.github.charbgr.cliffhanger.features.browser.adapter.MovieAdapterItem
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Failed
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loaded
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loading
-import com.github.charbgr.cliffhanger.shared.views.recyclerview.infiniteScrollIntent
+import com.github.charbgr.cliffhanger.shared.extensions.infiniteScrollIntent
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlin.properties.Delegates

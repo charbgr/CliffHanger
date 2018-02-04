@@ -13,7 +13,7 @@ import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewT
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapter
 import com.github.charbgr.cliffhanger.shared.extensions.render
-import com.github.charbgr.cliffhanger.shared.views.recyclerview.addSpacing
+import com.github.charbgr.cliffhanger.shared.extensions.addSpacing
 
 class MovieGroupAdapter(
     private val sharedRvPool: RecyclerView.RecycledViewPool) : BaseRvAdapter<MovieGroupItem>() {

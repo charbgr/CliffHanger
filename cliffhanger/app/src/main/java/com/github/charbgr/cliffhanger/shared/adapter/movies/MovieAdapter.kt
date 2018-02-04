@@ -9,7 +9,7 @@ import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapterItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.extensions.render
-import com.github.charbgr.cliffhanger.shared.views.MovieImageView
+import com.github.charbgr.cliffhanger.shared.views.imageview.MovieImageView
 
 class MovieAdapter : BaseRvAdapter<MovieAdapterItem>() {
 

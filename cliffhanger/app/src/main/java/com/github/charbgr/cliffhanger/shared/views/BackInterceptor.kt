@@ -1,5 +1,5 @@
 package com.github.charbgr.cliffhanger.shared.views
 
-interface Navigatable {
+interface BackInterceptor {
   fun onBackPressed(): Boolean
 }

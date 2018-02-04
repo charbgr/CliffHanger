@@ -6,7 +6,7 @@ import android.widget.FrameLayout
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.R.layout
 import com.github.charbgr.cliffhanger.features.home.NavigateToHome
-import com.github.charbgr.cliffhanger.shared.views.Navigatable
+import com.github.charbgr.cliffhanger.shared.views.BackInterceptor
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onBackPressed() {
     val topController = container.getChildAt(container.childCount - 1)
-    if (topController is Navigatable) {
+    if (topController is BackInterceptor) {
       val consumed = topController.onBackPressed()
       if (consumed) {
         // do nothing if consumed, back is handled by the Navigatable

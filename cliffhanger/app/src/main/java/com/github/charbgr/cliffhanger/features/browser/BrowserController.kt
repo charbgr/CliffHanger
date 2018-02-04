@@ -13,11 +13,11 @@ import com.github.charbgr.cliffhanger.features.browser.arch.BrowserPresenter
 import com.github.charbgr.cliffhanger.features.browser.arch.BrowserView
 import com.github.charbgr.cliffhanger.features.browser.arch.BrowserViewModel
 import com.github.charbgr.cliffhanger.features.browser.arch.UiBinder
-import com.github.charbgr.cliffhanger.shared.views.Navigatable
+import com.github.charbgr.cliffhanger.shared.views.BackInterceptor
 import io.reactivex.Observable
 import kotlin.properties.Delegates
 
-class BrowserController : RelativeLayout, BrowserView, Navigatable {
+class BrowserController : RelativeLayout, BrowserView, BackInterceptor {
 
   constructor(context: Context?) : super(context)
   constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)

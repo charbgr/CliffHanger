@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_browser_movie_height">
 
-  <com.github.charbgr.cliffhanger.shared.views.MovieImageView
+  <com.github.charbgr.cliffhanger.shared.views.imageview.MovieImageView
       android:id="@+id/item_movie_poster"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
