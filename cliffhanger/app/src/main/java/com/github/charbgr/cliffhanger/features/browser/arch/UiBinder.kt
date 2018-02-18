@@ -6,6 +6,7 @@ import com.github.charbgr.cliffhanger.features.browser.BrowserController
 import com.github.charbgr.cliffhanger.features.browser.adapter.BrowserAdapter
 import com.github.charbgr.cliffhanger.features.browser.adapter.BrowserAdapterItem
 import com.github.charbgr.cliffhanger.features.browser.adapter.MovieAdapterItem
+import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Failed
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loaded
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loading
@@ -54,11 +55,10 @@ open class UiBinder(internal val controller: BrowserController) : BrowserView {
       .infiniteScrollIntent(layoutManager)
       .map { Any() }
 
-  override fun render(movieBrowserViewModel: BrowserViewModel) {
-    val partialChange = movieBrowserViewModel.lastPartialChange
+  override fun render(movieBrowserViewModel: BrowserViewModel, partialChange: PartialChange) {
     when (partialChange) {
       is Loaded -> {
-        adapter.addItems(toAdapterItems(partialChange.movieResults.toMovieList()))
+        adapter.addItems(toAdapterItems(movieBrowserViewModel.movies!!))
       }
       is Loading -> {
         controller.setScreenTitle(movieBrowserViewModel.screenTitle(controller.context))

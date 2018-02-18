@@ -10,20 +10,10 @@ class CategoryStateReducer {
   val reduce: (previousViewModel: CategoryViewModel, partialChange: PartialChange) -> CategoryViewModel =
       { previousViewModel, partialChange ->
         when (partialChange) {
-          is Loading -> {
-            previousViewModel.copy(isLoading = true)
-          }
-
-          is Loaded -> {
-            previousViewModel.copy(isLoading = false, movieResults = partialChange.movieResults)
-          }
-
-          is Failed -> {
-            previousViewModel.copy(isLoading = false, error = partialChange.throwable)
-          }
-          else -> {
-            previousViewModel
-          }
+          is Loading -> previousViewModel.copy(isLoading = true)
+          is Loaded -> previousViewModel.copy(isLoading = false, movies = partialChange.movies)
+          is Failed -> previousViewModel.copy(isLoading = false, error = partialChange.throwable)
+          else -> previousViewModel
         }
       }
 }

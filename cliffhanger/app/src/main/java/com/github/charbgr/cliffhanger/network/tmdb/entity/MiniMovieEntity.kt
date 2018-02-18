@@ -1,9 +1,8 @@
-package com.github.charbgr.cliffhanger.network.tmdb.dto
+package com.github.charbgr.cliffhanger.network.tmdb.entity
 
-import com.github.charbgr.cliffhanger.shared.transformers.movie.MovieTransformable
 import com.squareup.moshi.Json
 
-data class MiniMovieDto(
+data class MiniMovieEntity(
 
     @Json(name = "poster_path")
     val posterPath: String?,
@@ -38,10 +37,5 @@ data class MiniMovieDto(
     @Json(name = "vote_average")
     val voteAverage: Double?
 
-) : MovieTransformable {
-  override fun posterPath(): String? = posterPath
-  override fun backdropPath(): String? = backdropPath
-  override fun tmdbId(): Int? = this.id
-  override fun title(): String? = this.title
-}
+)
 

@@ -2,31 +2,30 @@ package com.github.charbgr.cliffhanger.features.browser.arch
 
 import android.content.Context
 import com.github.charbgr.cliffhanger.R
+import com.github.charbgr.cliffhanger.domain.Movie
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
 import com.github.charbgr.cliffhanger.domain.MovieCategory.TopRated
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Upcoming
-import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange
-import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults
 
 data class BrowserViewModel(
     val movieCategory: MovieCategory,
     val isLoading: Boolean,
-    val movieResults: MovieResults?,
-    val throwable: Throwable?,
-    val lastPartialChange: PartialChange
+    val movies: List<Movie>?,
+    val page: Int,
+    val throwable: Throwable?
 ) {
 
   companion object {
     fun initial(movieCategory: MovieCategory): BrowserViewModel {
-      return BrowserViewModel(movieCategory, false, null, null, PartialChange.Init)
+      return BrowserViewModel(movieCategory, false, null, 0, null)
     }
   }
 
 
   fun hasError(): Boolean = throwable != null
-  fun hasData(): Boolean = movieResults != null
+  fun hasData(): Boolean = movies != null
 
   fun screenTitle(context: Context): String {
     return when(movieCategory) {

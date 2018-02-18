@@ -13,6 +13,7 @@ import com.github.charbgr.cliffhanger.features.browser.arch.BrowserPresenter
 import com.github.charbgr.cliffhanger.features.browser.arch.BrowserView
 import com.github.charbgr.cliffhanger.features.browser.arch.BrowserViewModel
 import com.github.charbgr.cliffhanger.features.browser.arch.UiBinder
+import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange
 import com.github.charbgr.cliffhanger.shared.views.BackInterceptor
 import io.reactivex.Observable
 import kotlin.properties.Delegates
@@ -69,7 +70,7 @@ class BrowserController : RelativeLayout, BrowserView, BackInterceptor {
 
   override fun onBackPressed(): Boolean = false
 
-  fun viewModel(): BrowserViewModel = presenter.viewModel
+  fun viewModel(): BrowserViewModel = presenter.viewModel()
 
   fun setScreenTitle(title: CharSequence) {
     screenTitle.text = title
@@ -82,6 +83,6 @@ class BrowserController : RelativeLayout, BrowserView, BackInterceptor {
 
   override fun loadDataIntent(): Observable<Any> = uiBinder.loadDataIntent()
   override fun infiniteScrollIntent(): Observable<Any> = uiBinder.infiniteScrollIntent()
-  override fun render(movieBrowserViewModel: BrowserViewModel) = uiBinder.render(
-      movieBrowserViewModel)
+  override fun render(movieBrowserViewModel: BrowserViewModel,
+      partialChange: PartialChange) = uiBinder.render(movieBrowserViewModel, partialChange)
 }

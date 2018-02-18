@@ -3,15 +3,14 @@ package com.github.charbgr.cliffhanger.features.browser.arch
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.features.browser.arch.interactor.MovieBrowserInteractor
 import com.github.charbgr.cliffhanger.features.browser.arch.interactor.MovieBrowserInteractorFactory
-import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Init
-import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange.Loading
+import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange
 import com.github.charbgr.cliffhanger.features.browser.arch.state.StateReducer
 import com.github.charbgr.cliffhanger.shared.arch.MviPresenter
+import com.github.charbgr.cliffhanger.shared.arch.UseCaseObserver
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.observers.DisposableObserver
-import timber.log.Timber
+import io.reactivex.subjects.BehaviorSubject
 
 class BrowserPresenter(
     private val movieCategory: MovieCategory,
@@ -23,16 +22,15 @@ class BrowserPresenter(
   }
 
   private val stateReducer: StateReducer = StateReducer()
-  var viewModel: BrowserViewModel = BrowserViewModel.initial(movieCategory)
-    private set
+  private val viewModelRenders: BehaviorSubject<BrowserViewModel> = BehaviorSubject.create()
 
   override fun bindIntents() {
     val loadDataIntent = intent(viewWRef.get()?.loadDataIntent())
         .switchMap { interactor.fetch(page = 1) }
 
     val loadMoreIntent = intent(viewWRef.get()?.infiniteScrollIntent())
-        .filter { viewModel.lastPartialChange !is Loading || viewModel.lastPartialChange !is Init }
-        .map { (viewModel.movieResults?.page ?: 0) + 1 }
+        .filter { viewModel().isLoading }
+        .map { viewModel().page + 1 }
         .distinctUntilChanged()
         .switchMap {
           interactor.fetch(it)
@@ -42,27 +40,21 @@ class BrowserPresenter(
         .observeOn(scheduler)
 
     allIntentsObservable
-        .scan(viewModel, stateReducer.reduce)
-        .subscribeWith(object : DisposableObserver<BrowserViewModel>() {
-          override fun onComplete() {
+        .scan(stateReducer.initState(movieCategory), stateReducer.reduce)
+        .subscribeWith(object : UseCaseObserver.RxObservable<Pair<PartialChange, BrowserViewModel>>() {
+          override fun onNext(value: Pair<PartialChange, BrowserViewModel>) {
+            dispatchViewRender(value.second, value.first)
           }
-
-          override fun onNext(viewModel: BrowserViewModel) {
-            dispatchViewRender(viewModel)
-          }
-
-          override fun onError(e: Throwable?) {
-            Timber.wtf(e)
-          }
-
         })
   }
 
-  override fun renders(): Observable<BrowserViewModel> = Observable.just(viewModel)
+  override fun renders(): Observable<BrowserViewModel> = viewModelRenders.hide().share()
 
-  private fun dispatchViewRender(viewModel: BrowserViewModel) {
-    this.viewModel = viewModel
-    viewWRef.get()?.render(viewModel)
+  fun viewModel(): BrowserViewModel = viewModelRenders.value
+
+  private fun dispatchViewRender(viewModel: BrowserViewModel, partialChange: PartialChange) {
+    viewModelRenders.onNext(viewModel)
+    viewWRef.get()?.render(viewModel, partialChange)
   }
 
 }

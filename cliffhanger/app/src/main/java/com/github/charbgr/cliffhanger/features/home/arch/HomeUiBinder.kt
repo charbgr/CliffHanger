@@ -12,7 +12,6 @@ import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupAdapter
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem
 import com.github.charbgr.cliffhanger.features.home.adapter.SectionHeaderItem
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieListViewModel
-import com.github.charbgr.cliffhanger.shared.transformers.movie.transformToMovies
 
 open class HomeUiBinder(internal val controller: HomeController) : HomeView {
 
@@ -38,10 +37,7 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
 
     if (movieCategoryViewModel.hasData()) {
       items.add(SectionHeaderItem(controller.context, movieCategory))
-      items.add(MovieCarouselItem(
-          movieCategoryViewModel.movieResults!!.results.transformToMovies().map {
-            MovieListViewModel(it)
-          }))
+      items.add(MovieCarouselItem(movieCategoryViewModel.movies!!.map { MovieListViewModel(it) }))
     }
 
     if (movieCategoryViewModel.hasError()) {
