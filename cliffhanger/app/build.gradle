@@ -68,6 +68,7 @@ dependencies {
   implementation deps.retrofitConverter
   implementation deps.timber
   implementation deps.glide
+  implementation deps.lottie
 
   // Dagger
   implementation deps.dagger.runtime
