@@ -1,13 +1,13 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
-import com.github.charbgr.cliffhanger.domain.Movie
+import com.github.charbgr.cliffhanger.domain.FullMovie
 
 internal data class ViewModel(
     val showLoader: Boolean,
     val showMovie: Boolean,
     val showError: Boolean,
     val throwable: Throwable? = null,
-    val movie: Movie? = null
+    val movie: FullMovie? = null
 ) {
 
   companion object {
@@ -18,4 +18,5 @@ internal data class ViewModel(
         movie = null
     )
   }
+
 }

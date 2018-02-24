@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
 import com.github.charbgr.cliffhanger.UnitTest
-import com.github.charbgr.cliffhanger.domain.Movie
+import com.github.charbgr.cliffhanger.network.tmdb.entity.FullMovieEntity
 import com.github.charbgr.cliffhanger.test_factories.MockMovieRepository
 import com.github.charbgr.cliffhanger.test_factories.MovieFactory
 import org.junit.Test
@@ -10,8 +10,10 @@ internal class PresenterTest : UnitTest() {
 
   @Test
   fun test_binding_intents() {
+    val movieEntity = MovieFactory.FightClubEntity
     val movie = MovieFactory.FightClub
-    val presenter = create(movie)
+
+    val presenter = create(movieEntity)
     val robot = MovieDetailRobot(presenter)
     val testObserver = presenter.renders().test()
 
@@ -22,12 +24,14 @@ internal class PresenterTest : UnitTest() {
 
   @Test
   fun test_fetching_movie() {
+    val movieEntity = MovieFactory.FightClubEntity
     val movie = MovieFactory.FightClub
-    val presenter = create(movie)
+
+    val presenter = create(movieEntity)
     val robot = MovieDetailRobot(presenter)
     val testObserver = presenter.renders().test()
 
-    robot.fireMovieIntent(movie.tmdbId)
+    robot.fireMovieIntent(movieEntity.id!!)
 
     testObserver.assertValues(
         Pair(PartialChange.Initial, ViewModel.Initial()),
@@ -37,7 +41,7 @@ internal class PresenterTest : UnitTest() {
   }
 
 
-  private fun create(movie: Movie): Presenter {
+  private fun create(movie: FullMovieEntity): Presenter {
     return Presenter(fakeSchedulerProvider, GetMovieUseCase(MockMovieRepository(movie)))
   }
 
