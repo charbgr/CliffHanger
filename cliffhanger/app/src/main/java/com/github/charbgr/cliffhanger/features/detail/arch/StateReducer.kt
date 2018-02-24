@@ -4,19 +4,18 @@ import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Failed
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.InProgress
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Initial
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Success
-import io.reactivex.functions.BiFunction
+import com.github.charbgr.cliffhanger.shared.arch.BaseStateReducer
 
-internal class StateReducer {
+internal class StateReducer: BaseStateReducer<PartialChange, ViewModel>() {
 
   val initial: Pair<PartialChange, ViewModel> by lazy {
     Pair(PartialChange.Initial, ViewModel.Initial())
   }
 
-  val reduce = BiFunction<Pair<PartialChange, ViewModel>, PartialChange, Pair<PartialChange, ViewModel>>
-  { previousState, partialChange ->
+  override fun reduceState(previousPartialChange: PartialChange, previousViewModel: ViewModel,
+      partialChange: PartialChange): ViewModel {
 
-    val previousViewModel = previousState.second
-    val toViewModel: ViewModel = when (partialChange) {
+    return when (partialChange) {
       Initial -> { ViewModel.Initial() }
       InProgress -> {
         previousViewModel.copy(showError = false, showLoader = true)
@@ -39,7 +38,6 @@ internal class StateReducer {
         )
       }
     }
-
-    Pair(partialChange, toViewModel)
   }
+
 }
