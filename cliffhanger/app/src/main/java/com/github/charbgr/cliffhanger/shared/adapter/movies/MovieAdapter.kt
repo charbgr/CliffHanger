@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.github.charbgr.cliffhanger.R
+import com.github.charbgr.cliffhanger.features.detail.NavigateToMovieDetail
 import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapterItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.extensions.render
@@ -36,7 +37,11 @@ class MovieAdapter : BaseRvAdapter<MovieAdapterItem>() {
       item as MovieListViewModel
       applyConstraints(item, position)
       movieNameTv.text = item.movie.title
-      moviePosterIv.bindImage(item.movie)
+      moviePosterIv.bindBackdrop(item.movie)
+
+      layout.setOnClickListener {
+        NavigateToMovieDetail(it.context, item.movie).execute()
+      }
     }
 
     override fun clear() {

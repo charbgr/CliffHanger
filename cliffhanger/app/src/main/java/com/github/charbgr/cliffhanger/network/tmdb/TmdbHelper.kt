@@ -1,13 +1,11 @@
 package com.github.charbgr.cliffhanger.network.tmdb
 
-import com.github.charbgr.cliffhanger.domain.Movie
-
 object TmdbHelper {
-  fun findBestQualityPoster(movie: Movie): String {
-    return Routes.IMAGE_BASE_URL + "w185" + movie.posterPath
+  fun findBestQualityPoster(posterPath: String): String {
+    return Routes.IMAGE_BASE_URL + "w185" + posterPath
   }
 
-  fun findBestQualityBackdrop(movie: Movie): String {
-    return Routes.IMAGE_BASE_URL + "w500" + movie.backdropPath
+  fun findBestQualityBackdrop(backdropPath: String): String {
+    return Routes.IMAGE_BASE_URL + "w500" + backdropPath
   }
 }

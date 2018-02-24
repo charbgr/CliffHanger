@@ -24,7 +24,7 @@ class BrowserAdapter : BaseRvAdapter<BrowserAdapterItem>() {
     override fun bind(item: BrowserAdapterItem, position: Int) {
       item as MovieAdapterItem
       movieTv.text = item.movie.title
-      moviePosterIv.bindImage(item.movie)
+      moviePosterIv.bindBackdrop(item.movie)
     }
 
     override fun clear() {

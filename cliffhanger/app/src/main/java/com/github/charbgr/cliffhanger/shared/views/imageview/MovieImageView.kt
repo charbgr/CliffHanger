@@ -2,7 +2,8 @@ package com.github.charbgr.cliffhanger.shared.views.imageview
 
 import android.content.Context
 import android.util.AttributeSet
-import com.github.charbgr.cliffhanger.domain.Movie
+import com.github.charbgr.cliffhanger.domain.FullMovie
+import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.network.tmdb.TmdbHelper
 
 class MovieImageView : BaseImageView {
@@ -15,8 +16,20 @@ class MovieImageView : BaseImageView {
       context, attrs, defStyleAttr, defStyleRes)
 
 
-  fun bindImage(movie: Movie) {
-    loadImage(TmdbHelper.findBestQualityBackdrop(movie))
+  fun bindBackdrop(movie: MiniMovie) {
+    loadImage(TmdbHelper.findBestQualityBackdrop(movie.backdropPath))
+  }
+
+  fun bindPoster(movie: MiniMovie) {
+    loadImage(TmdbHelper.findBestQualityPoster(movie.posterPath))
+  }
+
+  fun bindBackdrop(movie: FullMovie) {
+    loadImage(TmdbHelper.findBestQualityBackdrop(movie.backdropPath))
+  }
+
+  fun bindPoster(movie: FullMovie) {
+    loadImage(TmdbHelper.findBestQualityPoster(movie.posterPath))
   }
 
 }
