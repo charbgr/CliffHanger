@@ -3,9 +3,8 @@ package com.github.charbgr.cliffhanger.network.tmdb.entity
 import com.github.charbgr.cliffhanger.domain.FullMovie
 import com.github.charbgr.cliffhanger.shared.extensions.empty
 
-class FullMovieEntityMapper {
+object FullMovieEntityMapper {
 
-  private val crewEntityMapper = CrewEntityMapper()
 
   fun transform(entity: FullMovieEntity): FullMovie {
     return FullMovie(
@@ -15,7 +14,7 @@ class FullMovieEntityMapper {
         backdropPath = entity.backdropPath ?: String.empty(),
         overview = entity.overview ?: String.empty(),
         tagline = entity.tagline,
-        crewMembers = crewEntityMapper.transform(entity.credits?.crewEntities),
+        crewMembers = CrewEntityMapper.transform(entity.credits?.crewEntities),
         duration = entity.runtime ?: 0,
         releaseDate = entity.releaseDate ?: String.empty()
     )

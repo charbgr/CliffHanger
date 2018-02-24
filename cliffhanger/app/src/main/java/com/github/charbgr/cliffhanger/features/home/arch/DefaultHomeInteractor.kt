@@ -11,18 +11,17 @@ import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Loa
 import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Loading
 import com.github.charbgr.cliffhanger.network.tmdb.TmdbAPI
 import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults
-import com.github.charbgr.cliffhanger.network.tmdb.entity.MiniMovieEntityMapper
+import com.github.charbgr.cliffhanger.network.tmdb.entity.MiniMovieEntityMapper.transform
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
 class DefaultHomeInteractor : HomeInteractor {
 
   private val tmdbAPI: TmdbAPI = TmdbAPI.create(Schedulers.io())
-  private val mapper: MiniMovieEntityMapper = MiniMovieEntityMapper()
 
   override fun loadTopRatedMovies(): Observable<PartialChange> {
     return tmdbAPI.movieDAO.topRatedMovies(1)
-        .map { Loaded(TopRated, mapper.transform(it.results), it.page) as PartialChange }
+        .map { Loaded(TopRated, transform(it.results), it.page) as PartialChange }
         .startWith(Loading(TopRated))
         .onErrorReturn { Failed(TopRated, it) }
         .share()
@@ -30,7 +29,7 @@ class DefaultHomeInteractor : HomeInteractor {
 
   override fun loadNowPlayingMovies(): Observable<PartialChange> {
     return tmdbAPI.movieDAO.nowPlayingMovie(1)
-        .map { Loaded(NowPlaying, mapper.transform(it.results), it.page) as PartialChange }
+        .map { Loaded(NowPlaying, transform(it.results), it.page) as PartialChange }
         .startWith(Loading(NowPlaying))
         .onErrorReturn { Failed(NowPlaying, it) }
         .share()
@@ -42,7 +41,7 @@ class DefaultHomeInteractor : HomeInteractor {
 
   override fun loadPopularMovies(): Observable<PartialChange> {
     return tmdbAPI.movieDAO.popularMovies(1)
-        .map { Loaded(Popular, mapper.transform(it.results), it.page) as PartialChange }
+        .map { Loaded(Popular, transform(it.results), it.page) as PartialChange }
         .startWith(Loading(Popular))
         .onErrorReturn { Failed(MovieCategory.Popular, it) }
         .share()
@@ -50,7 +49,7 @@ class DefaultHomeInteractor : HomeInteractor {
 
   override fun loadUpcomingMovies(): Observable<PartialChange> {
     return tmdbAPI.movieDAO.upcomingMovies(1)
-        .map { Loaded(Upcoming, mapper.transform(it.results), it.page) as PartialChange }
+        .map { Loaded(Upcoming, transform(it.results), it.page) as PartialChange }
         .startWith(Loading(Upcoming))
         .onErrorReturn { Failed(Upcoming, it) }
         .share()

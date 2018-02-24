@@ -3,7 +3,7 @@ package com.github.charbgr.cliffhanger.network.tmdb.entity
 import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.shared.extensions.empty
 
-class MiniMovieEntityMapper {
+object MiniMovieEntityMapper {
 
   fun transform(entity: MiniMovieEntity): MiniMovie {
     return MiniMovie(

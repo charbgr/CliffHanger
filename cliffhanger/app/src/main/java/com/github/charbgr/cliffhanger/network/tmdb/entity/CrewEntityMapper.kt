@@ -2,7 +2,7 @@ package com.github.charbgr.cliffhanger.network.tmdb.entity
 
 import com.github.charbgr.cliffhanger.domain.CrewMember
 
-class CrewEntityMapper {
+object CrewEntityMapper {
 
   fun transform(crewEntity: CrewEntity): CrewMember = CrewMember(crewEntity.id!!, crewEntity.name!!,
       crewEntity.job!!)
