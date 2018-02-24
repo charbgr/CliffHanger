@@ -5,13 +5,16 @@ import com.github.charbgr.cliffhanger.network.tmdb.entity.FullMovieEntity
 import com.github.charbgr.cliffhanger.network.tmdb.entity.SearchResultsEntity
 import io.reactivex.Single
 
-class MockMovieRepository(val movie: FullMovieEntity) : MovieRepository {
+class MockMovieRepository(
+    val movie: FullMovieEntity? = null,
+    val searchResultsEntity: SearchResultsEntity? = null
+) : MovieRepository {
 
   override fun getMovie(movieId: Int): Single<FullMovieEntity> {
     return Single.just(movie)
   }
 
   override fun searchMovies(query: CharSequence, page: Int): Single<SearchResultsEntity> {
-    return Single.just(SearchResultsEntity(1, listOf()))
+    return Single.just(searchResultsEntity)
   }
 }
