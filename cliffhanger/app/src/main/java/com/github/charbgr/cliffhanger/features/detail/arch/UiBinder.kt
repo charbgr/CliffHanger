@@ -1,9 +1,9 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
-import android.widget.Toast
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.domain.FullMovie
 import com.github.charbgr.cliffhanger.features.detail.MovieDetailActivity
+import com.github.charbgr.cliffhanger.features.error.NavigateToError
 import com.github.charbgr.cliffhanger.shared.extensions.visibleOrGone
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -24,8 +24,9 @@ internal open class UiBinder(
     movieDetailActivity.progressBar.visibleOrGone(viewModel.showLoader)
 
     if (viewModel.showError) {
-      Toast.makeText(movieDetailActivity, viewModel.throwable!!.message,
-          Toast.LENGTH_LONG).show()
+      NavigateToError(movieDetailActivity)
+          .closeCurrentActivity()
+          .execute()
     }
 
     if (viewModel.showMovie) {
