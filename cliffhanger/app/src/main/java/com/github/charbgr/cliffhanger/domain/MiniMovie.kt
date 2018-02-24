@@ -1,6 +1,6 @@
 package com.github.charbgr.cliffhanger.domain
 
-data class Movie(
+data class MiniMovie(
     val tmdbId: Int,
     val title: String,
     val posterPath: String,

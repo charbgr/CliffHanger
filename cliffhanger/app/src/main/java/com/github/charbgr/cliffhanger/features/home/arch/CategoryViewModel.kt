@@ -1,11 +1,11 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
-import com.github.charbgr.cliffhanger.domain.Movie
+import com.github.charbgr.cliffhanger.domain.MiniMovie
 
 data class CategoryViewModel(
     val isLoading: Boolean = false,
     val error: Throwable? = null,
-    val movies: List<Movie>? = null
+    val movies: List<MiniMovie>? = null
 ) {
 
 

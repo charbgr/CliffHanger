@@ -2,7 +2,7 @@ package com.github.charbgr.cliffhanger.features.browser.arch
 
 import android.content.Context
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.domain.Movie
+import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
@@ -12,7 +12,7 @@ import com.github.charbgr.cliffhanger.domain.MovieCategory.Upcoming
 data class BrowserViewModel(
     val movieCategory: MovieCategory,
     val isLoading: Boolean,
-    val movies: List<Movie>?,
+    val movies: List<MiniMovie>?,
     val page: Int,
     val throwable: Throwable?
 ) {

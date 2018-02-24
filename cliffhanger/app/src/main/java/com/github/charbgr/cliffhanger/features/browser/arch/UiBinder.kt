@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.features.browser.arch
 
 import android.support.v7.widget.LinearLayoutManager
-import com.github.charbgr.cliffhanger.domain.Movie
+import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.features.browser.BrowserController
 import com.github.charbgr.cliffhanger.features.browser.adapter.BrowserAdapter
 import com.github.charbgr.cliffhanger.features.browser.adapter.BrowserAdapterItem
@@ -37,7 +37,7 @@ open class UiBinder(internal val controller: BrowserController) : BrowserView {
     loadData.onNext(Any())
   }
 
-  private fun toAdapterItems(movies: List<Movie>): List<BrowserAdapterItem> {
+  private fun toAdapterItems(movies: List<MiniMovie>): List<BrowserAdapterItem> {
     return movies.map { MovieAdapterItem(it) }
   }
 
