@@ -6,13 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <android.support.v7.widget.RecyclerView
-      android:id="@+id/home_movie_list"
+  <TextView
+      android:id="@+id/home_search"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="40dp"
       android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:background="@drawable/badge_search"
+      android:gravity="center"
+      android:textSize="@dimen/text_size_medium"
+      android:text="@string/home_search"
+      android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/home_movie_list"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginTop="16dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/home_search"/>
 
 </com.github.charbgr.cliffhanger.features.home.HomeController>

@@ -19,4 +19,6 @@
 
   <color name="movie_backdrop_gradient_start">@color/background_dark</color>
   <color name="movie_backdrop_gradient_end">#1A333333</color> <!-- 15% of background dark-->
+
+  <color name="badge_search">@color/gray_46</color>
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+  <solid android:color="@color/badge_search"/>
+  <corners
+      android:bottomLeftRadius="@dimen/badge_search_corner_radius"
+      android:bottomRightRadius="@dimen/badge_search_corner_radius"
+      android:topLeftRadius="@dimen/badge_search_corner_radius"
+      android:topRightRadius="@dimen/badge_search_corner_radius"/>
+</shape>

@@ -15,7 +15,7 @@ data class FullMovie(
 ) {
 
   val director: CrewMember? by lazy {
-    this.crewMembers.first { it.job.equals("director", true) }
+    this.crewMembers.firstOrNull { it.job.equals("director", true) }
   }
 
   val chronology: String by lazy {

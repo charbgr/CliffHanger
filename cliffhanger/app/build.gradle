@@ -66,6 +66,7 @@ dependencies {
   implementation deps.retrofit
   implementation deps.retrofitAdapter
   implementation deps.retrofitConverter
+  implementation deps.okhttpInterceptor
   implementation deps.timber
   implementation deps.glide
   implementation deps.lottie

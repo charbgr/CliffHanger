@@ -6,6 +6,7 @@
     android:id="@+id/item_movie_layout"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:maxHeight="@dimen/item_browser_movie_height"
     tools:layout_width="300dp">
 
   <com.github.charbgr.cliffhanger.shared.views.imageview.MovieImageView
@@ -22,7 +23,6 @@
       app:layout_constraintVertical_bias="0.0"
       tools:src="@drawable/moonlight"/>
 
-
   <View
       android:id="@+id/view"
       android:layout_width="0dp"
@@ -32,7 +32,6 @@
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"/>
-
 
   <TextView
       android:id="@+id/item_movie_name"

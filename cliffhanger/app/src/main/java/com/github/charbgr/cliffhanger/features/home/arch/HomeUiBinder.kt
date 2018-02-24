@@ -11,6 +11,7 @@ import com.github.charbgr.cliffhanger.features.home.adapter.MovieCarouselItem
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupAdapter
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem
 import com.github.charbgr.cliffhanger.features.home.adapter.SectionHeaderItem
+import com.github.charbgr.cliffhanger.features.search.NavigateToSearch
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieListViewModel
 
 open class HomeUiBinder(internal val controller: HomeController) : HomeView {
@@ -23,6 +24,11 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
     with(controller.movieList) {
       layoutManager = LinearLayoutManager(context)
       adapter = movieAdapter
+    }
+
+    controller.search.setOnClickListener {
+      NavigateToSearch(it.context)
+          .execute()
     }
   }
 

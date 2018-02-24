@@ -7,6 +7,8 @@ import com.github.charbgr.cliffhanger.shared.arch.SchedulerProvider
 import io.reactivex.Scheduler
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -25,6 +27,9 @@ class TmdbAPI private constructor(scheduler: Scheduler) {
     val okHttpClient: OkHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(apiKeyInterceptor())
+        .addInterceptor(HttpLoggingInterceptor().apply {
+          level = BODY
+        })
         .build()
 
     Retrofit.Builder()
