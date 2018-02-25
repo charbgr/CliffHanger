@@ -1,10 +1,10 @@
 package com.github.charbgr.cliffhanger.features.search.arch
 
 import com.github.charbgr.cliffhanger.UnitTest
+import com.github.charbgr.cliffhanger.api_tmdb.entity.MiniMovieEntity
+import com.github.charbgr.cliffhanger.api_tmdb.entity.SearchResultsEntity
 import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.domain.SearchResults
-import com.github.charbgr.cliffhanger.network.tmdb.entity.MiniMovieEntity
-import com.github.charbgr.cliffhanger.network.tmdb.entity.SearchResultsEntity
 import com.github.charbgr.cliffhanger.test_factories.MiniMovieFactory
 import com.github.charbgr.cliffhanger.test_factories.MockMovieRepository
 import org.junit.Test

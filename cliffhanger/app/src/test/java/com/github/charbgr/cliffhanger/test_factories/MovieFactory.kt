@@ -1,8 +1,8 @@
 package com.github.charbgr.cliffhanger.test_factories
 
+import com.github.charbgr.cliffhanger.api_tmdb.entity.CreditsEntity
+import com.github.charbgr.cliffhanger.api_tmdb.entity.FullMovieEntity
 import com.github.charbgr.cliffhanger.domain.FullMovie
-import com.github.charbgr.cliffhanger.network.tmdb.entity.CreditsEntity
-import com.github.charbgr.cliffhanger.network.tmdb.entity.FullMovieEntity
 
 object MovieFactory {
 

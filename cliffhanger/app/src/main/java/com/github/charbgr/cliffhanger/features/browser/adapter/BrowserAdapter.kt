@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.github.charbgr.baseadapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.R
+import com.github.charbgr.cliffhanger.api_tmdb.TmdbHelper
 import com.github.charbgr.cliffhanger.shared.extensions.render
 import com.github.charbgr.cliffhanger.shared.views.imageview.MovieImageView
 
@@ -24,7 +25,7 @@ class BrowserAdapter : BaseRvAdapter<BrowserAdapterItem>() {
     override fun bind(item: BrowserAdapterItem, position: Int) {
       item as MovieAdapterItem
       movieTv.text = item.movie.title
-      moviePosterIv.bindBackdrop(item.movie)
+      moviePosterIv.bindBackdrop(TmdbHelper.bestBackdrop(item.movie.backdropPath))
     }
 
     override fun clear() {

@@ -3,14 +3,21 @@ package com.github.charbgr.cliffhanger.shared.views.recyclerview
 import android.content.Context
 import android.graphics.Rect
 import android.support.v7.widget.RecyclerView
+import android.util.DisplayMetrics
 import android.view.View
-import com.github.charbgr.cliffhanger.shared.extensions.dpToPx
 
 class SpacingItemDecorator(val spacing: Int) : RecyclerView.ItemDecoration() {
 
   companion object {
+
+    private fun dpToPx(context: Context, dp: Float): Float {
+      val metrics = context.resources.displayMetrics
+      val px = dp * (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+      return px
+    }
+
     fun create(context: Context, dps: Float): SpacingItemDecorator {
-      return SpacingItemDecorator(context.dpToPx(dps).toInt())
+      return SpacingItemDecorator(dpToPx(context, dps).toInt())
     }
   }
 

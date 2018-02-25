@@ -83,6 +83,7 @@ dependencies {
   implementation project(':arch')
   implementation project(':baseadapter')
   implementation project(':domain')
+  implementation project(':shared-views')
 
 
   // Unit/Integration tests dependencies

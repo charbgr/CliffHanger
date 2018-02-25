@@ -18,26 +18,12 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
-
-  sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-  }
 }
-
 
 dependencies {
   def deps = rootProject.ext.mainApplication
-  def unitTestDependencies = rootProject.ext.unitTesting
 
+  implementation deps.recyclerView
   implementation deps.kotlin
-  implementation deps.retrofit
-  implementation deps.retrofitAdapter
-  implementation deps.retrofitConverter
-  implementation deps.okhttpInterceptor
-
-  implementation project(':domain')
-}
-
-repositories {
-  mavenCentral()
+  implementation deps.glide
 }

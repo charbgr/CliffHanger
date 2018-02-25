@@ -1,1 +1,1 @@
-include ':app', ':arch', ':baseadapter', ':domain', ':api-tmdb'
+include ':app', ':arch', ':baseadapter', ':domain', ':api-tmdb', ':shared-views'

@@ -1,6 +1,7 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
 import com.github.charbgr.cliffhanger.R
+import com.github.charbgr.cliffhanger.api_tmdb.TmdbHelper
 import com.github.charbgr.cliffhanger.domain.FullMovie
 import com.github.charbgr.cliffhanger.features.detail.MovieDetailActivity
 import com.github.charbgr.cliffhanger.features.error.NavigateToError
@@ -44,8 +45,8 @@ internal open class UiBinder(
   }
 
   private fun bindImages(movie: FullMovie) {
-    movieDetailActivity.poster.bindPoster(movie)
-    movieDetailActivity.backdrop.bindBackdrop(movie)
+    movieDetailActivity.poster.bindPoster(TmdbHelper.bestPoster(movie.posterPath))
+    movieDetailActivity.backdrop.bindBackdrop(TmdbHelper.bestBackdrop(movie.backdropPath))
   }
 
   private fun bindDirector(movie: FullMovie) {
