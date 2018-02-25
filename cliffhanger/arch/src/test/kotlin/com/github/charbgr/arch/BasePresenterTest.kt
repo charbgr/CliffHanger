@@ -1,10 +1,9 @@
-package com.github.charbgr.cliffhanger.shared.arch
+package com.github.charbgr.arch
 
-import com.github.charbgr.cliffhanger.UnitTest
 import org.junit.Test
 import kotlin.test.assertTrue
 
-class BasePresenterTest : UnitTest() {
+class BasePresenterTest {
 
   @Test
   fun test_init_view() {

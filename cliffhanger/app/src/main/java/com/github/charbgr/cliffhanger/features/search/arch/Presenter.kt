@@ -1,15 +1,16 @@
 package com.github.charbgr.cliffhanger.features.search.arch
 
+import com.github.charbgr.arch.MviPresenter
+import com.github.charbgr.arch.SchedulerProvider
+import com.github.charbgr.arch.UseCaseObserver.RxObservable
 import com.github.charbgr.cliffhanger.features.search.arch.SearchMovieUseCase.Params
-import com.github.charbgr.cliffhanger.shared.arch.MviPresenter
-import com.github.charbgr.cliffhanger.shared.arch.SchedulerProvider
-import com.github.charbgr.cliffhanger.shared.arch.UseCaseObserver.RxObservable
+import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 
 internal class Presenter(
-    private val schedulers: SchedulerProvider = SchedulerProvider.Default,
+    private val schedulers: SchedulerProvider = AndroidSchedulerProvider,
     private val searchUseCase: SearchMovieUseCase = SearchMovieUseCase()
 ) : MviPresenter<View, Pair<PartialChange, ViewModel>>() {
 

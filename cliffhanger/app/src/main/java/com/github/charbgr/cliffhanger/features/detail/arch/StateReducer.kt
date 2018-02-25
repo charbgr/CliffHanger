@@ -1,10 +1,10 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
+import com.github.charbgr.arch.BaseStateReducer
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Failed
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.InProgress
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Initial
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Success
-import com.github.charbgr.cliffhanger.shared.arch.BaseStateReducer
 
 internal class StateReducer: BaseStateReducer<PartialChange, ViewModel>() {
 

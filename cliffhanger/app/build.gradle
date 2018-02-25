@@ -78,6 +78,9 @@ dependencies {
   kapt deps.dagger.compiler
   kapt deps.dagger.android.compiler
 
+  // Modules
+  implementation project(':arch')
+
 
   // Unit/Integration tests dependencies
   testImplementation unitTestDependencies.kotlinTest

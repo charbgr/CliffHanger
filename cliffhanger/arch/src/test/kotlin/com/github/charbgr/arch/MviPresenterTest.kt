@@ -1,12 +1,11 @@
-package com.github.charbgr.cliffhanger.shared.arch
+package com.github.charbgr.arch
 
-import com.github.charbgr.cliffhanger.UnitTest
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import org.junit.Test
 import kotlin.test.assertTrue
 
-class MviPresenterTest : UnitTest() {
+class MviPresenterTest {
 
   @Test
   fun test_creating_null_intent() {

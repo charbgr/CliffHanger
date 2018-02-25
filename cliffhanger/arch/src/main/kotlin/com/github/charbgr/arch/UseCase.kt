@@ -1,5 +1,6 @@
 package com.github.charbgr.cliffhanger.shared.arch
 
+import com.github.charbgr.arch.UseCaseObserver
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Observable

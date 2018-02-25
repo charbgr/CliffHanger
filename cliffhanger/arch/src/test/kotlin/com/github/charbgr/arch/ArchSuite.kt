@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.shared.arch
+package com.github.charbgr.arch
 
 import org.junit.runner.RunWith
 import org.junit.runners.Suite

@@ -1,6 +1,10 @@
-package com.github.charbgr.cliffhanger.shared.arch
+package com.github.charbgr.arch
 
-import com.github.charbgr.cliffhanger.UnitTest
+import com.github.charbgr.cliffhanger.shared.arch.UseCase
+import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxCompletable
+import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxFlowable
+import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxObservable
+import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxSingle
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -9,7 +13,7 @@ import org.junit.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class UseCaseTest : UnitTest() {
+class UseCaseTest {
 
   @Test
   fun test_dispose_on_single_use_case() {
@@ -48,21 +52,21 @@ class UseCaseTest : UnitTest() {
 
 
   private class TestUseCaseRxSingleObserver : UseCaseObserver.RxSingle<String>()
-  private class TestRxSingleUseCase : UseCase.RxSingle<String, Unit>() {
+  private class TestRxSingleUseCase : RxSingle<String, Unit>() {
     override fun build(params: Unit): Single<String> = Single.just("test")
   }
 
   private class TestUseCaseRxObservableObserver : UseCaseObserver.RxObservable<String>()
-  private class TestRxObservableUseCase : UseCase.RxObservable<String, Unit>() {
+  private class TestRxObservableUseCase : RxObservable<String, Unit>() {
     override fun build(params: Unit): Observable<String> = Observable.just("test")
   }
 
   private class TestUseCaseRxFlowableObserver : UseCaseObserver.RxFlowable<String>()
-  private class TestRxFlowableUseCase : UseCase.RxFlowable<String, Unit>() {
+  private class TestRxFlowableUseCase : RxFlowable<String, Unit>() {
     override fun build(params: Unit): Flowable<String> = Flowable.just("test")
   }
 
-  private class TestUseCaseRxCompletable : UseCase.RxCompletable<Unit>() {
+  private class TestUseCaseRxCompletable : RxCompletable<Unit>() {
     override fun build(params: Unit): Completable = Completable.complete()
   }
 }

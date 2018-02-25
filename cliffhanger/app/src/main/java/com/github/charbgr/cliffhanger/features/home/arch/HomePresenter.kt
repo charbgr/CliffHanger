@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
+import com.github.charbgr.arch.MviPresenter
 import com.github.charbgr.cliffhanger.features.home.arch.state.HomeStateReducer
-import com.github.charbgr.cliffhanger.shared.arch.MviPresenter
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

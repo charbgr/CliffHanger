@@ -3,7 +3,7 @@ package com.github.charbgr.cliffhanger.network.tmdb
 import com.github.charbgr.cliffhanger.BuildConfig
 import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieDAO
 import com.github.charbgr.cliffhanger.network.tmdb.dao.SearchDAO
-import com.github.charbgr.cliffhanger.shared.arch.SchedulerProvider
+import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
 import io.reactivex.Scheduler
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -17,7 +17,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class TmdbAPI private constructor(scheduler: Scheduler) {
 
   companion object {
-    fun create(scheduler: Scheduler = SchedulerProvider.Default.io()): TmdbAPI {
+    fun create(scheduler: Scheduler = AndroidSchedulerProvider.io()): TmdbAPI {
       return TmdbAPI(scheduler)
     }
   }

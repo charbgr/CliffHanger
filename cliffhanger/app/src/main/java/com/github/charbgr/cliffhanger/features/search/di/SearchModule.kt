@@ -1,11 +1,12 @@
 package com.github.charbgr.cliffhanger.features.search.di
 
+import com.github.charbgr.arch.SchedulerProvider
 import com.github.charbgr.cliffhanger.features.search.SearchController
 import com.github.charbgr.cliffhanger.features.search.arch.Presenter
 import com.github.charbgr.cliffhanger.features.search.arch.SearchMovieUseCase
 import com.github.charbgr.cliffhanger.features.search.arch.UiBinder
 import com.github.charbgr.cliffhanger.features.search.arch.View
-import com.github.charbgr.cliffhanger.shared.arch.SchedulerProvider
+import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
 import dagger.Module
 import dagger.Provides
 
@@ -27,7 +28,7 @@ object SearchModule {
 
   @Provides
   @JvmStatic
-  internal fun providesSchedulers(): SchedulerProvider = SchedulerProvider.Default
+  internal fun providesSchedulers(): SchedulerProvider = AndroidSchedulerProvider
 
   @Provides
   @JvmStatic

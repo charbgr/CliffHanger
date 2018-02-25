@@ -1,16 +1,15 @@
-package com.github.charbgr.cliffhanger.shared.arch
+package com.github.charbgr.arch
 
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.subscribers.DisposableSubscriber
-import timber.log.Timber
 
 object UseCaseObserver {
 
   open class RxSingle<T> : DisposableSingleObserver<T>() {
     override fun onSuccess(value: T) {}
     override fun onError(e: Throwable) {
-      Timber.e(e)
+//      Timber.e(e)
     }
   }
 
@@ -18,7 +17,7 @@ object UseCaseObserver {
     override fun onComplete() {}
     override fun onNext(value: T) {}
     override fun onError(e: Throwable) {
-      Timber.e(e)
+//      Timber.e(e)
     }
   }
 
@@ -26,7 +25,7 @@ object UseCaseObserver {
     override fun onComplete() {}
     override fun onNext(value: T) {}
     override fun onError(e: Throwable) {
-      Timber.e(e)
+//      Timber.e(e)
     }
   }
 

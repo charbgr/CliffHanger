@@ -1,12 +1,12 @@
 package com.github.charbgr.cliffhanger.features.browser.arch
 
+import com.github.charbgr.arch.MviPresenter
+import com.github.charbgr.arch.UseCaseObserver
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.features.browser.arch.interactor.MovieBrowserInteractor
 import com.github.charbgr.cliffhanger.features.browser.arch.interactor.MovieBrowserInteractorFactory
 import com.github.charbgr.cliffhanger.features.browser.arch.state.PartialChange
 import com.github.charbgr.cliffhanger.features.browser.arch.state.StateReducer
-import com.github.charbgr.cliffhanger.shared.arch.MviPresenter
-import com.github.charbgr.cliffhanger.shared.arch.UseCaseObserver
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

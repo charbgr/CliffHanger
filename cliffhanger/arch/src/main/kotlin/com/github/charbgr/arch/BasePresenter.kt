@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.shared.arch
+package com.github.charbgr.arch
 
 import java.lang.ref.WeakReference
 

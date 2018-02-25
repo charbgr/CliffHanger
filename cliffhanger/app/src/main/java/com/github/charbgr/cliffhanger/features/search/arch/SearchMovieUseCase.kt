@@ -5,12 +5,13 @@ import com.github.charbgr.cliffhanger.features.detail.arch.MovieRepository.Netwo
 import com.github.charbgr.cliffhanger.features.search.arch.SearchMovieUseCase.Params
 import com.github.charbgr.cliffhanger.network.tmdb.TmdbAPI
 import com.github.charbgr.cliffhanger.network.tmdb.entity.SearchResultsEntityMapper
-import com.github.charbgr.cliffhanger.shared.arch.SchedulerProvider.Default
 import com.github.charbgr.cliffhanger.shared.arch.UseCase
+import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
 import io.reactivex.Observable
 
 internal class SearchMovieUseCase(
-    private val movieRepository: MovieRepository = Network(TmdbAPI.create(Default.io()))
+    private val movieRepository: MovieRepository = Network(
+        TmdbAPI.create(AndroidSchedulerProvider.io()))
 ) : UseCase.RxObservable<PartialChange, Params>() {
 
   override fun build(params: Params): Observable<PartialChange> {

@@ -1,11 +1,12 @@
 package com.github.charbgr.cliffhanger.features.detail.di
 
+import com.github.charbgr.arch.SchedulerProvider
 import com.github.charbgr.cliffhanger.features.detail.MovieDetailActivity
 import com.github.charbgr.cliffhanger.features.detail.arch.GetMovieUseCase
-import com.github.charbgr.cliffhanger.features.detail.arch.UiBinder
 import com.github.charbgr.cliffhanger.features.detail.arch.Presenter
+import com.github.charbgr.cliffhanger.features.detail.arch.UiBinder
 import com.github.charbgr.cliffhanger.features.detail.arch.View
-import com.github.charbgr.cliffhanger.shared.arch.SchedulerProvider
+import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
 import dagger.Module
 import dagger.Provides
 
@@ -27,7 +28,7 @@ internal object MovieDetailModule {
 
   @Provides
   @JvmStatic
-  internal fun providesSchedulers(): SchedulerProvider = SchedulerProvider.Default
+  internal fun providesSchedulers(): SchedulerProvider = AndroidSchedulerProvider
 
   @Provides
   @JvmStatic
