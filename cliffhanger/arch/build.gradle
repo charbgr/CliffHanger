@@ -17,7 +17,7 @@ dependencies {
   def unitTestDependencies = rootProject.ext.unitTesting
 
   implementation deps.rxKotlin
-  implementation deps.timber
+  api deps.timber
 
   testImplementation unitTestDependencies.kotlinTest
 }

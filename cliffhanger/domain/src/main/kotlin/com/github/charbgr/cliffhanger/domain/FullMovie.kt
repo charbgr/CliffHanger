@@ -1,6 +1,5 @@
 package com.github.charbgr.cliffhanger.domain
 
-import com.github.charbgr.cliffhanger.shared.extensions.empty
 
 data class FullMovie(
     val tmdbId: Int,
@@ -22,7 +21,7 @@ data class FullMovie(
     try {
       releaseDate.split('-').first()
     } catch (ignored: NoSuchElementException) {
-      String.empty()
+      ""
     }
   }
 

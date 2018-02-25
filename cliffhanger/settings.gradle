@@ -1,1 +1,1 @@
-include ':app', ':arch', ':baseadapter'
+include ':app', ':arch', ':baseadapter', ':domain'
