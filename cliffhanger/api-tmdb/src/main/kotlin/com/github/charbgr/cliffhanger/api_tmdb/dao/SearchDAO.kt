@@ -1,6 +1,6 @@
-package com.github.charbgr.cliffhanger.network.tmdb.dao
+package com.github.charbgr.cliffhanger.api_tmdb.dao
 
-import com.github.charbgr.cliffhanger.network.tmdb.Routes
+import com.github.charbgr.cliffhanger.api_tmdb.Routes
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

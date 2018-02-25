@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.network.tmdb.entity
+package com.github.charbgr.cliffhanger.api_tmdb.entity
 
 import com.squareup.moshi.Json
 

@@ -2,9 +2,9 @@ package com.github.charbgr.cliffhanger.shared.views.imageview
 
 import android.content.Context
 import android.util.AttributeSet
+import com.github.charbgr.cliffhanger.api_tmdb.TmdbHelper
 import com.github.charbgr.cliffhanger.domain.FullMovie
 import com.github.charbgr.cliffhanger.domain.MiniMovie
-import com.github.charbgr.cliffhanger.network.tmdb.TmdbHelper
 
 class MovieImageView : BaseImageView {
   constructor(context: Context?) : super(context)

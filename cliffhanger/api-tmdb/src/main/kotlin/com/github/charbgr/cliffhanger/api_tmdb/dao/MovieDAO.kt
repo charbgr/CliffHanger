@@ -1,8 +1,8 @@
-package com.github.charbgr.cliffhanger.network.tmdb.dao
+package com.github.charbgr.cliffhanger.api_tmdb.dao
 
-import com.github.charbgr.cliffhanger.network.tmdb.Routes
-import com.github.charbgr.cliffhanger.network.tmdb.entity.FullMovieEntity
-import com.github.charbgr.cliffhanger.network.tmdb.entity.SearchResultsEntity
+import com.github.charbgr.cliffhanger.api_tmdb.Routes
+import com.github.charbgr.cliffhanger.api_tmdb.entity.FullMovieEntity
+import com.github.charbgr.cliffhanger.api_tmdb.entity.SearchResultsEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET

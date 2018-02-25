@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.network.tmdb
+package com.github.charbgr.cliffhanger.api_tmdb
 
 object Routes {
 

@@ -1,6 +1,6 @@
-package com.github.charbgr.cliffhanger.network.tmdb.dao
+package com.github.charbgr.cliffhanger.api_tmdb.dao
 
-import com.github.charbgr.cliffhanger.network.tmdb.entity.MiniMovieEntity
+import com.github.charbgr.cliffhanger.api_tmdb.entity.MiniMovieEntity
 import com.squareup.moshi.Json
 
 data class MovieResults(

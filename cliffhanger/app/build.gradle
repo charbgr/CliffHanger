@@ -79,6 +79,7 @@ dependencies {
   kapt deps.dagger.android.compiler
 
   // Modules
+  implementation project(':api-tmdb')
   implementation project(':arch')
   implementation project(':baseadapter')
   implementation project(':domain')

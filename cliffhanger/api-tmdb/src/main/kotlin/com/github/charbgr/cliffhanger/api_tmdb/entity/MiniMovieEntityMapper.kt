@@ -1,16 +1,15 @@
-package com.github.charbgr.cliffhanger.network.tmdb.entity
+package com.github.charbgr.cliffhanger.api_tmdb.entity
 
 import com.github.charbgr.cliffhanger.domain.MiniMovie
-import com.github.charbgr.cliffhanger.shared.extensions.empty
 
 object MiniMovieEntityMapper {
 
   fun transform(entity: MiniMovieEntity): MiniMovie {
     return MiniMovie(
         tmdbId = entity.id!!,
-        title = entity.title ?: String.empty(),
-        posterPath = entity.posterPath ?: String.empty(),
-        backdropPath = entity.backdropPath ?: String.empty()
+        title = entity.title ?: "",
+        posterPath = entity.posterPath ?: "",
+        backdropPath = entity.backdropPath ?: ""
     )
   }
 

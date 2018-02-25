@@ -1,5 +1,9 @@
 package com.github.charbgr.cliffhanger.features.home.arch
 
+import com.github.charbgr.cliffhanger.BuildConfig
+import com.github.charbgr.cliffhanger.api_tmdb.TmdbAPI
+import com.github.charbgr.cliffhanger.api_tmdb.dao.MovieResults
+import com.github.charbgr.cliffhanger.api_tmdb.entity.MiniMovieEntityMapper.transform
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
@@ -9,15 +13,12 @@ import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange
 import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Failed
 import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Loaded
 import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Loading
-import com.github.charbgr.cliffhanger.network.tmdb.TmdbAPI
-import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieResults
-import com.github.charbgr.cliffhanger.network.tmdb.entity.MiniMovieEntityMapper.transform
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
 class DefaultHomeInteractor : HomeInteractor {
 
-  private val tmdbAPI: TmdbAPI = TmdbAPI.create(Schedulers.io())
+  private val tmdbAPI: TmdbAPI = TmdbAPI(BuildConfig.TMDB_API_KEY, Schedulers.io())
 
   override fun loadTopRatedMovies(): Observable<PartialChange> {
     return tmdbAPI.movieDAO.topRatedMovies(1)

@@ -1,9 +1,7 @@
-package com.github.charbgr.cliffhanger.network.tmdb
+package com.github.charbgr.cliffhanger.api_tmdb
 
-import com.github.charbgr.cliffhanger.BuildConfig
-import com.github.charbgr.cliffhanger.network.tmdb.dao.MovieDAO
-import com.github.charbgr.cliffhanger.network.tmdb.dao.SearchDAO
-import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
+import com.github.charbgr.cliffhanger.api_tmdb.dao.MovieDAO
+import com.github.charbgr.cliffhanger.api_tmdb.dao.SearchDAO
 import io.reactivex.Scheduler
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,13 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 
-class TmdbAPI private constructor(scheduler: Scheduler) {
-
-  companion object {
-    fun create(scheduler: Scheduler = AndroidSchedulerProvider.io()): TmdbAPI {
-      return TmdbAPI(scheduler)
-    }
-  }
+class TmdbAPI(private val apiKey: String, scheduler: Scheduler) {
 
   val retrofit: Retrofit by lazy {
 
@@ -52,7 +44,7 @@ class TmdbAPI private constructor(scheduler: Scheduler) {
     val request = it.request()
     val requestBuilder = request.newBuilder()
     val urlHttpBuilder = request.url().newBuilder()
-    urlHttpBuilder.addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
+    urlHttpBuilder.addQueryParameter("api_key", apiKey)
 
     val newRequest = requestBuilder.url(urlHttpBuilder.build()).build()
 

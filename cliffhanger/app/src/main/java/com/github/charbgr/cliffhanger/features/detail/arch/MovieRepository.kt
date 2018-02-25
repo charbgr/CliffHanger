@@ -1,8 +1,8 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
-import com.github.charbgr.cliffhanger.network.tmdb.TmdbAPI
-import com.github.charbgr.cliffhanger.network.tmdb.entity.FullMovieEntity
-import com.github.charbgr.cliffhanger.network.tmdb.entity.SearchResultsEntity
+import com.github.charbgr.cliffhanger.api_tmdb.TmdbAPI
+import com.github.charbgr.cliffhanger.api_tmdb.entity.FullMovieEntity
+import com.github.charbgr.cliffhanger.api_tmdb.entity.SearchResultsEntity
 import io.reactivex.Single
 
 interface MovieRepository {
