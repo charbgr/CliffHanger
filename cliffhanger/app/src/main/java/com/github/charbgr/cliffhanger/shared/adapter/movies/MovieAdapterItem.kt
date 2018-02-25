@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.shared.adapter.movies
 
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.shared.adapter.BaseRvItem
+import com.github.charbgr.baseadapter.BaseRvItem
 
 interface MovieAdapterItem : BaseRvItem {
 

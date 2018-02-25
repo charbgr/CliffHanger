@@ -7,13 +7,13 @@ import android.support.v7.widget.RecyclerView.ItemDecoration
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.github.charbgr.baseadapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.features.browser.NavigateToBrowser
 import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
-import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapter
-import com.github.charbgr.cliffhanger.shared.extensions.render
 import com.github.charbgr.cliffhanger.shared.extensions.addSpacing
+import com.github.charbgr.cliffhanger.shared.extensions.render
 
 class MovieGroupAdapter(
     private val sharedRvPool: RecyclerView.RecycledViewPool) : BaseRvAdapter<MovieGroupItem>() {

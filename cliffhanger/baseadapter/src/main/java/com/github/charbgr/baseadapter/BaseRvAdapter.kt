@@ -1,9 +1,9 @@
-package com.github.charbgr.cliffhanger.shared.adapter
+package com.github.charbgr.baseadapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 
-abstract class BaseRvAdapter<T: BaseRvItem> : RecyclerView.Adapter<BaseRvAdapter<T>.BaseViewHolder>() {
+abstract class BaseRvAdapter<T : BaseRvItem> : RecyclerView.Adapter<BaseRvAdapter<T>.BaseViewHolder>() {
 
   val itemList: MutableList<T> = mutableListOf()
 
@@ -50,10 +50,11 @@ abstract class BaseRvAdapter<T: BaseRvItem> : RecyclerView.Adapter<BaseRvAdapter
   }
 
   protected fun throwUnsupportedViewType(viewType: Int): BaseViewHolder {
-    throw IllegalStateException("Unsupported viewtype: $viewType. Did you forget to declare a ViewHolder??")
+    throw IllegalStateException(
+        "Unsupported viewtype: $viewType. Did you forget to declare a ViewHolder??")
   }
 
-  inner abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+  abstract inner class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(item: T, position: Int)
     abstract fun clear()
   }

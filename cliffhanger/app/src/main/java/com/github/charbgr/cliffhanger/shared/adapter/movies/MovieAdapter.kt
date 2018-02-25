@@ -5,9 +5,9 @@ import android.support.constraint.ConstraintSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.github.charbgr.baseadapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.features.detail.NavigateToMovieDetail
-import com.github.charbgr.cliffhanger.shared.adapter.BaseRvAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapterItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.extensions.render
 import com.github.charbgr.cliffhanger.shared.views.imageview.MovieImageView

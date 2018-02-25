@@ -80,6 +80,7 @@ dependencies {
 
   // Modules
   implementation project(':arch')
+  implementation project(':baseadapter')
 
 
   // Unit/Integration tests dependencies

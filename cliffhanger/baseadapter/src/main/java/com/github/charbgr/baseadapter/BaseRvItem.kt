@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.shared.adapter
+package com.github.charbgr.baseadapter
 
 interface BaseRvItem {
   fun getItemViewType(): Int
