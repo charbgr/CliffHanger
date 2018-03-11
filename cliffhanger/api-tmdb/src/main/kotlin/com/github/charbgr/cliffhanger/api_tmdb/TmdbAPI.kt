@@ -12,7 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 
-class TmdbAPI(private val apiKey: String, scheduler: Scheduler) {
+class TmdbAPI(scheduler: Scheduler) {
 
   val retrofit: Retrofit by lazy {
 
@@ -44,7 +44,7 @@ class TmdbAPI(private val apiKey: String, scheduler: Scheduler) {
     val request = it.request()
     val requestBuilder = request.newBuilder()
     val urlHttpBuilder = request.url().newBuilder()
-    urlHttpBuilder.addQueryParameter("api_key", apiKey)
+    urlHttpBuilder.addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
 
     val newRequest = requestBuilder.url(urlHttpBuilder.build()).build()
 

@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.charbgr.cliffhanger.features.detail">
+
+  <application>
+
+    <activity
+        android:name=".MovieDetailActivity"
+        android:theme="@style/CliffHanger"/>
+  </application>
+
+
+</manifest>

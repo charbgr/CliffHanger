@@ -19,7 +19,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      tools:src="@drawable/moonlight"/>
+      tools:src="@tools:sample/avatars"/>
 
   <View
       android:id="@+id/movie_detail_backdrop_shadow"

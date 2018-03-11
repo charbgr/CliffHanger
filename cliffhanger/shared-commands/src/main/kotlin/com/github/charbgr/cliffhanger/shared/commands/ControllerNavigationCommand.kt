@@ -6,19 +6,18 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.charbgr.cliffhanger.R
 import timber.log.Timber
 
 abstract class ControllerNavigationCommand(protected val context: Context) : Command {
 
   @IdRes
-  private var containerId: Int = R.id.controller_container
+  private var containerId: Int = 0
 
   fun withContainer(@IdRes containerId: Int) = apply {
     this.containerId = containerId
   }
 
-  abstract protected fun getController(layoutInflater: LayoutInflater): View
+  protected abstract fun getController(layoutInflater: LayoutInflater): View
 
   override fun execute() {
     if (context !is AppCompatActivity) {

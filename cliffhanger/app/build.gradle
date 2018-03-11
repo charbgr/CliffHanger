@@ -38,9 +38,6 @@ android {
     }
   }
 
-  sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-  }
 }
 
 
@@ -83,6 +80,9 @@ dependencies {
   implementation project(':arch')
   implementation project(':baseadapter')
   implementation project(':domain')
+  implementation project(':feature-movie-detail')
+  implementation project(':shared-commands')
+  implementation project(':shared-extensions')
   implementation project(':shared-views')
 
 

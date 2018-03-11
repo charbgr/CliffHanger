@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="white">#ffffff</color>
+  <color name="red">#e33a14</color>
+  <color name="gray_10">#1a1a1a</color>
+  <color name="gray_46">#757575</color>
+
+  <color name="colorPrimary">@color/white</color>
+  <color name="colorPrimaryDark">@color/gray_10</color>
+  <color name="colorAccent">#44dd44</color>
+
+  <color name="bottom_navigation_enabled">@color/gray_10</color>
+  <color name="bottom_navigation_disabled">@color/gray_46</color>
+
+  <color name="common_gradient">#4D323232</color>
+
+  <color name="background_dark">#ff333333</color>
+
+  <color name="movie_backdrop_gradient_start">@color/background_dark</color>
+  <color name="movie_backdrop_gradient_end">#1A333333</color> <!-- 15% of background dark-->
+
+  <color name="badge_search">@color/gray_46</color>
+</resources>

@@ -13,6 +13,11 @@ android {
   }
 
   buildTypes {
+    libraryVariants.all { variant ->
+      def secrets = rootProject.getSecrets()
+      variant.buildConfigField "String", "TMDB_API_KEY", secrets['TMDB_API_KEY']
+    }
+
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

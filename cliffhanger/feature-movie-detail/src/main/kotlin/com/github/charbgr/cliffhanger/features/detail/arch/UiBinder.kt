@@ -1,10 +1,9 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
-import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.api_tmdb.TmdbHelper
 import com.github.charbgr.cliffhanger.domain.FullMovie
 import com.github.charbgr.cliffhanger.features.detail.MovieDetailActivity
-import com.github.charbgr.cliffhanger.features.error.NavigateToError
+import com.github.charbgr.cliffhanger.features.detail.R
 import com.github.charbgr.cliffhanger.shared.extensions.visibleOrGone
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -25,9 +24,9 @@ internal open class UiBinder(
     movieDetailActivity.progressBar.visibleOrGone(viewModel.showLoader)
 
     if (viewModel.showError) {
-      NavigateToError(movieDetailActivity)
-          .closeCurrentActivity()
-          .execute()
+//      NavigateToError(movieDetailActivity)
+//          .closeCurrentActivity()
+//          .execute()
     }
 
     if (viewModel.showMovie) {
