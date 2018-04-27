@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.test_factories
 
+import com.github.charbgr.cliffhanger.api_tmdb.entity.MiniMovieEntity
 import com.github.charbgr.cliffhanger.domain.MiniMovie
-import com.github.charbgr.cliffhanger.network.tmdb.entity.MiniMovieEntity
 
 object MiniMovieFactory {
 

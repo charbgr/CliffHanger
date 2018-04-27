@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.features.detail.arch
 
 import com.github.charbgr.cliffhanger.UnitTest
-import com.github.charbgr.cliffhanger.network.tmdb.entity.FullMovieEntity
+import com.github.charbgr.cliffhanger.api_tmdb.entity.FullMovieEntity
 import com.github.charbgr.cliffhanger.test_factories.MockMovieRepository
 import com.github.charbgr.cliffhanger.test_factories.MovieFactory
 import org.junit.Test

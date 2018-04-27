@@ -21,15 +21,6 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-
-    <activity
-        android:name=".features.detail.MovieDetailActivity"
-        android:theme="@style/CliffHanger"/>
-
-    <activity
-        android:name=".features.error.ErrorActivity"
-        android:theme="@style/CliffHanger"/>
-
   </application>
 
 </manifest>

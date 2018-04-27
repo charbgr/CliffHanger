@@ -1,5 +1,7 @@
 package com.github.charbgr.cliffhanger.shared.arch
 
+import com.github.charbgr.arch.MviPresenter
+import com.github.charbgr.arch.View
 import com.github.charbgr.cliffhanger.UnitTest
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject

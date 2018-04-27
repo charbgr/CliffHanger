@@ -38,9 +38,6 @@ android {
     }
   }
 
-  sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-  }
 }
 
 
@@ -53,33 +50,26 @@ dependencies {
   implementation deps.design
   implementation deps.constraintLayout
 
-  // Reactive
-  implementation deps.rxJava
-  implementation deps.rxKotlin
-  implementation deps.rxAndroid
-  implementation deps.rxBinding
-  implementation deps.rxBindingDesign
-  implementation deps.rxBindingRecycler
-
-  // Misc
-  implementation deps.kotlin
-  implementation deps.retrofit
-  implementation deps.retrofitAdapter
-  implementation deps.retrofitConverter
-  implementation deps.okhttpInterceptor
-  implementation deps.timber
-  implementation deps.glide
-  implementation deps.lottie
-
-  // Dagger
-  implementation deps.dagger.runtime
-  implementation deps.dagger.android.runtime
-  implementation deps.dagger.android.supportRuntime
-  kapt deps.dagger.compiler
-  kapt deps.dagger.android.compiler
+  // Modules
+  implementation project(':api-tmdb')
+  implementation project(':arch')
+  implementation project(':baseadapter')
+  implementation project(':domain')
+  implementation project(':feature-browser')
+  implementation project(':feature-error')
+  implementation project(':feature-home')
+  implementation project(':feature-movie-detail')
+  implementation project(':feature-search')
+  implementation project(':shared-commands')
+  implementation project(':shared-extensions')
+  implementation project(':shared-framework')
+  implementation project(':shared-movie-adapter')
+  implementation project(':shared-resources')
+  implementation project(':shared-views')
 
 
   // Unit/Integration tests dependencies
+  testImplementation deps.rxJava
   testImplementation unitTestDependencies.kotlinTest
   testImplementation unitTestDependencies.mockitoKotlin
   testImplementation unitTestDependencies.kluent

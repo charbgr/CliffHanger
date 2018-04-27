@@ -1,6 +1,6 @@
 package com.github.charbgr.cliffhanger
 
-import com.github.charbgr.cliffhanger.shared.arch.SchedulerProvider
+import com.github.charbgr.arch.SchedulerProvider
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 

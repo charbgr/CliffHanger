@@ -1,5 +1,7 @@
 package com.github.charbgr.cliffhanger.shared.arch
 
+import com.github.charbgr.arch.BasePresenter
+import com.github.charbgr.arch.View
 import com.github.charbgr.cliffhanger.UnitTest
 import org.junit.Test
 import kotlin.test.assertTrue
