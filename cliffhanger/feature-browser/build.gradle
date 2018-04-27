@@ -42,13 +42,6 @@ dependencies {
   implementation project(':shared-extensions')
   implementation project(':shared-views')
 
-  // Dagger
-  implementation deps.dagger.runtime
-  implementation deps.dagger.android.runtime
-  implementation deps.dagger.android.supportRuntime
-  kapt deps.dagger.compiler
-  kapt deps.dagger.android.compiler
-
   testImplementation unitTestDependencies.kotlinTest
 
 }

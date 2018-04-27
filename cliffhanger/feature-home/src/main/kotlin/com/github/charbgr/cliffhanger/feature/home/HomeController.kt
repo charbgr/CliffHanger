@@ -12,16 +12,12 @@ import com.github.charbgr.cliffhanger.feature.home.arch.HomePresenter
 import com.github.charbgr.cliffhanger.feature.home.arch.HomeUiBinder
 import com.github.charbgr.cliffhanger.feature.home.arch.HomeView
 import com.github.charbgr.cliffhanger.feature.home.arch.HomeViewModel
-import javax.inject.Inject
 
 class HomeController : ConstraintLayout, HomeView {
 
   companion object {
-    fun inflateWith(
-      inflater: LayoutInflater,
-      parent: ViewGroup? = null,
-      attachToRoot: Boolean = false
-    ): HomeController {
+    fun inflateWith(inflater: LayoutInflater, parent: ViewGroup? = null,
+        attachToRoot: Boolean = false): HomeController {
       return inflater.inflate(R.layout.controller_home, parent, attachToRoot) as HomeController
     }
   }
@@ -31,16 +27,15 @@ class HomeController : ConstraintLayout, HomeView {
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
       defStyleAttr)
 
+
   lateinit var search: TextView
     private set
 
   lateinit var movieList: RecyclerView
     private set
 
-  @Inject
-  lateinit var uiBinder: HomeUiBinder
 
-  @Inject
+  lateinit var uiBinder: HomeUiBinder
   lateinit var presenter: HomePresenter
 
   override fun onFinishInflate() {
