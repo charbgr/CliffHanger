@@ -3,13 +3,13 @@ package com.github.charbgr.cliffhanger.features.search.arch
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
 import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.features.error.NavigateToError
 import com.github.charbgr.cliffhanger.features.search.SearchController
 import com.github.charbgr.cliffhanger.features.search.arch.PartialChange.Failed
 import com.github.charbgr.cliffhanger.features.search.arch.PartialChange.Success
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieAdapter
 import com.github.charbgr.cliffhanger.shared.adapter.movies.MovieListViewModel
 import com.github.charbgr.cliffhanger.shared.extensions.visibleOrGone
+import com.github.charbgr.feature.error.NavigateToError
 import com.jakewharton.rxbinding2.widget.textChanges
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit.MILLISECONDS

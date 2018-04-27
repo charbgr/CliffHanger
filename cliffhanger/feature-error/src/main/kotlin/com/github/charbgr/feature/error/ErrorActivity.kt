@@ -1,8 +1,7 @@
-package com.github.charbgr.cliffhanger.features.error
+package com.github.charbgr.feature.error
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.github.charbgr.cliffhanger.R
 
 class ErrorActivity : AppCompatActivity() {
 

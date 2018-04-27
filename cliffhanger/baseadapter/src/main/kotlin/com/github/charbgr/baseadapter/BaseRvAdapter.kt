@@ -9,12 +9,12 @@ abstract class BaseRvAdapter<T : BaseRvItem> : RecyclerView.Adapter<BaseRvAdapte
 
   override fun getItemCount(): Int = itemList.size
 
-  override fun onBindViewHolder(holder: BaseViewHolder?, position: Int) {
+  override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
     val item = getItemAt(position)
     if (item != null) {
-      holder?.bind(item, position)
+      holder.bind(item, position)
     } else {
-      holder?.clear()
+      holder.clear()
     }
   }
 

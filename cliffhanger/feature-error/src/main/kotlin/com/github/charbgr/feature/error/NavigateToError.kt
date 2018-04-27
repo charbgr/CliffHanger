@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.error
+package com.github.charbgr.feature.error
 
 import android.content.Context
 import android.content.Intent

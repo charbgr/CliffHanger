@@ -66,7 +66,6 @@ dependencies {
   implementation deps.okhttpInterceptor
   implementation deps.timber
   implementation deps.glide
-  implementation deps.lottie
 
   // Dagger
   implementation deps.dagger.runtime
@@ -81,6 +80,7 @@ dependencies {
   implementation project(':baseadapter')
   implementation project(':domain')
   implementation project(':feature-browser')
+  implementation project(':feature-error')
   implementation project(':feature-movie-detail')
   implementation project(':shared-commands')
   implementation project(':shared-extensions')
