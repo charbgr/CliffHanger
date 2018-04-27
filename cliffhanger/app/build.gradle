@@ -82,8 +82,10 @@ dependencies {
   implementation project(':feature-browser')
   implementation project(':feature-error')
   implementation project(':feature-movie-detail')
+  implementation project(':feature-search')
   implementation project(':shared-commands')
   implementation project(':shared-extensions')
+  implementation project(':shared-movie-adapter')
   implementation project(':shared-views')
 
 

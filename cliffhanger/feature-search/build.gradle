@@ -30,14 +30,19 @@ dependencies {
 
   implementation deps.appCompat
   implementation deps.constraintLayout
+  implementation deps.recyclerView
   implementation deps.kotlin
   implementation deps.rxKotlin
+  implementation deps.rxBinding
   implementation project(':arch')
   implementation project(':api-tmdb')
+  implementation project(':baseadapter')
   implementation project(':domain')
+  implementation project(':feature-error')
   implementation project(':shared-commands')
   implementation project(':shared-extensions')
   implementation project(':shared-framework')
+  implementation project(':shared-movie-adapter')
   implementation project(':shared-views')
 
   // Dagger

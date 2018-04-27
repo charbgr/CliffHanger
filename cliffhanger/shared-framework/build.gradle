@@ -28,24 +28,10 @@ dependencies {
   def deps = rootProject.ext.mainApplication
   def unitTestDependencies = rootProject.ext.unitTesting
 
-  implementation deps.appCompat
-  implementation deps.constraintLayout
   implementation deps.kotlin
   implementation deps.rxKotlin
-  implementation project(':arch')
   implementation project(':api-tmdb')
-  implementation project(':domain')
-  implementation project(':shared-commands')
-  implementation project(':shared-extensions')
-  implementation project(':shared-framework')
-  implementation project(':shared-views')
-
-  // Dagger
-  implementation deps.dagger.runtime
-  implementation deps.dagger.android.runtime
-  implementation deps.dagger.android.supportRuntime
-  kapt deps.dagger.compiler
-  kapt deps.dagger.android.compiler
+  implementation project(':arch')
 
   testImplementation unitTestDependencies.kotlinTest
 }
