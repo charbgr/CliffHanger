@@ -2,7 +2,7 @@ package com.github.charbgr.cliffhanger.features.detail.arch
 
 import com.github.charbgr.cliffhanger.domain.FullMovie
 
-internal data class ViewModel(
+data class ViewModel(
     val showLoader: Boolean,
     val showMovie: Boolean,
     val showError: Boolean,

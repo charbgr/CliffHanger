@@ -19,4 +19,7 @@ internal class MovieDetailRobot(internal val presenter: Presenter) {
     movieIntentPubSub.onNext(id)
   }
 
+  fun fireMovieIntent(throwable: Throwable) {
+    movieIntentPubSub.onError(throwable)
+  }
 }

@@ -8,7 +8,7 @@ import io.reactivex.Observable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 
-internal class Presenter(
+class Presenter(
     private val schedulers: SchedulerProvider = AndroidSchedulerProvider,
     private val movieUseCase: GetMovieUseCase = GetMovieUseCase()
 ) : MviPresenter<View, Pair<PartialChange, ViewModel>>() {

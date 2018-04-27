@@ -1,5 +1,7 @@
 package com.github.charbgr.cliffhanger.features.search.arch
 
+import com.github.charbgr.cliffhanger.feature.search.arch.Presenter
+import com.github.charbgr.cliffhanger.feature.search.arch.View
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 

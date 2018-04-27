@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.charbgr.feature.search.SearchController xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.charbgr.cliffhanger.feature.search.SearchController xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -40,4 +40,4 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/controller_search_search"/>
 
-</com.github.charbgr.feature.search.SearchController>
+</com.github.charbgr.cliffhanger.feature.search.SearchController>

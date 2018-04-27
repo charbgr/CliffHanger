@@ -1,2 +1,2 @@
-include ':app', ':arch', ':baseadapter', ':domain', ':api-tmdb', ':shared-views', ':feature-movie-detail', ':shared-commands', ':shared-extensions', ':feature-browser', ':feature-error', ':feature-search', ':shared-movie-adapter', ':feature-home',
+include ':app', ':arch', ':baseadapter', ':domain', ':api-tmdb', ':shared-views', ':feature-movie-detail', ':shared-commands', ':shared-extensions', ':feature-browser', ':feature-error', ':feature-search', ':shared-movie-adapter', ':feature-home', ':shared-resources',
     ':shared-framework'

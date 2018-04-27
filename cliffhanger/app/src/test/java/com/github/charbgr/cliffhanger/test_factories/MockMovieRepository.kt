@@ -2,7 +2,7 @@ package com.github.charbgr.cliffhanger.test_factories
 
 import com.github.charbgr.cliffhanger.api_tmdb.entity.FullMovieEntity
 import com.github.charbgr.cliffhanger.api_tmdb.entity.SearchResultsEntity
-import com.github.charbgr.cliffhanger.features.detail.arch.MovieRepository
+import com.github.charbgr.cliffhanger.shared.repository.MovieRepository
 import io.reactivex.Single
 
 class MockMovieRepository(

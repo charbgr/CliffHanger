@@ -11,7 +11,7 @@ import timber.log.Timber
 abstract class ControllerNavigationCommand(protected val context: Context) : Command {
 
   @IdRes
-  private var containerId: Int = 0
+  private var containerId: Int = R.id.controller_container
 
   fun withContainer(@IdRes containerId: Int) = apply {
     this.containerId = containerId

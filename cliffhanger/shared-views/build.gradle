@@ -30,4 +30,5 @@ dependencies {
   implementation deps.recyclerView
   implementation deps.kotlin
   implementation deps.glide
+  implementation project(':shared-resources')
 }

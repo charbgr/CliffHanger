@@ -45,6 +45,7 @@ dependencies {
   implementation project(':shared-extensions')
   implementation project(':shared-framework')
   implementation project(':shared-movie-adapter')
+  implementation project(':shared-resources')
   implementation project(':shared-views')
 
   // Dagger

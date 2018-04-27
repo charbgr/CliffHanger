@@ -10,7 +10,7 @@ import io.reactivex.rxkotlin.addTo
 
 abstract class UseCase<out Type, in Params> where Type : Any {
 
-  internal val disposable = CompositeDisposable()
+  val disposable = CompositeDisposable()
 
   fun dispose() = disposable.dispose()
 
