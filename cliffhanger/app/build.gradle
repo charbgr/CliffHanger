@@ -81,6 +81,7 @@ dependencies {
   implementation project(':domain')
   implementation project(':feature-browser')
   implementation project(':feature-error')
+  implementation project(':feature-home')
   implementation project(':feature-movie-detail')
   implementation project(':feature-search')
   implementation project(':shared-commands')

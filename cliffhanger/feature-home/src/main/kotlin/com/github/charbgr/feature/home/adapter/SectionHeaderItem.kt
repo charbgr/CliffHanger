@@ -1,13 +1,13 @@
-package com.github.charbgr.cliffhanger.features.home.adapter
+package com.github.charbgr.feature.home.adapter
 
 import android.content.Context
-import com.github.charbgr.cliffhanger.R
+import charbgr.github.com.feature_home.R
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
 import com.github.charbgr.cliffhanger.domain.MovieCategory.TopRated
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Upcoming
-import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
+import com.github.charbgr.feature.home.adapter.MovieGroupItem.ViewTypes
 
 class SectionHeaderItem(val context: Context, val movieCategory: MovieCategory) : MovieGroupItem {
 

@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home.adapter
+package com.github.charbgr.feature.home.adapter
 
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
@@ -7,12 +7,12 @@ import android.support.v7.widget.RecyclerView.ItemDecoration
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import charbgr.github.com.feature_home.R
 import com.github.charbgr.baseadapter.BaseRvAdapter
-import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem.ViewTypes
 import com.github.charbgr.cliffhanger.shared.extensions.addSpacing
 import com.github.charbgr.cliffhanger.shared.extensions.render
 import com.github.charbgr.feature.browser.NavigateToBrowser
+import com.github.charbgr.feature.home.adapter.MovieGroupItem.ViewTypes
 import com.github.charbgr.shared.movies.MovieAdapter
 
 class MovieGroupAdapter(
@@ -54,7 +54,8 @@ class MovieGroupAdapter(
         val lm = GridLayoutManager(context, gridColumns, GridLayoutManager.HORIZONTAL, false)
         lm.spanSizeLookup = object : SpanSizeLookup() {
           override fun getSpanSize(movieItemPosition: Int): Int {
-            return movieAdapter.getItemAt(movieItemPosition)?.getSpanSize(movieItemPosition) ?: gridColumns
+            return movieAdapter.getItemAt(movieItemPosition)?.getSpanSize(movieItemPosition)
+                ?: gridColumns
           }
         }
         layoutManager = lm

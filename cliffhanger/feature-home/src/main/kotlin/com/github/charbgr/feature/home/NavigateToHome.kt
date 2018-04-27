@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home
+package com.github.charbgr.feature.home
 
 import android.content.Context
 import android.view.LayoutInflater

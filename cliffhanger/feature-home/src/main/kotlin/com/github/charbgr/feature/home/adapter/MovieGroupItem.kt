@@ -1,7 +1,7 @@
-package com.github.charbgr.cliffhanger.features.home.adapter
+package com.github.charbgr.feature.home.adapter
 
+import charbgr.github.com.feature_home.R
 import com.github.charbgr.baseadapter.BaseRvItem
-import com.github.charbgr.cliffhanger.R
 
 interface MovieGroupItem : BaseRvItem {
   object ViewTypes {

@@ -1,9 +1,9 @@
-package com.github.charbgr.cliffhanger.features.home.arch.state
+package com.github.charbgr.feature.home.arch.state
 
-import com.github.charbgr.cliffhanger.features.home.arch.CategoryViewModel
-import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Failed
-import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Loaded
-import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange.Loading
+import com.github.charbgr.feature.home.arch.CategoryViewModel
+import com.github.charbgr.feature.home.arch.state.PartialChange.Failed
+import com.github.charbgr.feature.home.arch.state.PartialChange.Loaded
+import com.github.charbgr.feature.home.arch.state.PartialChange.Loading
 
 class CategoryStateReducer {
 

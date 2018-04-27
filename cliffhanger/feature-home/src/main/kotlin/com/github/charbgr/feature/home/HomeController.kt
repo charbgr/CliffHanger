@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home
+package com.github.charbgr.feature.home
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
@@ -7,14 +7,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
-import com.github.charbgr.cliffhanger.R
-import com.github.charbgr.cliffhanger.features.home.arch.HomePresenter
-import com.github.charbgr.cliffhanger.features.home.arch.HomeUiBinder
-import com.github.charbgr.cliffhanger.features.home.arch.HomeView
-import com.github.charbgr.cliffhanger.features.home.arch.HomeViewModel
-import com.github.charbgr.cliffhanger.features.home.di.DaggerHomeComponent
+import charbgr.github.com.feature_home.R
 import com.github.charbgr.cliffhanger.features.home.di.HomeComponent
+import com.github.charbgr.feature.home.arch.HomePresenter
+import com.github.charbgr.feature.home.arch.HomeUiBinder
+import com.github.charbgr.feature.home.arch.HomeView
+import com.github.charbgr.feature.home.arch.HomeViewModel
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 class HomeController : ConstraintLayout, HomeView {
 
@@ -31,9 +31,7 @@ class HomeController : ConstraintLayout, HomeView {
       defStyleAttr)
 
 
-  private val component: HomeComponent by lazy {
-    DaggerHomeComponent.builder().homeController(this).build()
-  }
+  private val component: HomeComponent by Delegates.notNull()
 
   lateinit var search: TextView
     private set

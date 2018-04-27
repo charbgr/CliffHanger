@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.features.home.di
 
-import com.github.charbgr.cliffhanger.features.home.HomeController
-import com.github.charbgr.cliffhanger.features.home.arch.HomeView
+import com.github.charbgr.feature.home.HomeController
+import com.github.charbgr.feature.home.arch.HomeView
 import dagger.BindsInstance
 import dagger.Component
 

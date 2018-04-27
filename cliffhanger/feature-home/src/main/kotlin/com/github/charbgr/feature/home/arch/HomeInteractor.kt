@@ -1,7 +1,7 @@
-package com.github.charbgr.cliffhanger.features.home.arch
+package com.github.charbgr.feature.home.arch
 
 import com.github.charbgr.cliffhanger.api_tmdb.dao.MovieResults
-import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange
+import com.github.charbgr.feature.home.arch.state.PartialChange
 import io.reactivex.Observable
 
 interface HomeInteractor {

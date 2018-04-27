@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home.arch.state
+package com.github.charbgr.feature.home.arch.state
 
 import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.domain.MovieCategory

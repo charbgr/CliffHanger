@@ -1,6 +1,6 @@
-package com.github.charbgr.cliffhanger.features.home.arch
+package com.github.charbgr.feature.home.arch
 
-import com.github.charbgr.cliffhanger.features.home.arch.state.PartialChange
+import com.github.charbgr.feature.home.arch.state.PartialChange
 
 data class HomeViewModel(
     val topRated: CategoryViewModel,

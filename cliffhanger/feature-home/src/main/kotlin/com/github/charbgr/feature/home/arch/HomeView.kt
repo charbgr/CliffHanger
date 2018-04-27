@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home.arch
+package com.github.charbgr.feature.home.arch
 
 import com.github.charbgr.arch.View
 

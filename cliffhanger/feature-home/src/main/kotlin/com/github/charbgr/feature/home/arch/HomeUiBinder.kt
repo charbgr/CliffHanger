@@ -1,4 +1,4 @@
-package com.github.charbgr.cliffhanger.features.home.arch
+package com.github.charbgr.feature.home.arch
 
 import android.support.v7.widget.LinearLayoutManager
 import com.github.charbgr.cliffhanger.domain.MovieCategory
@@ -6,12 +6,12 @@ import com.github.charbgr.cliffhanger.domain.MovieCategory.NowPlaying
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Popular
 import com.github.charbgr.cliffhanger.domain.MovieCategory.TopRated
 import com.github.charbgr.cliffhanger.domain.MovieCategory.Upcoming
-import com.github.charbgr.cliffhanger.features.home.HomeController
-import com.github.charbgr.cliffhanger.features.home.adapter.MovieCarouselItem
-import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupAdapter
-import com.github.charbgr.cliffhanger.features.home.adapter.MovieGroupItem
-import com.github.charbgr.cliffhanger.features.home.adapter.SectionHeaderItem
 import com.github.charbgr.feature.error.NavigateToError
+import com.github.charbgr.feature.home.HomeController
+import com.github.charbgr.feature.home.adapter.MovieCarouselItem
+import com.github.charbgr.feature.home.adapter.MovieGroupAdapter
+import com.github.charbgr.feature.home.adapter.MovieGroupItem
+import com.github.charbgr.feature.home.adapter.SectionHeaderItem
 import com.github.charbgr.feature.search.NavigateToSearch
 import com.github.charbgr.shared.movies.MovieListViewModel
 

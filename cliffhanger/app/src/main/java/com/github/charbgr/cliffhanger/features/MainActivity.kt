@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.FrameLayout
 import com.github.charbgr.cliffhanger.R
 import com.github.charbgr.cliffhanger.R.layout
-import com.github.charbgr.cliffhanger.features.home.NavigateToHome
 import com.github.charbgr.cliffhanger.shared.views.BackInterceptor
+import com.github.charbgr.feature.home.NavigateToHome
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(layout.activity_main)
 
-    container = findViewById(R.id.controller_container) as FrameLayout
+    container = findViewById(R.id.controller_container)
 
     NavigateToHome(this).execute()
   }
