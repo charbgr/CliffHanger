@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+  compileSdkVersion rootProject.ext.compile_sdk_version
+  buildToolsVersion rootProject.ext.build_tools_version
+
+  defaultConfig {
+    minSdkVersion rootProject.ext.min_sdk_version
+    targetSdkVersion rootProject.ext.target_sdk_version
+    versionCode 1
+    versionName "1.0"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+}
+
+dependencies {
+  def deps = rootProject.ext.mainApplication
+
+  implementation deps.appCompat
+  implementation deps.kotlin
+  implementation deps.rxAndroid
+  implementation project(':api-tmdb')
+  implementation project(':arch')
+}
