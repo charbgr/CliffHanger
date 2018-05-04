@@ -1,6 +1,5 @@
 package com.github.charbgr.arch
 
-import com.github.charbgr.cliffhanger.shared.arch.UseCase
 import org.junit.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

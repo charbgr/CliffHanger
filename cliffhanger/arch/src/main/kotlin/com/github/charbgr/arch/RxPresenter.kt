@@ -1,6 +1,5 @@
 package com.github.charbgr.arch
 
-import com.github.charbgr.cliffhanger.shared.arch.UseCase
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 
