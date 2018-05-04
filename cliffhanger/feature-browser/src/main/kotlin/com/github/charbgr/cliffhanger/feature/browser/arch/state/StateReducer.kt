@@ -11,17 +11,17 @@ import io.reactivex.functions.BiFunction
 internal class StateReducer {
 
   fun initState(movieCategory: MovieCategory) =
-      Pair(
-          Init, BrowserViewModel.initial(movieCategory))
+    Pair(Init, BrowserViewModel.initial(movieCategory))
 
-  val reduce = BiFunction<Pair<PartialChange, BrowserViewModel>, PartialChange, Pair<PartialChange, BrowserViewModel>>
+  val reduce = BiFunction<Pair<PartialChange, BrowserViewModel>,
+    PartialChange, Pair<PartialChange, BrowserViewModel>>
   { previousState, partialChange ->
     val previousViewModel = previousState.second
     val toViewModel: BrowserViewModel = when (partialChange) {
       is Loading -> previousViewModel.copy(isLoading = true)
       is Loaded -> {
         previousViewModel.copy(isLoading = false, movies = partialChange.movies,
-            page = partialChange.page)
+          page = partialChange.page)
       }
 
       is Failed -> previousViewModel.copy(isLoading = false, throwable = partialChange.throwable)

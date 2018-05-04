@@ -6,14 +6,17 @@ import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.InProgr
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Initial
 import com.github.charbgr.cliffhanger.features.detail.arch.PartialChange.Success
 
-internal class StateReducer: BaseStateReducer<PartialChange, ViewModel>() {
+internal class StateReducer : BaseStateReducer<PartialChange, ViewModel>() {
 
   val initial: Pair<PartialChange, ViewModel> by lazy {
     Pair(PartialChange.Initial, ViewModel.Initial())
   }
 
-  override fun reduceState(previousPartialChange: PartialChange, previousViewModel: ViewModel,
-      partialChange: PartialChange): ViewModel {
+  override fun reduceState(
+    previousPartialChange: PartialChange,
+    previousViewModel: ViewModel,
+    partialChange: PartialChange
+  ): ViewModel {
 
     return when (partialChange) {
       Initial -> { ViewModel.Initial() }
@@ -39,5 +42,4 @@ internal class StateReducer: BaseStateReducer<PartialChange, ViewModel>() {
       }
     }
   }
-
 }

@@ -33,7 +33,6 @@ class MovieAdapter : BaseRvAdapter<MovieAdapterItem>() {
     private var movieNameTv: TextView = itemView.findViewById(R.id.item_movie_name)
     private var moviePosterIv: MovieImageView = itemView.findViewById(R.id.item_movie_poster)
 
-
     override fun bind(item: MovieAdapterItem, position: Int) {
       item as MovieListViewModel
       applyConstraints(item, position)

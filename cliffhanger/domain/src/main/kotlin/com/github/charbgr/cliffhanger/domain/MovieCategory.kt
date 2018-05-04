@@ -7,25 +7,25 @@ sealed class MovieCategory {
     }
   }
 
-  object NowPlaying: MovieCategory() {
+  object NowPlaying : MovieCategory() {
     override fun toString(): String {
       return "NowPlaying"
     }
   }
 
-  object Popular: MovieCategory() {
+  object Popular : MovieCategory() {
     override fun toString(): String {
       return "Popular"
     }
   }
 
-  object Upcoming: MovieCategory() {
+  object Upcoming : MovieCategory() {
     override fun toString(): String {
       return "Upcoming"
     }
   }
 
-  object NaN: MovieCategory() {
+  object NaN : MovieCategory() {
     override fun toString(): String {
       return "NaN"
     }

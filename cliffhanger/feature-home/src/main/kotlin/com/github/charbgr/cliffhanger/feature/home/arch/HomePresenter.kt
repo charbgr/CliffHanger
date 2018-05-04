@@ -9,8 +9,9 @@ import io.reactivex.observers.DisposableObserver
 import timber.log.Timber
 
 class HomePresenter(
-    private val interactor: HomeInteractor = DefaultHomeInteractor(),
-    private val scheduler: Scheduler = AndroidSchedulers.mainThread())
+  private val interactor: HomeInteractor = DefaultHomeInteractor(),
+  private val scheduler: Scheduler = AndroidSchedulers.mainThread()
+)
   : MviPresenter<HomeView, HomeViewModel>() {
 
   private val stateReducer = HomeStateReducer()
@@ -48,7 +49,6 @@ class HomePresenter(
 
           override fun onComplete() {
           }
-
         })
   }
 
@@ -57,5 +57,4 @@ class HomePresenter(
   private fun dispatchViewRender(viewModel: HomeViewModel) {
     viewWRef.get()?.render(viewModel)
   }
-
 }

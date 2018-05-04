@@ -107,11 +107,20 @@ def getSecrets() {
   return props
 }
 
+def buildSystemFile(buildSystemFile) {
+  def buildSystemDir = file('buildsystem')
+  return new File(buildSystemDir, buildSystemFile)
+}
+
 allprojects {
   repositories {
     jcenter()
     google()
   }
+}
+
+subprojects {
+  apply from: buildSystemFile('ktlint.gradle')
 }
 
 task clean(type: Delete) {

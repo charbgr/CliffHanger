@@ -9,8 +9,8 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 
 class Presenter(
-    private val schedulers: SchedulerProvider = AndroidSchedulerProvider,
-    private val movieUseCase: GetMovieUseCase = GetMovieUseCase()
+  private val schedulers: SchedulerProvider = AndroidSchedulerProvider,
+  private val movieUseCase: GetMovieUseCase = GetMovieUseCase()
 ) : MviPresenter<View, Pair<PartialChange, ViewModel>>() {
 
   init {
@@ -42,5 +42,4 @@ class Presenter(
     renders.onNext(render)
     // TODO ADD TO CACHE
   }
-
 }

@@ -4,10 +4,10 @@ import com.squareup.moshi.Json
 
 data class SearchResultsEntity(
 
-    @Json(name = "page")
-    val page: Int,
+  @Json(name = "page")
+  val page: Int,
 
-    @Json(name = "results")
-    val results: List<MiniMovieEntity>
+  @Json(name = "results")
+  val results: List<MiniMovieEntity>
 
 )

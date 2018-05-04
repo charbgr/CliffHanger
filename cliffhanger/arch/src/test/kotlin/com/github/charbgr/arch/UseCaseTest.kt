@@ -1,10 +1,9 @@
 package com.github.charbgr.arch
 
-import com.github.charbgr.cliffhanger.shared.arch.UseCase
-import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxCompletable
-import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxFlowable
-import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxObservable
-import com.github.charbgr.cliffhanger.shared.arch.UseCase.RxSingle
+import com.github.charbgr.arch.UseCase.RxCompletable
+import com.github.charbgr.arch.UseCase.RxFlowable
+import com.github.charbgr.arch.UseCase.RxObservable
+import com.github.charbgr.arch.UseCase.RxSingle
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -36,7 +35,6 @@ class UseCaseTest {
     assertDisposing(useCase)
   }
 
-
   @Test
   fun test_dispose_on_completable_use_case() {
     val useCase = TestUseCaseRxCompletable()
@@ -49,7 +47,6 @@ class UseCaseTest {
     useCase.dispose()
     assertTrue(useCase.disposable.isDisposed)
   }
-
 
   private class TestUseCaseRxSingleObserver : UseCaseObserver.RxSingle<String>()
   private class TestRxSingleUseCase : RxSingle<String, Unit>() {

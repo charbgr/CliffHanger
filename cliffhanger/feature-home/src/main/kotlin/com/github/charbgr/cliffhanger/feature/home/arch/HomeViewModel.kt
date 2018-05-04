@@ -3,11 +3,11 @@ package com.github.charbgr.cliffhanger.feature.home.arch
 import com.github.charbgr.cliffhanger.feature.home.arch.state.PartialChange
 
 data class HomeViewModel(
-    val topRated: CategoryViewModel,
-    val nowPlaying: CategoryViewModel,
-    val popular: CategoryViewModel,
-    val upcoming: CategoryViewModel,
-    val currentPartialChange: PartialChange
+  val topRated: CategoryViewModel,
+  val nowPlaying: CategoryViewModel,
+  val popular: CategoryViewModel,
+  val upcoming: CategoryViewModel,
+  val currentPartialChange: PartialChange
 ) {
 
   companion object {

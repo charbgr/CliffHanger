@@ -28,7 +28,6 @@ class SearchController : ConstraintLayout, View {
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
       defStyleAttr)
 
-
   lateinit var search: EditText
     private set
 
@@ -59,7 +58,6 @@ class SearchController : ConstraintLayout, View {
   override fun onAttachedToWindow() {
     super.onAttachedToWindow()
     if (isInEditMode) return
-
 
     presenter = Presenter()
     presenter.init(this)

@@ -16,5 +16,4 @@ class UpcomingInteractor() : MovieBrowserInteractor {
         .onErrorReturn { PartialChange.Failed(it) }
         .share()
   }
-
 }

@@ -16,10 +16,13 @@ import com.github.charbgr.cliffhanger.shared.extensions.render
 import com.github.charbgr.cliffhanger.shared.movies.MovieAdapter
 
 class MovieGroupAdapter(
-    private val sharedRvPool: RecyclerView.RecycledViewPool) : BaseRvAdapter<MovieGroupItem>() {
+  private val sharedRvPool: RecyclerView.RecycledViewPool
+) : BaseRvAdapter<MovieGroupItem>() {
 
-  override fun onCreateViewHolder(parent: ViewGroup,
-      viewType: Int): BaseViewHolder {
+  override fun onCreateViewHolder(
+    parent: ViewGroup,
+    viewType: Int
+  ): BaseViewHolder {
     return when (viewType) {
       ViewTypes.MOVIES_CAROUSEL -> {
         val itemView = parent.render(R.layout.item_movies_carousel)
@@ -63,7 +66,6 @@ class MovieGroupAdapter(
         adapter = movieAdapter
         movieAdapter.setItems(item.movieAdapterItems)
       }
-
     }
 
     override fun clear() {

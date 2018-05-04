@@ -1,6 +1,5 @@
 package com.github.charbgr.arch
 
-import com.github.charbgr.cliffhanger.shared.arch.UseCase
 import org.junit.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -15,7 +14,6 @@ class RxPresenterTest {
     assertTrue(presenter.hasDisposableZeroSize())
   }
 
-
   @Test
   fun test_destroy_view() {
     val presenter = TestPresenter()
@@ -28,12 +26,11 @@ class RxPresenterTest {
     assertTrue(presenter.hasDisposableZeroSize())
   }
 
-
   private object TestView : View
   private class TestPresenter : RxPresenter<TestView>() {
     fun addDummyUseCase() {
       val useCase = object : UseCase<Unit, Unit>() {
-        override fun build(params: Unit): Unit {
+        override fun build(params: Unit) {
         }
       }
 

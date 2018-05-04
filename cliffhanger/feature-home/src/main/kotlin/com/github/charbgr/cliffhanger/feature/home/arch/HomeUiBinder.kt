@@ -36,8 +36,10 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
     }
   }
 
-  private fun convertToItems(movieCategory: MovieCategory,
-      movieCategoryViewModel: CategoryViewModel): List<MovieGroupItem> {
+  private fun convertToItems(
+    movieCategory: MovieCategory,
+    movieCategoryViewModel: CategoryViewModel
+  ): List<MovieGroupItem> {
 
     val items: MutableList<MovieGroupItem> = mutableListOf()
 
@@ -74,7 +76,6 @@ open class HomeUiBinder(internal val controller: HomeController) : HomeView {
         movieAdapter.addItems(convertToItems(movieCategory, viewModel.upcoming))
       }
       else -> {
-
       }
     }
 

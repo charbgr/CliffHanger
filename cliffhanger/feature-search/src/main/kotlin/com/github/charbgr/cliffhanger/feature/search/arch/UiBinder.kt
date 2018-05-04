@@ -51,6 +51,4 @@ internal open class UiBinder(internal val controller: SearchController) : View {
       controller.search.textChanges()
           .skipInitialValue()
           .debounce(400, MILLISECONDS)
-
 }
-

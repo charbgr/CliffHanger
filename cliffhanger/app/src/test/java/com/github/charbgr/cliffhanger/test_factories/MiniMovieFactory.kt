@@ -19,5 +19,4 @@ object MiniMovieFactory {
       posterPath = "http://foo.bar",
       backdropPath = "http://foo.bar/baz/qux.jpg"
   )
-
 }

@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     NavigateToHome(this).execute()
   }
 
-
   override fun onBackPressed() {
     val topController = container.getChildAt(container.childCount - 1)
     if (topController is BackInterceptor) {
@@ -39,5 +38,4 @@ class MainActivity : AppCompatActivity() {
       container.removeView(topController)
     }
   }
-
 }

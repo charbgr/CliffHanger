@@ -7,5 +7,4 @@ object SearchResultsEntityMapper {
   fun transform(entity: SearchResultsEntity): SearchResults {
     return SearchResults(entity.page, MiniMovieEntityMapper.transform(entity.results))
   }
-
 }

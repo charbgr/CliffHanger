@@ -17,8 +17,11 @@ import javax.inject.Inject
 class HomeController : ConstraintLayout, HomeView {
 
   companion object {
-    fun inflateWith(inflater: LayoutInflater, parent: ViewGroup? = null,
-        attachToRoot: Boolean = false): HomeController {
+    fun inflateWith(
+      inflater: LayoutInflater,
+      parent: ViewGroup? = null,
+      attachToRoot: Boolean = false
+    ): HomeController {
       return inflater.inflate(R.layout.controller_home, parent, attachToRoot) as HomeController
     }
   }
@@ -28,13 +31,11 @@ class HomeController : ConstraintLayout, HomeView {
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
       defStyleAttr)
 
-
   lateinit var search: TextView
     private set
 
   lateinit var movieList: RecyclerView
     private set
-
 
   @Inject
   lateinit var uiBinder: HomeUiBinder

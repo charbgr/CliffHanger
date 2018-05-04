@@ -9,4 +9,3 @@ import org.junit.runners.Suite
     PresenterTest::class
 )
 class SearchSuite
-

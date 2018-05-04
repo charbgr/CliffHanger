@@ -1,16 +1,15 @@
 package com.github.charbgr.cliffhanger.domain
 
-
 data class FullMovie(
-    val tmdbId: Int,
-    val title: String,
-    val posterPath: String,
-    val backdropPath: String,
-    val overview: String,
-    val tagline: String?,
-    val crewMembers: List<CrewMember>,
-    val duration: Int,
-    val releaseDate: String
+  val tmdbId: Int,
+  val title: String,
+  val posterPath: String,
+  val backdropPath: String,
+  val overview: String,
+  val tagline: String?,
+  val crewMembers: List<CrewMember>,
+  val duration: Int,
+  val releaseDate: String
 ) {
 
   val director: CrewMember? by lazy {
@@ -24,5 +23,4 @@ data class FullMovie(
       ""
     }
   }
-
 }

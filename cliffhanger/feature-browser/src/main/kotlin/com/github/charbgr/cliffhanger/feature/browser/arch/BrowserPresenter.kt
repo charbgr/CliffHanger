@@ -1,7 +1,7 @@
 package com.github.charbgr.cliffhanger.feature.browser.arch
 
 import com.github.charbgr.arch.MviPresenter
-import com.github.charbgr.arch.UseCaseObserver
+import com.github.charbgr.arch.UseCaseObserver.RxObservable
 import com.github.charbgr.cliffhanger.domain.MovieCategory
 import com.github.charbgr.cliffhanger.feature.browser.arch.interactor.MovieBrowserInteractor
 import com.github.charbgr.cliffhanger.feature.browser.arch.interactor.MovieBrowserInteractorFactory
@@ -13,8 +13,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.BehaviorSubject
 
 class BrowserPresenter(
-    private val movieCategory: MovieCategory,
-    private val scheduler: Scheduler = AndroidSchedulers.mainThread()
+  private val movieCategory: MovieCategory,
+  private val scheduler: Scheduler = AndroidSchedulers.mainThread()
 ) : MviPresenter<BrowserView, BrowserViewModel>() {
 
   private val interactor: MovieBrowserInteractor by lazy {
@@ -41,7 +41,7 @@ class BrowserPresenter(
 
     allIntentsObservable
         .scan(stateReducer.initState(movieCategory), stateReducer.reduce)
-        .subscribeWith(object : UseCaseObserver.RxObservable<Pair<PartialChange, BrowserViewModel>>() {
+        .subscribeWith(object : RxObservable<Pair<PartialChange, BrowserViewModel>>() {
           override fun onNext(value: Pair<PartialChange, BrowserViewModel>) {
             dispatchViewRender(value.second, value.first)
           }
@@ -56,5 +56,4 @@ class BrowserPresenter(
     viewModelRenders.onNext(viewModel)
     viewWRef.get()?.render(viewModel, partialChange)
   }
-
 }

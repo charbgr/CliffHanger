@@ -9,7 +9,7 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
 internal open class UiBinder(
-    private val movieDetailActivity: MovieDetailActivity
+  private val movieDetailActivity: MovieDetailActivity
 ) : View {
 
   private val movieLoadIntent: PublishSubject<Int> = PublishSubject.create()
@@ -67,12 +67,10 @@ internal open class UiBinder(
     movieDetailActivity.tagline.text = movie.tagline
   }
 
-
   private fun loadMovie() {
     val movieId = movieDetailActivity.intent.getIntExtra(MovieDetailActivity.MOVIE_ID_EXTRA, -1)
     movieLoadIntent.onNext(movieId)
   }
 
   override fun fetchMovieIntent(): Observable<Int> = movieLoadIntent.hide()
-
 }

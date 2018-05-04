@@ -21,6 +21,9 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "cliffhanger/build.gradle" }}-{{ checksum  "cliffhanger/app/build.gradle" }}
       - run:
+          name: Run ktLint
+          command: cd cliffhanger && ./gradlew ktLint
+      - run:
           name: Run Tests
           command: cd cliffhanger && ./gradlew test
       - store_artifacts:

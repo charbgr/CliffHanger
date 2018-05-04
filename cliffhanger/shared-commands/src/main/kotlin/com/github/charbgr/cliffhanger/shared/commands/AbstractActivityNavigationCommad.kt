@@ -29,8 +29,11 @@ abstract class AbstractActivityNavigationCommand : Command {
    * Adds a pair for shared transition if [addTransition] is true.
    * Pair has as key the view and value a transition name.
    */
-  fun addSharedTransition(addTransition: Boolean = true, view: View?,
-      transitionName: String?) = apply {
+  fun addSharedTransition(
+    addTransition: Boolean = true,
+    view: View?,
+    transitionName: String?
+  ) = apply {
     if (addTransition) {
       val pair: Pair<View, String> = Pair.create(view, transitionName)
       sharedTransitions.add(pair)
@@ -74,7 +77,5 @@ abstract class AbstractActivityNavigationCommand : Command {
     if (shouldCloseCurrentActivity) {
       (getContext() as AppCompatActivity).finish()
     }
-
   }
-
 }

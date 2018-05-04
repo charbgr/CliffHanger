@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class CreditsEntity(
 
-    @Json(name = "crew")
-    val crewEntities: List<CrewEntity>
+  @Json(name = "crew")
+  val crewEntities: List<CrewEntity>
 
 )

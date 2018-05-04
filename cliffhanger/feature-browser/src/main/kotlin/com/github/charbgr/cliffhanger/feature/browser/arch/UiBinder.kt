@@ -15,7 +15,6 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlin.properties.Delegates
 
-
 open class UiBinder(internal val controller: BrowserController) : BrowserView {
 
   private val loadData: PublishSubject<Any> = PublishSubject.create()
@@ -69,6 +68,4 @@ open class UiBinder(internal val controller: BrowserController) : BrowserView {
       }
     }
   }
-
-
 }

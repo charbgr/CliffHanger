@@ -30,5 +30,4 @@ object MovieFactory {
       duration = 42,
       releaseDate = "2000-02-18"
   )
-
 }
