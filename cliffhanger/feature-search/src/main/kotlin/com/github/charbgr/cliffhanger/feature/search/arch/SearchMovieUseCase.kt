@@ -12,7 +12,7 @@ import com.github.charbgr.cliffhanger.shared.repository.MovieRepository.Tmdb
 import io.reactivex.Observable
 
 class SearchMovieUseCase(
-    private val movieRepository: MovieRepository = Tmdb(AndroidSchedulerProvider)
+  private val movieRepository: MovieRepository = Tmdb(AndroidSchedulerProvider)
 ) : UseCase.RxObservable<PartialChange, Params>() {
 
   override fun build(params: Params): Observable<PartialChange> {

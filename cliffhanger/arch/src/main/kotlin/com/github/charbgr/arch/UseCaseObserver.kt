@@ -28,5 +28,4 @@ object UseCaseObserver {
 //      Timber.e(e)
     }
   }
-
 }

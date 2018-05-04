@@ -40,9 +40,7 @@ internal class PresenterTest : UnitTest() {
     )
   }
 
-
   private fun create(movie: FullMovieEntity): Presenter {
     return Presenter(fakeSchedulerProvider, GetMovieUseCase(MockMovieRepository(movie)))
   }
-
 }

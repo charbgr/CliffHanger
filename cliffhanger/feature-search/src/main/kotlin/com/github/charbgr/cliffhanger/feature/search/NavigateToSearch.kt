@@ -9,5 +9,4 @@ class NavigateToSearch(context: Context) : ControllerNavigationCommand(context) 
 
   override fun getController(layoutInflater: LayoutInflater): View =
       SearchController.inflateWith(inflater = layoutInflater)
-
 }

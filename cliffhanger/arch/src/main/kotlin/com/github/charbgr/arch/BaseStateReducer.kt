@@ -14,8 +14,8 @@ abstract class BaseStateReducer<P : Any, VM : Any> {
   }
 
   protected abstract fun reduceState(
-      previousPartialChange: P,
-      previousViewModel: VM,
-      partialChange: P
+    previousPartialChange: P,
+    previousViewModel: VM,
+    partialChange: P
   ): VM
 }

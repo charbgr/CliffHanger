@@ -53,10 +53,8 @@ class PresenterTest : UnitTest() {
   private fun create(page: Int = 1, movie: MiniMovieEntity): SearchResultsEntity =
       SearchResultsEntity(page, listOf(movie))
 
-
   private fun presenter(searchResultsEntity: SearchResultsEntity): Presenter {
     return Presenter(fakeSchedulerProvider,
         SearchMovieUseCase(MockMovieRepository(searchResultsEntity = searchResultsEntity)))
   }
-
 }

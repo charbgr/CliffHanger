@@ -54,5 +54,4 @@ class DefaultHomeInteractor : HomeInteractor {
         .onErrorReturn { Failed(Upcoming, it) }
         .share()
   }
-
 }

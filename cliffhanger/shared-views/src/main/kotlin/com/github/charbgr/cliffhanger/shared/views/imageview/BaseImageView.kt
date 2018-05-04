@@ -14,7 +14,6 @@ open class BaseImageView : ImageView {
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
       context, attrs, defStyleAttr, defStyleRes)
 
-
   protected fun loadImage(url: String) {
     Glide.with(context)
         .load(url)

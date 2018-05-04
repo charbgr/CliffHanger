@@ -15,4 +15,3 @@ object MiniMovieEntityMapper {
 
   fun transform(entities: List<MiniMovieEntity>): List<MiniMovie> = entities.map { transform(it) }
 }
-

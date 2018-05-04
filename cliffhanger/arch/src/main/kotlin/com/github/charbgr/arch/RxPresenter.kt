@@ -17,5 +17,4 @@ open class RxPresenter<T : View> : BasePresenter<T>() {
       it.disposable.addTo(disposable)
     }
   }
-
 }

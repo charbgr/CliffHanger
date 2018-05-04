@@ -33,7 +33,6 @@ class UseCaseTest : UnitTest() {
     assertDisposing(useCase)
   }
 
-
   @Test
   fun test_dispose_on_completable_use_case() {
     val useCase = TestUseCaseRxCompletable()
@@ -46,7 +45,6 @@ class UseCaseTest : UnitTest() {
     useCase.dispose()
     assertTrue(useCase.disposable.isDisposed)
   }
-
 
   private class TestUseCaseRxSingleObserver : UseCaseObserver.RxSingle<String>()
   private class TestRxSingleUseCase : UseCase.RxSingle<String, Unit>() {

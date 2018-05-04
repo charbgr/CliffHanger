@@ -5,7 +5,6 @@ import com.github.charbgr.cliffhanger.feature.home.arch.HomeView
 import dagger.BindsInstance
 import dagger.Component
 
-
 @Component(modules = arrayOf(
     HomeModule::class
 ))
@@ -19,8 +18,6 @@ interface HomeComponent {
     fun build(): HomeComponent
   }
 
-
   fun homeView(): HomeView
   fun inject(homeController: HomeController)
-
 }

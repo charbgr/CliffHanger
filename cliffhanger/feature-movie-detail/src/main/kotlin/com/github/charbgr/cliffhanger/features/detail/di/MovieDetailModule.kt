@@ -20,7 +20,8 @@ internal object MovieDetailModule {
   @Provides
   @JvmStatic
   internal fun providesMovideDetailBinder(
-      activity: MovieDetailActivity): UiBinder = UiBinder(activity)
+    activity: MovieDetailActivity
+  ): UiBinder = UiBinder(activity)
 
   @Provides
   @JvmStatic
@@ -33,9 +34,9 @@ internal object MovieDetailModule {
   @Provides
   @JvmStatic
   internal fun providesMovideDetailPresenter(
-      schedulerProvider: SchedulerProvider,
-      movieUseCase: GetMovieUseCase,
-      movieDetailView: View
+    schedulerProvider: SchedulerProvider,
+    movieUseCase: GetMovieUseCase,
+    movieDetailView: View
   ): Presenter {
     val presenter = Presenter(schedulers = schedulerProvider, movieUseCase = movieUseCase)
     presenter.init(movieDetailView)

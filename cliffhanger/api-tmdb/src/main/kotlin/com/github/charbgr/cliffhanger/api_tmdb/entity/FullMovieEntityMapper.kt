@@ -4,7 +4,6 @@ import com.github.charbgr.cliffhanger.domain.FullMovie
 
 object FullMovieEntityMapper {
 
-
   fun transform(entity: FullMovieEntity): FullMovie {
     return FullMovie(
         tmdbId = entity.id ?: 0,
@@ -18,6 +17,4 @@ object FullMovieEntityMapper {
         releaseDate = entity.releaseDate ?: ""
     )
   }
-
 }
-

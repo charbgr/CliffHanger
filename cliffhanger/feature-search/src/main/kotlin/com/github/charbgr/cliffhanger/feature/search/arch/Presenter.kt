@@ -10,8 +10,8 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 
 class Presenter(
-    private val schedulers: SchedulerProvider = AndroidSchedulerProvider,
-    private val searchUseCase: SearchMovieUseCase = SearchMovieUseCase()
+  private val schedulers: SchedulerProvider = AndroidSchedulerProvider,
+  private val searchUseCase: SearchMovieUseCase = SearchMovieUseCase()
 ) : MviPresenter<View, Pair<PartialChange, ViewModel>>() {
 
   init {
@@ -42,5 +42,4 @@ class Presenter(
   private fun dispatchViewRender(render: Pair<PartialChange, ViewModel>) {
     renders.onNext(render)
   }
-
 }

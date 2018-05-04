@@ -7,13 +7,13 @@ import com.github.charbgr.cliffhanger.feature.home.arch.state.PartialChange.Load
 
 class CategoryStateReducer {
 
-  val reduce: (previousViewModel: CategoryViewModel, partialChange: PartialChange) -> CategoryViewModel =
-      { previousViewModel, partialChange ->
-        when (partialChange) {
-          is Loading -> previousViewModel.copy(isLoading = true)
-          is Loaded -> previousViewModel.copy(isLoading = false, movies = partialChange.movies)
-          is Failed -> previousViewModel.copy(isLoading = false, error = partialChange.throwable)
-          else -> previousViewModel
-        }
-      }
+  val reduce: (previousViewModel: CategoryViewModel, partialChange: PartialChange) ->
+  CategoryViewModel = { previousViewModel, partialChange ->
+    when (partialChange) {
+      is Loading -> previousViewModel.copy(isLoading = true)
+      is Loaded -> previousViewModel.copy(isLoading = false, movies = partialChange.movies)
+      is Failed -> previousViewModel.copy(isLoading = false, error = partialChange.throwable)
+      else -> previousViewModel
+    }
+  }
 }

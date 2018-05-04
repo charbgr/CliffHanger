@@ -12,7 +12,6 @@ class MovieImageView : BaseImageView {
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
       context, attrs, defStyleAttr, defStyleRes)
 
-
   fun bindBackdrop(backdropPath: String) {
     loadImage(backdropPath)
   }
@@ -20,5 +19,4 @@ class MovieImageView : BaseImageView {
   fun bindPoster(posterPath: String) {
     loadImage(posterPath)
   }
-
 }

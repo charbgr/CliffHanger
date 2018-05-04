@@ -22,5 +22,4 @@ interface MovieRepository {
       return api.movieDAO.searchMovie(query.toString(), page)
     }
   }
-
 }

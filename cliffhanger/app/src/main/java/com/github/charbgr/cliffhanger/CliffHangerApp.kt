@@ -5,7 +5,6 @@ import com.github.charbgr.cliffhanger.shared.logger.CrashReportingTree
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
-
 class CliffHangerApp : Application() {
 
   override fun onCreate() {
@@ -21,5 +20,4 @@ class CliffHangerApp : Application() {
       Timber.plant(CrashReportingTree())
     }
   }
-
 }

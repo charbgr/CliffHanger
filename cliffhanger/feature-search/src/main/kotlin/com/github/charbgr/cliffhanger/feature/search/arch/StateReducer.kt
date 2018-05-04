@@ -1,6 +1,5 @@
 package com.github.charbgr.cliffhanger.feature.search.arch
 
-
 import com.github.charbgr.arch.BaseStateReducer
 import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.feature.search.arch.PartialChange.Failed
@@ -15,8 +14,11 @@ internal class StateReducer : BaseStateReducer<PartialChange, ViewModel>() {
         ViewModel.Initial())
   }
 
-  override fun reduceState(previousPartialChange: PartialChange, previousViewModel: ViewModel,
-      partialChange: PartialChange): ViewModel {
+  override fun reduceState(
+    previousPartialChange: PartialChange,
+    previousViewModel: ViewModel,
+    partialChange: PartialChange
+  ): ViewModel {
 
     return when (partialChange) {
       Initial -> {
@@ -28,7 +30,11 @@ internal class StateReducer : BaseStateReducer<PartialChange, ViewModel>() {
           movies = null
         }
 
-        previousViewModel.copy(showError = false, showLoader = !partialChange.fromInfiniteScroll, movies = movies)
+        previousViewModel.copy(
+          showError = false,
+          showLoader = !partialChange.fromInfiniteScroll,
+          movies = movies
+        )
       }
       is Failed -> {
         previousViewModel.copy(
@@ -54,5 +60,4 @@ internal class StateReducer : BaseStateReducer<PartialChange, ViewModel>() {
       }
     }
   }
-
 }

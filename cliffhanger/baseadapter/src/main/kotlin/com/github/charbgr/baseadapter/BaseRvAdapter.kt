@@ -3,7 +3,8 @@ package com.github.charbgr.baseadapter
 import android.support.v7.widget.RecyclerView
 import android.view.View
 
-abstract class BaseRvAdapter<T : BaseRvItem> : RecyclerView.Adapter<BaseRvAdapter<T>.BaseViewHolder>() {
+abstract class BaseRvAdapter<T : BaseRvItem> :
+  RecyclerView.Adapter<BaseRvAdapter<T>.BaseViewHolder>() {
 
   val itemList: MutableList<T> = mutableListOf()
 

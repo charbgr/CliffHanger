@@ -16,8 +16,7 @@ class BrowserAdapter : BaseRvAdapter<BrowserAdapterItem>() {
     return MovieViewHolder(itemView)
   }
 
-
-  inner class MovieViewHolder(itemView: View): BaseViewHolder(itemView) {
+  inner class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
 
     private var movieTv: TextView = itemView.findViewById(R.id.item_movie_name)
     private var moviePosterIv: MovieImageView = itemView.findViewById(R.id.item_movie_poster)
@@ -29,8 +28,6 @@ class BrowserAdapter : BaseRvAdapter<BrowserAdapterItem>() {
     }
 
     override fun clear() {
-
     }
-
   }
 }

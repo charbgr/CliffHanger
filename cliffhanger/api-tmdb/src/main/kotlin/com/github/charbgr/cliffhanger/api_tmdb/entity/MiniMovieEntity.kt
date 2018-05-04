@@ -4,17 +4,16 @@ import com.squareup.moshi.Json
 
 data class MiniMovieEntity(
 
-    @Json(name = "id")
-    val id: Int?,
+  @Json(name = "id")
+  val id: Int?,
 
-    @Json(name = "poster_path")
-    val posterPath: String?,
+  @Json(name = "poster_path")
+  val posterPath: String?,
 
-    @Json(name = "title")
-    val title: String?,
+  @Json(name = "title")
+  val title: String?,
 
-    @Json(name = "backdrop_path")
-    val backdropPath: String?
+  @Json(name = "backdrop_path")
+  val backdropPath: String?
 
 )
-

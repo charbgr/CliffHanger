@@ -25,9 +25,8 @@ abstract class ControllerNavigationCommand(protected val context: Context) : Com
       return
     }
 
-
     val containerViewGroup: ViewGroup? = context.findViewById(containerId) as? ViewGroup
-    if(containerViewGroup == null) {
+    if (containerViewGroup == null) {
       Timber.d("Container is not a ViewGroup")
       return
     }
@@ -35,5 +34,4 @@ abstract class ControllerNavigationCommand(protected val context: Context) : Com
     val layoutInflater = LayoutInflater.from(context)
     containerViewGroup.addView(getController(layoutInflater))
   }
-
 }

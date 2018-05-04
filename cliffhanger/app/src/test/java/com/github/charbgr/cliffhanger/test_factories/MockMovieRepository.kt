@@ -6,8 +6,8 @@ import com.github.charbgr.cliffhanger.shared.repository.MovieRepository
 import io.reactivex.Single
 
 class MockMovieRepository(
-    val movie: FullMovieEntity? = null,
-    val searchResultsEntity: SearchResultsEntity? = null
+  val movie: FullMovieEntity? = null,
+  val searchResultsEntity: SearchResultsEntity? = null
 ) : MovieRepository {
 
   override fun getMovie(movieId: Int): Single<FullMovieEntity> {

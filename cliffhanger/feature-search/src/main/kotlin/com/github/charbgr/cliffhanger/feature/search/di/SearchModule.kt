@@ -33,9 +33,9 @@ object SearchModule {
   @Provides
   @JvmStatic
   internal fun providesSearchPresenter(
-      schedulerProvider: SchedulerProvider,
-      useCase: SearchMovieUseCase,
-      searchView: View
+    schedulerProvider: SchedulerProvider,
+    useCase: SearchMovieUseCase,
+    searchView: View
   ): Presenter {
     val presenter = Presenter(schedulerProvider, useCase)
     presenter.init(searchView)

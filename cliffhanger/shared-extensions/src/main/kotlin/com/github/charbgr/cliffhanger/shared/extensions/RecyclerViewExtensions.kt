@@ -10,21 +10,22 @@ import io.reactivex.Observable
 
 fun RecyclerView.addSpacing(dps: Float): ItemDecoration {
   val decorator = SpacingItemDecorator.create(
-      this.context, dps)
+    this.context, dps)
   addItemDecoration(decorator)
   return decorator
 }
 
-fun RecyclerView.infiniteScrollIntent(layoutManager: LinearLayoutManager, threshold: Int = 3)
-    : Observable<RecyclerViewScrollEvent> {
-  return this.scrollEvents()
-      .filter { this.childCount > 0 && it.dy() > 0 }
-      .filter {
-        val visibleItemCount = this.childCount
-        val totalItemCount = layoutManager.itemCount
-        val firstVisibleItem = layoutManager.findFirstVisibleItemPosition()
+fun RecyclerView.infiniteScrollIntent(
+  layoutManager: LinearLayoutManager,
+  threshold: Int = 3
+): Observable<RecyclerViewScrollEvent> =
+  this.scrollEvents()
+    .filter { this.childCount > 0 && it.dy() > 0 }
+    .filter {
+      val visibleItemCount = this.childCount
+      val totalItemCount = layoutManager.itemCount
+      val firstVisibleItem = layoutManager.findFirstVisibleItemPosition()
 
-        totalItemCount - visibleItemCount <= firstVisibleItem + threshold
-      }
-      .distinctUntilChanged()
-}
+      totalItemCount - visibleItemCount <= firstVisibleItem + threshold
+    }
+    .distinctUntilChanged()

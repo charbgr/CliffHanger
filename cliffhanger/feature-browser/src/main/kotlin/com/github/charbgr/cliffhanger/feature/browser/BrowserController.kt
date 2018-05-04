@@ -28,8 +28,12 @@ class BrowserController : RelativeLayout, BrowserView, BackInterceptor {
       context, attrs, defStyleAttr, defStyleRes)
 
   companion object {
-    fun inflateWith(movieCategory: MovieCategory, inflater: LayoutInflater,
-        parent: ViewGroup? = null, attachToRoot: Boolean = false): BrowserController {
+    fun inflateWith(
+      movieCategory: MovieCategory,
+      inflater: LayoutInflater,
+      parent: ViewGroup? = null,
+      attachToRoot: Boolean = false
+    ): BrowserController {
       val controller = inflater.inflate(R.layout.controller_movie_browser, parent,
           attachToRoot) as BrowserController
       controller.presenter = BrowserPresenter(movieCategory)
@@ -83,6 +87,8 @@ class BrowserController : RelativeLayout, BrowserView, BackInterceptor {
 
   override fun loadDataIntent(): Observable<Any> = uiBinder.loadDataIntent()
   override fun infiniteScrollIntent(): Observable<Any> = uiBinder.infiniteScrollIntent()
-  override fun render(movieBrowserViewModel: BrowserViewModel,
-      partialChange: PartialChange) = uiBinder.render(movieBrowserViewModel, partialChange)
+  override fun render(
+    movieBrowserViewModel: BrowserViewModel,
+    partialChange: PartialChange
+  ) = uiBinder.render(movieBrowserViewModel, partialChange)
 }

@@ -5,7 +5,6 @@ import com.github.charbgr.cliffhanger.feature.search.arch.View
 import dagger.BindsInstance
 import dagger.Component
 
-
 @Component(modules = arrayOf(
     SearchModule::class
 ))
@@ -19,8 +18,6 @@ interface SearchComponent {
     fun build(): SearchComponent
   }
 
-
   fun searchView(): View
   fun inject(searchController: SearchController)
-
 }
