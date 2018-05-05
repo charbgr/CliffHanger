@@ -6,6 +6,7 @@ import com.github.charbgr.cliffhanger.test_factories.MockMovieRepository
 import com.github.charbgr.cliffhanger.test_factories.MovieFactory
 import org.junit.Test
 
+@Suppress("UNUSED_VARIABLE")
 internal class PresenterTest : UnitTest() {
 
   @Test
@@ -41,6 +42,7 @@ internal class PresenterTest : UnitTest() {
   }
 
   private fun create(movie: FullMovieEntity): Presenter {
-    return Presenter(fakeSchedulerProvider, GetMovieUseCase(MockMovieRepository(movie)))
+    mockDeppie(mockMovieRepository = MockMovieRepository(movie))
+    return Presenter()
   }
 }

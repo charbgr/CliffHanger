@@ -3,15 +3,16 @@ package com.github.charbgr.cliffhanger.features.detail.arch
 import com.github.charbgr.arch.MviPresenter
 import com.github.charbgr.arch.SchedulerProvider
 import com.github.charbgr.arch.UseCaseObserver.RxObservable
-import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
+import com.github.charbgr.cliffhanger.di.Deppie
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 
 class Presenter(
-  private val schedulers: SchedulerProvider = AndroidSchedulerProvider,
   private val movieUseCase: GetMovieUseCase = GetMovieUseCase()
 ) : MviPresenter<View, Pair<PartialChange, ViewModel>>() {
+
+  private val schedulers: SchedulerProvider = Deppie.getInstance().schedulerProvider
 
   init {
     register(movieUseCase)

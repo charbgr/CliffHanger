@@ -36,6 +36,7 @@ dependencies {
   implementation deps.rxAndroid
   implementation project(':arch')
   implementation project(':api-tmdb')
+  implementation project(':di')
   implementation project(':domain')
   implementation project(':baseadapter')
   implementation project(':shared-commands')
@@ -44,4 +45,5 @@ dependencies {
 
   testImplementation unitTestDependencies.kotlinTest
 
+  compile project(path: ':shared-framework')
 }

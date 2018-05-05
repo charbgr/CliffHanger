@@ -24,14 +24,14 @@ interface MovieDAO {
   fun latestMovies(): Observable<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "popular")
-  fun popularMovies(@Query("page") page: Int): Observable<MovieResults>
+  fun popularMovies(@Query("page") page: Int): Single<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "top_rated")
-  fun topRatedMovies(@Query("page") page: Int): Observable<MovieResults>
+  fun topRatedMovies(@Query("page") page: Int): Single<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "upcoming")
-  fun upcomingMovies(@Query("page") page: Int): Observable<MovieResults>
+  fun upcomingMovies(@Query("page") page: Int): Single<MovieResults>
 
   @GET(Routes.MOVIE_ROUTE + "now_playing")
-  fun nowPlayingMovie(@Query("page") page: Int): Observable<MovieResults>
+  fun nowPlayingMovie(@Query("page") page: Int): Single<MovieResults>
 }

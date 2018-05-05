@@ -7,12 +7,12 @@ import com.github.charbgr.cliffhanger.domain.MiniMovie
 import com.github.charbgr.cliffhanger.domain.SearchResults
 import com.github.charbgr.cliffhanger.feature.search.arch.PartialChange
 import com.github.charbgr.cliffhanger.feature.search.arch.Presenter
-import com.github.charbgr.cliffhanger.feature.search.arch.SearchMovieUseCase
 import com.github.charbgr.cliffhanger.feature.search.arch.ViewModel
 import com.github.charbgr.cliffhanger.test_factories.MiniMovieFactory
 import com.github.charbgr.cliffhanger.test_factories.MockMovieRepository
 import org.junit.Test
 
+@Suppress("UNUSED_VARIABLE")
 class PresenterTest : UnitTest() {
 
   @Test
@@ -54,7 +54,7 @@ class PresenterTest : UnitTest() {
       SearchResultsEntity(page, listOf(movie))
 
   private fun presenter(searchResultsEntity: SearchResultsEntity): Presenter {
-    return Presenter(fakeSchedulerProvider,
-        SearchMovieUseCase(MockMovieRepository(searchResultsEntity = searchResultsEntity)))
+    mockDeppie(mockMovieRepository = MockMovieRepository(searchResultsEntity = searchResultsEntity))
+    return Presenter()
   }
 }

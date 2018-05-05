@@ -37,6 +37,7 @@ dependencies {
   implementation project(':arch')
   implementation project(':api-tmdb')
   implementation project(':baseadapter')
+  implementation project(':di')
   implementation project(':domain')
   implementation project(':feature-browser')
   implementation project(':feature-error')

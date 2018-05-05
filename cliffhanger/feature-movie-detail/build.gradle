@@ -34,6 +34,7 @@ dependencies {
   implementation deps.rxKotlin
   implementation project(':arch')
   implementation project(':api-tmdb')
+  implementation project(':di')
   implementation project(':domain')
   implementation project(':shared-commands')
   implementation project(':shared-extensions')
