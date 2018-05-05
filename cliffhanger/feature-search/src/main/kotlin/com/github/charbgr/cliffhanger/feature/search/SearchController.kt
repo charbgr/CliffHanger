@@ -13,7 +13,6 @@ import com.github.charbgr.cliffhanger.feature.search.arch.View
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import javax.inject.Inject
 
 class SearchController : ConstraintLayout, View {
 
@@ -37,10 +36,7 @@ class SearchController : ConstraintLayout, View {
   lateinit var progressBar: ProgressBar
     private set
 
-  @Inject
   internal lateinit var uiBinder: UiBinder
-
-  @Inject
   internal lateinit var presenter: Presenter
 
   private val disposable: CompositeDisposable by lazy {

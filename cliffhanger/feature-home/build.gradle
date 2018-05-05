@@ -37,6 +37,7 @@ dependencies {
   implementation project(':arch')
   implementation project(':api-tmdb')
   implementation project(':baseadapter')
+  implementation project(':di')
   implementation project(':domain')
   implementation project(':feature-browser')
   implementation project(':feature-error')
@@ -47,13 +48,6 @@ dependencies {
   implementation project(':shared-movie-adapter')
   implementation project(':shared-resources')
   implementation project(':shared-views')
-
-  // Dagger
-  implementation deps.dagger.runtime
-  implementation deps.dagger.android.runtime
-  implementation deps.dagger.android.supportRuntime
-  kapt deps.dagger.compiler
-  kapt deps.dagger.android.compiler
 
   testImplementation unitTestDependencies.kotlinTest
 }

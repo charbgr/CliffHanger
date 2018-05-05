@@ -1,6 +1,7 @@
 package com.github.charbgr.cliffhanger
 
 import android.app.Application
+import com.github.charbgr.cliffhanger.di.Deppie
 import com.github.charbgr.cliffhanger.shared.logger.CrashReportingTree
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -11,6 +12,7 @@ class CliffHangerApp : Application() {
     super.onCreate()
 
     initializeLogger()
+    initializeDeppie()
   }
 
   private fun initializeLogger() {
@@ -19,5 +21,9 @@ class CliffHangerApp : Application() {
     } else {
       Timber.plant(CrashReportingTree())
     }
+  }
+
+  private fun initializeDeppie() {
+    Deppie.init()
   }
 }

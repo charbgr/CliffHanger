@@ -12,7 +12,6 @@ import com.github.charbgr.cliffhanger.feature.home.arch.HomePresenter
 import com.github.charbgr.cliffhanger.feature.home.arch.HomeUiBinder
 import com.github.charbgr.cliffhanger.feature.home.arch.HomeView
 import com.github.charbgr.cliffhanger.feature.home.arch.HomeViewModel
-import javax.inject.Inject
 
 class HomeController : ConstraintLayout, HomeView {
 
@@ -21,15 +20,14 @@ class HomeController : ConstraintLayout, HomeView {
       inflater: LayoutInflater,
       parent: ViewGroup? = null,
       attachToRoot: Boolean = false
-    ): HomeController {
-      return inflater.inflate(R.layout.controller_home, parent, attachToRoot) as HomeController
-    }
+    ): HomeController =
+      inflater.inflate(R.layout.controller_home, parent, attachToRoot) as HomeController
   }
 
   constructor(context: Context?) : super(context)
   constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
-      defStyleAttr)
+    defStyleAttr)
 
   lateinit var search: TextView
     private set
@@ -37,10 +35,7 @@ class HomeController : ConstraintLayout, HomeView {
   lateinit var movieList: RecyclerView
     private set
 
-  @Inject
   lateinit var uiBinder: HomeUiBinder
-
-  @Inject
   lateinit var presenter: HomePresenter
 
   override fun onFinishInflate() {

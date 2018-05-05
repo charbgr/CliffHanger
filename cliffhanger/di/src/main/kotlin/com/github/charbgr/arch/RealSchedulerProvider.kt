@@ -1,11 +1,10 @@
-package com.github.charbgr.cliffhanger.shared.extensions
+package com.github.charbgr.arch
 
-import com.github.charbgr.arch.SchedulerProvider
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-object AndroidSchedulerProvider : SchedulerProvider {
+internal object RealSchedulerProvider : SchedulerProvider {
   override fun ui(): Scheduler = AndroidSchedulers.mainThread()
   override fun io(): Scheduler = Schedulers.io()
 }

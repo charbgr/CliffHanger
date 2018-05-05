@@ -26,24 +26,11 @@ android {
 
 dependencies {
   def deps = rootProject.ext.mainApplication
-  def unitTestDependencies = rootProject.ext.unitTesting
 
   implementation deps.appCompat
-  implementation deps.constraintLayout
-  implementation deps.recyclerView
   implementation deps.kotlin
-  implementation deps.rxKotlin
   implementation deps.rxAndroid
-  implementation project(':arch')
   implementation project(':api-tmdb')
-  implementation project(':di')
-  implementation project(':domain')
-  implementation project(':baseadapter')
-  implementation project(':shared-commands')
-  implementation project(':shared-extensions')
-  implementation project(':shared-views')
-
-  testImplementation unitTestDependencies.kotlinTest
-
-  compile project(path: ':shared-framework')
+  implementation project(':arch')
+  implementation project(':shared-framework')
 }

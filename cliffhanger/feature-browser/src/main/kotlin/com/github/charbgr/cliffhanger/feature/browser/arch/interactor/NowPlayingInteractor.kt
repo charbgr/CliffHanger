@@ -1,19 +1,20 @@
 package com.github.charbgr.cliffhanger.feature.browser.arch.interactor
 
-import com.github.charbgr.cliffhanger.api_tmdb.TmdbAPI
 import com.github.charbgr.cliffhanger.api_tmdb.entity.MiniMovieEntityMapper.transform
+import com.github.charbgr.cliffhanger.di.Deppie
 import com.github.charbgr.cliffhanger.feature.browser.arch.state.PartialChange
+import com.github.charbgr.cliffhanger.shared.repository.MovieRepository
 import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
 
 class NowPlayingInteractor : MovieBrowserInteractor {
-  private val tmdbAPI: TmdbAPI = TmdbAPI(Schedulers.io())
+  private val repository: MovieRepository = Deppie.getInstance().movieRepository
 
   override fun fetch(page: Int): Observable<PartialChange> {
-    return tmdbAPI.movieDAO.nowPlayingMovie(page)
-        .map { PartialChange.Loaded(transform(it.results), it.page) as PartialChange }
-        .startWith(PartialChange.Loading(page != 1))
-        .onErrorReturn { PartialChange.Failed(it) }
-        .share()
+    return repository.fetchNowPlayingMovies(page)
+      .toObservable()
+      .map { PartialChange.Loaded(transform(it.results), it.page) as PartialChange }
+      .startWith(PartialChange.Loading(page != 1))
+      .onErrorReturn { PartialChange.Failed(it) }
+      .share()
   }
 }

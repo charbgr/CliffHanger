@@ -2,18 +2,16 @@ package com.github.charbgr.cliffhanger.feature.search.arch
 
 import com.github.charbgr.arch.UseCase
 import com.github.charbgr.cliffhanger.api_tmdb.entity.SearchResultsEntityMapper
+import com.github.charbgr.cliffhanger.di.Deppie
 import com.github.charbgr.cliffhanger.feature.search.arch.PartialChange.Failed
 import com.github.charbgr.cliffhanger.feature.search.arch.PartialChange.InProgress
 import com.github.charbgr.cliffhanger.feature.search.arch.PartialChange.Success
 import com.github.charbgr.cliffhanger.feature.search.arch.SearchMovieUseCase.Params
-import com.github.charbgr.cliffhanger.shared.extensions.AndroidSchedulerProvider
-import com.github.charbgr.cliffhanger.shared.repository.MovieRepository
-import com.github.charbgr.cliffhanger.shared.repository.MovieRepository.Tmdb
 import io.reactivex.Observable
 
-class SearchMovieUseCase(
-  private val movieRepository: MovieRepository = Tmdb(AndroidSchedulerProvider)
-) : UseCase.RxObservable<PartialChange, Params>() {
+class SearchMovieUseCase : UseCase.RxObservable<PartialChange, Params>() {
+
+  private val movieRepository = Deppie.getInstance().movieRepository
 
   override fun build(params: Params): Observable<PartialChange> {
     return movieRepository

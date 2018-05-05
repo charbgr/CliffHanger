@@ -11,7 +11,6 @@ import com.github.charbgr.cliffhanger.shared.views.imageview.MovieImageView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import javax.inject.Inject
 
 class MovieDetailActivity : AppCompatActivity(), View {
 
@@ -19,10 +18,7 @@ class MovieDetailActivity : AppCompatActivity(), View {
     const val MOVIE_ID_EXTRA = "movie:detail:id"
   }
 
-  @Inject
   internal lateinit var uiBinder: UiBinder
-
-  @Inject
   internal lateinit var presenter: Presenter
 
   private val disposable: CompositeDisposable = CompositeDisposable()
