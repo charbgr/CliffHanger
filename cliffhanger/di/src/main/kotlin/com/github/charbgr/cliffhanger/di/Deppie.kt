@@ -1,20 +1,20 @@
 package com.github.charbgr.cliffhanger.di
 
-import com.github.charbgr.arch.RealSchedulerProvider
-import com.github.charbgr.arch.SchedulerProvider
-import com.github.charbgr.cliffhanger.api_tmdb.di.TmdbModule
+object Deppie {
+  private lateinit var deppieCtxInstance: DeppieContext
 
-interface Deppie : SchedulerProvider, TmdbModule {
-
-  companion object {
-
-    private val deppieInstance: Deppie by lazy {
-      RealDeppie(
-        schedulerProvider = RealSchedulerProvider,
-        tmdbModule = TmdbModule.Real(RealSchedulerProvider)
-      )
+  fun init(deppieContext: DeppieContext = RealDeppieContext(), override: Boolean = false) {
+    if (override) {
+      deppieCtxInstance = deppieContext
+      return
     }
 
-    fun getInstance(): Deppie = deppieInstance
+    if(!::deppieCtxInstance.isInitialized)
+      return
+
+    deppieCtxInstance = deppieContext
   }
+
+  fun getInstance(): DeppieContext = deppieCtxInstance
+
 }
