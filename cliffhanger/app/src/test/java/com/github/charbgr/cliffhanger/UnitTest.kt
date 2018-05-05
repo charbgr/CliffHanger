@@ -26,5 +26,4 @@ open class UnitTest {
 
     Deppie.init(mockDeppieContext, true)
   }
-
 }

@@ -16,24 +16,24 @@ import com.github.charbgr.cliffhanger.feature.home.arch.HomeViewModel
 class HomeController : ConstraintLayout, HomeView {
 
   companion object {
-    fun inflateWith(inflater: LayoutInflater, parent: ViewGroup? = null,
-        attachToRoot: Boolean = false): HomeController {
-      return inflater.inflate(R.layout.controller_home, parent, attachToRoot) as HomeController
-    }
+    fun inflateWith(
+      inflater: LayoutInflater,
+      parent: ViewGroup? = null,
+      attachToRoot: Boolean = false
+    ): HomeController =
+      inflater.inflate(R.layout.controller_home, parent, attachToRoot) as HomeController
   }
 
   constructor(context: Context?) : super(context)
   constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
   constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
-      defStyleAttr)
-
+    defStyleAttr)
 
   lateinit var search: TextView
     private set
 
   lateinit var movieList: RecyclerView
     private set
-
 
   lateinit var uiBinder: HomeUiBinder
   lateinit var presenter: HomePresenter

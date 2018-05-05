@@ -9,12 +9,11 @@ object Deppie {
       return
     }
 
-    if(!::deppieCtxInstance.isInitialized)
+    if (!::deppieCtxInstance.isInitialized)
       return
 
     deppieCtxInstance = deppieContext
   }
 
   fun getInstance(): DeppieContext = deppieCtxInstance
-
 }
