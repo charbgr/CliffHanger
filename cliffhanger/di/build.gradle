@@ -32,4 +32,5 @@ dependencies {
   implementation deps.rxAndroid
   implementation project(':api-tmdb')
   implementation project(':arch')
+  implementation project(':shared-framework')
 }
